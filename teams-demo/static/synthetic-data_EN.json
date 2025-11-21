@@ -1,0 +1,322 @@
+[
+  {
+    "message_id": "msg_001",
+    "timestamp": "2025-11-20T09:15:23Z",
+    "message": "Need replacement part for SKU 00002771, is there faster availability for next week?",
+    "query_type": "replacement_availability",
+    "referenced_sku": "00002771",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_002",
+    "timestamp": "2025-11-20T10:22:45Z",
+    "message": "What's the code for this gasket? Old code missing.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_003",
+    "timestamp": "2025-11-20T11:08:12Z",
+    "message": "Lead time for this 5mm bolt part?",
+    "query_type": "lead_time",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_004",
+    "timestamp": "2025-11-20T13:45:30Z",
+    "message": "hey, do we have o-ring 00002285 in stock? need it asap",
+    "query_type": "availability",
+    "referenced_sku": "00002285",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_005",
+    "timestamp": "2025-11-20T14:20:18Z",
+    "message": "Can I get a replacment for ENGINE 00002463? The old one is broken",
+    "query_type": "replacement",
+    "referenced_sku": "00002463",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_006",
+    "timestamp": "2025-11-20T15:30:44Z",
+    "message": "What is the lead time for TURBOCHARGER 00002657??",
+    "query_type": "lead_time",
+    "referenced_sku": "00002657",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_007",
+    "timestamp": "2025-11-20T16:12:55Z",
+    "message": "Is 00007068 compatible with model TH663i?",
+    "query_type": "compatibility",
+    "referenced_sku": "00007068",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_008",
+    "timestamp": "2025-11-20T08:45:20Z",
+    "message": "need bearing 00000393 urgently, whn can we get it?",
+    "query_type": "availability",
+    "referenced_sku": "00000393",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_009",
+    "timestamp": "2025-11-19T14:30:10Z",
+    "message": "Looking for alternative to FILTER 00002260, any suggestions?",
+    "query_type": "replacement",
+    "referenced_sku": "00002260",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_010",
+    "timestamp": "2025-11-19T09:20:33Z",
+    "message": "SKU BC00000189 gearbox - delivery time?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00000189",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_011",
+    "timestamp": "2025-11-19T11:15:42Z",
+    "message": "anyone know if we can use 00006938 instead of 00006939? both converters",
+    "query_type": "compatibility",
+    "referenced_sku": "00006938",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_012",
+    "timestamp": "2025-11-19T12:50:28Z",
+    "message": "Part no. 00008969 - what's the replacement? Need it for LH517",
+    "query_type": "replacement",
+    "referenced_sku": "00008969",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_013",
+    "timestamp": "2025-11-18T10:05:17Z",
+    "message": "Hi team, can someone check availabilty for RADIATOR 00007068? Customer waiting",
+    "query_type": "availability",
+    "referenced_sku": "00007068",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_014",
+    "timestamp": "2025-11-18T13:22:55Z",
+    "message": "What pistons are compatible with part 00000262?",
+    "query_type": "compatibility",
+    "referenced_sku": "00000262",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_015",
+    "timestamp": "2025-11-18T15:40:11Z",
+    "message": "Old code 7F-1123, what's the new SKU?",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_016",
+    "timestamp": "2025-11-17T09:30:22Z",
+    "message": "SEAL 00000018 - is this still in production or discontinued?",
+    "query_type": "availability",
+    "referenced_sku": "00000018",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_017",
+    "timestamp": "2025-11-17T11:45:38Z",
+    "message": "Need specs for HYDRAULIPUMPPU 00006282, also lead time pls",
+    "query_type": "lead_time",
+    "referenced_sku": "00006282",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_018",
+    "timestamp": "2025-11-17T14:18:50Z",
+    "message": "Can we get ALTERNATOR 00002492 by friday? Its urgent!!!",
+    "query_type": "availability",
+    "referenced_sku": "00002492",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_019",
+    "timestamp": "2025-11-16T10:25:14Z",
+    "message": "whats the part number for the bucket? customer says old number doesnt work",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_020",
+    "timestamp": "2025-11-16T12:35:29Z",
+    "message": "Replacement for STARTER 00002707 - any cross reference?",
+    "query_type": "replacement",
+    "referenced_sku": "00002707",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_021",
+    "timestamp": "2025-11-15T08:50:43Z",
+    "message": "00009363 motor available? Need 2 pieces",
+    "query_type": "availability",
+    "referenced_sku": "00009363",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_022",
+    "timestamp": "2025-11-15T13:20:15Z",
+    "message": "Part BC00003806 carrier seal - lead time and price?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00003806",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_023",
+    "timestamp": "2025-11-15T16:05:37Z",
+    "message": "Is there a supersession for 00012506? MOOTTORI part",
+    "query_type": "replacement",
+    "referenced_sku": "00012506",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_024",
+    "timestamp": "2025-11-14T09:40:28Z",
+    "message": "TRANSMISSION 00006117 compatibility with TH551 model?",
+    "query_type": "compatibility",
+    "referenced_sku": "00006117",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_025",
+    "timestamp": "2025-11-14T11:15:52Z",
+    "message": "hey quick question - can i substitute 00002671 BOLT with 00008034?",
+    "query_type": "compatibility",
+    "referenced_sku": "00002671",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_026",
+    "timestamp": "2025-11-14T14:50:19Z",
+    "message": "ACCUMULATOR 00001396, when will it be back in stok?",
+    "query_type": "availability",
+    "referenced_sku": "00001396",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_027",
+    "timestamp": "2025-11-13T10:30:45Z",
+    "message": "Looking for HOSE 00000025 - standard lead time?",
+    "query_type": "lead_time",
+    "referenced_sku": "00000025",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_028",
+    "timestamp": "2025-11-13T12:45:33Z",
+    "message": "Part 00011917 Controller - is this for LH514 or TH430?",
+    "query_type": "compatibility",
+    "referenced_sku": "00011917",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_029",
+    "timestamp": "2025-11-13T15:20:08Z",
+    "message": "Can anyone cofirm if VALVE 00000181 fits on model LH410?",
+    "query_type": "compatibility",
+    "referenced_sku": "00000181",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_030",
+    "timestamp": "2025-11-12T09:15:27Z",
+    "message": "Need emergency shipment for CYLINDER 00000195, possible?",
+    "query_type": "availability",
+    "referenced_sku": "00000195",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_031",
+    "timestamp": "2025-11-12T11:40:51Z",
+    "message": "JOYSTICK 00000826 - any alternatives if not available?",
+    "query_type": "replacement",
+    "referenced_sku": "00000826",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_032",
+    "timestamp": "2025-11-12T14:25:36Z",
+    "message": "whats the lead time on SENSOR 00001897?? client asking",
+    "query_type": "lead_time",
+    "referenced_sku": "00001897",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_033",
+    "timestamp": "2025-11-11T10:50:14Z",
+    "message": "BC00004307 ENGINE DEUTZ - is this a direct replacement for older model?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00004307",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_034",
+    "timestamp": "2025-11-11T13:15:42Z",
+    "message": "DISPLAY 00009352 stock status? need for repair job",
+    "query_type": "availability",
+    "referenced_sku": "00009352",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_035",
+    "timestamp": "2025-11-11T15:35:29Z",
+    "message": "Part number 00007340 COMPRESSOR - estimated delivery?",
+    "query_type": "lead_time",
+    "referenced_sku": "00007340",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_036",
+    "timestamp": "2025-11-10T08:45:17Z",
+    "message": "Can someone help? Looking for PUMP part, maybe 00002771?",
+    "query_type": "part_identification",
+    "referenced_sku": "00002771",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_037",
+    "timestamp": "2025-11-10T12:20:48Z",
+    "message": "GEARBOX 00006132 - what machines is this compatible with?",
+    "query_type": "compatibility",
+    "referenced_sku": "00006132",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_038",
+    "timestamp": "2025-11-10T14:55:23Z",
+    "message": "need BC00001432 harness engine + BC00001433 harness hydraulic. available?",
+    "query_type": "availability",
+    "referenced_sku": "BC00001432",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_039",
+    "timestamp": "2025-11-09T09:30:55Z",
+    "message": "MIRROR 00007090 replacement - where can I find it in system?",
+    "query_type": "replacement",
+    "referenced_sku": "00007090",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_040",
+    "timestamp": "2025-11-09T11:45:12Z",
+    "message": "Anyone know lead time for TIRE 00009225? Customer needs 4pcs",
+    "query_type": "lead_time",
+    "referenced_sku": "00009225",
+    "has_typo": false
+  }
+]
