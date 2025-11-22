@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import AdaptiveCard from './AdaptiveCard.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -23,11 +24,63 @@
 	function selectChat(name: string) {
 		dispatch('selectChat', { name });
 	}
+
+	function handleCloseCard(event: CustomEvent) {
+		dispatch('closeCard', { messageId: event.detail.messageId });
+	}
+
+	function handleGoToChat(event: CustomEvent) {
+		dispatch('goToChat', { chatLink: event.detail.chatLink });
+	}
 </script>
 
-<div class="flex-1 flex overflow-hidden bg-white">
-	<!-- Conversations List -->
-	<div class="w-80 border-r border-gray-200 flex flex-col bg-gray-50">
+<div class="flex-1 flex flex-col overflow-hidden bg-white">
+	<!-- Top Header -->
+	<div class="h-16 border-b border-gray-200 flex items-center justify-between px-8 bg-[#464775]">
+		<div class="flex items-center space-x-4">
+			<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+				/>
+			</svg>
+			<h1 class="text-2xl font-semibold text-white">Chat</h1>
+		</div>
+		<div class="flex items-center space-x-4">
+			<div class="relative">
+				<input
+					type="text"
+					placeholder="Search chats"
+					class="w-96 pl-10 pr-4 py-2 bg-[#5b5d8a] border-0 rounded text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+				/>
+				<svg
+					class="w-5 h-5 text-gray-300 absolute left-3 top-2.5"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+					/>
+				</svg>
+			</div>
+			<div
+				class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center"
+			>
+				<span class="text-white font-semibold text-sm">KR</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Main Content Area -->
+	<div class="flex-1 flex overflow-hidden">
+		<!-- Conversations List -->
+		<div class="w-80 border-r border-gray-200 flex flex-col bg-gray-50">
 		<!-- Header -->
 		<div class="p-4 bg-white border-b border-gray-200">
 			<div class="flex items-center justify-between mb-3">
@@ -203,47 +256,22 @@
 							<span class="text-xs text-gray-500">{msg.timestamp}</span>
 						</div>
 
-						{#if !msg.isCard}
+						{#if msg.sender === 'user'}
+							<!-- User messages: plain text bubble -->
 							<div class="bg-white rounded-lg shadow-sm p-3 max-w-2xl">
 								<p class="text-sm text-gray-800">{msg.text}</p>
 							</div>
-						{:else}
-							<div class="bg-white rounded-lg shadow-sm p-3 max-w-2xl mb-2">
-								<p class="text-sm text-gray-800">{msg.text}</p>
-							</div>
-							<!-- Adaptive Card -->
+						{:else if msg.sender === 'bot'}
+							<!-- Bot messages: ONLY adaptive cards -->
 							{#if msg.card}
-								<div class="bg-white rounded-lg shadow-md border border-gray-200 max-w-2xl overflow-hidden">
-									<div class="p-4">
-										<div class="flex items-start justify-between mb-2">
-											<div>
-												<h3 class="font-semibold text-base">{msg.card.title}</h3>
-												<p class="text-sm text-gray-600">{msg.card.subtitle}</p>
-											</div>
-											<button class="text-gray-400 hover:text-gray-600" title="More">
-												<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														stroke-width="2"
-														d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-													/>
-												</svg>
-											</button>
-										</div>
-										<p class="text-sm text-gray-700 mb-4">{msg.card.body}</p>
-										<div class="flex flex-wrap gap-2">
-											{#each msg.card.buttons as btn}
-												<button
-													on:click={() => handleCardButton(btn.action)}
-													class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 text-sm font-medium transition-colors"
-												>
-													{btn.label}
-												</button>
-											{/each}
-										</div>
-									</div>
-								</div>
+								<AdaptiveCard
+									title={msg.card.title}
+									description={msg.card.description}
+									chatLink={msg.card.chatLink}
+									messageId={msg.id}
+									on:close={handleCloseCard}
+									on:goToChat={handleGoToChat}
+								/>
 							{/if}
 						{/if}
 
@@ -259,7 +287,8 @@
 									</button>
 								{/each}
 								<button
-									class="w-6 h-6 bg-white border border-gray-200 rounded-full hover:border-gray-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" title="More reactions"
+									class="w-6 h-6 bg-white border border-gray-200 rounded-full hover:border-gray-300 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+									title="More reactions"
 								>
 									<svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path
@@ -396,5 +425,5 @@
 			</div>
 		</div>
 	</div>
+	</div>
 </div>
-

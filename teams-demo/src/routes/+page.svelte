@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ChatView from '$lib/components/ChatView.svelte';
+	import CallsView from '$lib/components/CallsView.svelte';
+	import FilesView from '$lib/components/FilesView.svelte';
+	import TeamsView from '$lib/components/TeamsView.svelte';
+	import CalendarView from '$lib/components/CalendarView.svelte';
+	import ActivityView from '$lib/components/ActivityView.svelte';
 
 	// Load synthetic data
 	let messages: any[] = [];
@@ -117,27 +122,22 @@
 	// Chat messages for TestBot
 	let chatMessages = [
 		{
-			id: 1,
-			sender: 'user',
-			name: 'You',
-			initials: 'ME',
-			color: 'bg-blue-600',
-			text: 'Hi TestBot, can you help me with parts information?',
-			timestamp: '5/12, 9:15 AM',
-			reactions: []
-		},
-		{
 			id: 2,
 			sender: 'bot',
 			name: 'TestBot',
 			initials: 'TB',
 			color: 'bg-purple-600',
-			text: 'Hello! I can help you find parts information, check availability, and provide lead times. What would you like to know?',
 			timestamp: '5/12, 9:15 AM',
 			reactions: [
 				{ emoji: '👍', count: 2 },
 				{ emoji: '❤️', count: 1 }
-			]
+			],
+			card: {
+				title: 'Parts Information Available',
+				description:
+					'Hello! I can help you find parts information, check availability, and provide lead times. What would you like to know?',
+				chatLink: '#parts-support-channel'
+			}
 		},
 		{
 			id: 3,
@@ -155,31 +155,13 @@
 			name: 'TestBot',
 			initials: 'TB',
 			color: 'bg-purple-600',
-			text: 'Thank you for always being so positive!',
 			timestamp: '11:44 AM',
 			reactions: [],
-			isCard: false
-		},
-		{
-			id: 5,
-			sender: 'bot',
-			name: 'TestBot',
-			initials: 'TB',
-			color: 'bg-purple-600',
-			text: 'And this is the subhead, or a message preview. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...',
-			timestamp: '11:44 AM',
-			reactions: [],
-			isCard: true,
 			card: {
-				title: 'Part Information Card',
-				subtitle: 'SKU: 00002771 - PUMP',
-				body: 'This part is currently in stock and available for immediate shipment. Lead time is 2-3 business days for standard delivery. The part is compatible with multiple machine models.',
-				buttons: [
-					{ label: 'Check Stock', action: 'stock' },
-					{ label: 'View Details', action: 'details' },
-					{ label: 'Order Now', action: 'order' },
-					{ label: 'Contact Support', action: 'support' }
-				]
+				title: 'Part Found: SKU 00002771 - PUMP',
+				description:
+					'This part is currently in stock and available for immediate shipment. Lead time is 2-3 business days for standard delivery. The part is compatible with multiple machine models. Click below to view the full conversation in the Parts Support channel.',
+				chatLink: '#parts-support-channel'
 			}
 		}
 	];
@@ -188,14 +170,6 @@
 	const teams = [
 		{ name: 'Sandvik Support', initials: 'SS', color: 'bg-blue-600' },
 		{ name: 'Parts Warehouse', initials: 'PW', color: 'bg-green-600' },
-		{ name: 'Technical Help', initials: 'TH', color: 'bg-yellow-600' },
-		{ name: 'Engineering', initials: 'EN', color: 'bg-cyan-600' },
-		{ name: 'Quality Control', initials: 'QC', color: 'bg-orange-600' },
-		{ name: 'Logistics', initials: 'LO', color: 'bg-green-700' },
-		{ name: 'Manufacturing', initials: 'MA', color: 'bg-yellow-700' },
-		{ name: 'Product Development', initials: 'PD', color: 'bg-blue-500' },
-		{ name: 'Customer Service', initials: 'CS', color: 'bg-orange-700' },
-		{ name: 'Field Operations', initials: 'FO', color: 'bg-green-500' }
 	];
 
 	onMount(async () => {
@@ -243,27 +217,26 @@
 			}
 		];
 
-		// Simulate bot response with adaptive card
+		// Simulate bot response with ONLY adaptive card
 		setTimeout(() => {
 			const responses = [
 				{
-					text: 'I found that information for you!',
-					hasCard: true,
-					card: {
-						title: 'Search Results',
-						subtitle: 'Based on your query',
-						body: 'Here are the details I found. This information is current as of today and includes availability, pricing, and compatibility information.',
-						buttons: [
-							{ label: 'View More', action: 'more' },
-							{ label: 'Add to Cart', action: 'cart' },
-							{ label: 'Share', action: 'share' },
-							{ label: 'Save', action: 'save' }
-						]
-					}
+					title: 'Information Found',
+					description:
+						'I found that information for you! Here are the details. This information is current as of today and includes availability, pricing, and compatibility information.',
+					chatLink: '#parts-support-channel'
 				},
 				{
-					text: 'Let me check that for you...',
-					hasCard: false
+					title: 'Processing Your Request',
+					description:
+						'Let me check that for you... I am searching through our database for the most relevant information. This may take a moment.',
+					chatLink: '#technical-help-channel'
+				},
+				{
+					title: 'Parts Available',
+					description:
+						'Great news! The parts you requested are available in stock. Lead time is 2-3 business days. Click to view more details in the channel.',
+					chatLink: '#parts-warehouse-channel'
 				}
 			];
 
@@ -277,38 +250,49 @@
 					name: 'TestBot',
 					initials: 'TB',
 					color: 'bg-purple-600',
-					text: response.text,
 					timestamp: new Date().toLocaleTimeString('en-US', {
 						hour: '2-digit',
 						minute: '2-digit'
 					}),
 					reactions: [],
-					isCard: response.hasCard,
-					card: response.hasCard ? response.card : undefined
+					card: {
+						title: response.title,
+						description: response.description,
+						chatLink: response.chatLink
+					}
 				}
 			];
 		}, 1000);
 	}
 
-	function handleCardButton(event: CustomEvent) {
-		const action = event.detail.action;
-		chatMessages = [
-			...chatMessages,
-			{
-				id: chatMessages.length + 1,
-				sender: 'bot',
-				name: 'TestBot',
-				initials: 'TB',
-				color: 'bg-purple-600',
-				text: `You clicked: ${action}. Processing your request...`,
-				timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-				reactions: []
-			}
-		];
+	function handleCloseCard(event: CustomEvent) {
+		const messageId = event.detail.messageId;
+		// Remove the message with the specified ID
+		chatMessages = chatMessages.filter((msg) => msg.id !== messageId);
+	}
+
+	function handleGoToChat(event: CustomEvent) {
+		const chatLink = event.detail.chatLink;
+		// Navigate to the channel based on the chatLink
+		if (chatLink.includes('parts-support')) {
+			currentView = 'chat';
+			selectedChannel = 'Parts Support';
+		} else if (chatLink.includes('technical-help')) {
+			currentView = 'chat';
+			selectedChannel = 'Technical Help';
+		} else if (chatLink.includes('parts-warehouse')) {
+			currentView = 'chat';
+			selectedChannel = 'Warehouse';
+		}
 	}
 
 	function handleSelectChat(event: CustomEvent) {
 		selectedChat = event.detail.name;
+	}
+
+	function handleSelectTeam(event: CustomEvent) {
+		currentView = 'chat';
+		selectedChannel = event.detail.teamName;
 	}
 
 	function formatTime(timestamp: string) {
@@ -444,7 +428,7 @@
 		<div class="flex-1"></div>
 
 		<button
-			class="w-12 h-12 flex flex-col items-center justify-center hover:bg-[#5b5d8a] rounded transition-colors"
+			class="w-12 h-12 flex flex-col items-center justify-center hover:bg-[#5b5d8a] rounded transition-colors" title="Add channel"
 		>
 			<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -452,152 +436,26 @@
 		</button>
 	</div>
 
-	{#if currentView === 'chat-view'}
+	{#if currentView === 'activity'}
+		<ActivityView />
+	{:else if currentView === 'chat-view'}
 		<ChatView
 			{conversations}
 			{selectedChat}
 			{chatMessages}
 			on:sendMessage={handleChatMessage}
-			on:cardAction={handleCardButton}
+			on:closeCard={handleCloseCard}
+			on:goToChat={handleGoToChat}
 			on:selectChat={handleSelectChat}
 		/>
+	{:else if currentView === 'calls'}
+		<CallsView />
+	{:else if currentView === 'files'}
+		<FilesView />
+	{:else if currentView === 'calendar'}
+		<CalendarView />
 	{:else if currentView === 'teams'}
-		<!-- Teams View -->
-		<div class="flex-1 flex flex-col bg-white overflow-hidden">
-			<!-- Top Header -->
-			<div class="h-16 border-b border-gray-200 flex items-center justify-between px-8 bg-[#464775]">
-				<div class="flex items-center space-x-4">
-					<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-						<path
-							d="M20.625 8.25h-7.5V2.625c0-.345-.28-.625-.625-.625h-7.5c-.345 0-.625.28-.625.625V8.25h-1.5c-.345 0-.625.28-.625.625v10.5c0 .345.28.625.625.625h18c.345 0 .625-.28.625-.625v-10.5c0-.345-.28-.625-.625-.625z"
-						/>
-					</svg>
-					<h1 class="text-2xl font-semibold text-white">Microsoft Teams</h1>
-				</div>
-				<div class="flex items-center space-x-4">
-					<div class="relative">
-						<input
-							type="text"
-							placeholder="Search"
-							class="w-96 pl-10 pr-4 py-2 bg-[#5b5d8a] border-0 rounded text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
-						/>
-						<svg
-							class="w-5 h-5 text-gray-300 absolute left-3 top-2.5"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-							/>
-						</svg>
-					</div>
-					<div
-						class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center"
-					>
-						<span class="text-white font-semibold text-sm">KR</span>
-					</div>
-				</div>
-			</div>
-
-			<!-- Teams Content -->
-			<div class="flex-1 overflow-y-auto p-8 bg-gray-50">
-				<!-- Secondary Navigation -->
-				<div class="mb-6 flex items-center justify-between">
-					<div class="flex space-x-6">
-						<button class="pb-2 border-b-2 border-[#6264a7] text-[#6264a7] font-semibold">
-							Your teams
-						</button>
-						<button class="pb-2 text-gray-600 hover:text-gray-900">All teams</button>
-					</div>
-				</div>
-
-				<!-- Page Title and Actions -->
-				<div class="mb-8 flex items-center justify-between">
-					<h2 class="text-3xl font-bold">Teams</h2>
-					<div class="flex space-x-3">
-						<button
-							class="px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-50 flex items-center space-x-2"
-						>
-							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-								/>
-							</svg>
-							<span>Join a team</span>
-						</button>
-						<button
-							class="px-4 py-2 bg-white border border-gray-300 rounded hover:bg-gray-50 flex items-center space-x-2"
-						>
-							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-								/>
-							</svg>
-							<span>Create a team</span>
-						</button>
-					</div>
-				</div>
-
-				<!-- Your Teams Section -->
-				<div class="mb-6">
-					<h3 class="text-xl font-semibold mb-4">Your Teams</h3>
-				</div>
-
-				<!-- Teams Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-					{#each teams as team}
-						<button
-							class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden group cursor-pointer border border-gray-200"
-							on:click={() => {
-								currentView = 'chat';
-								selectedChannel = team.name;
-							}}
-						>
-							<div class="p-6 flex flex-col items-center justify-center space-y-4">
-								<div
-									class="w-24 h-24 {team.color} rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform"
-								>
-									<span class="text-white font-bold text-3xl">{team.initials}</span>
-								</div>
-								<div class="text-center">
-									<h4 class="font-semibold text-base">{team.name}</h4>
-								</div>
-							</div>
-							<div
-								class="border-t border-gray-200 px-6 py-3 bg-gray-50 group-hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2"
-							>
-								<svg
-									class="w-4 h-4 text-gray-500"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-									/>
-								</svg>
-								<span class="text-sm text-gray-600"
-									>{Math.floor(Math.random() * 20) + 5} members</span
-								>
-							</div>
-						</button>
-					{/each}
-				</div>
-			</div>
-		</div>
+		<TeamsView {teams} on:selectTeam={handleSelectTeam} />
 	{:else}
 		<!-- Original Chat View (Channel View) -->
 		<!-- Channel/Team List Sidebar -->
@@ -626,30 +484,48 @@
 				</div>
 			</div>
 
-			<!-- Team Header -->
-			<div class="p-4 border-b border-gray-200">
-				<div class="flex items-center justify-between">
-					<div class="flex items-center space-x-2">
-						<div class="w-8 h-8 bg-[#6264a7] rounded flex items-center justify-center">
-							<span class="text-white font-semibold text-sm">S</span>
-						</div>
-						<div>
-							<h2 class="font-semibold text-sm">Sandvik Support</h2>
-							<p class="text-xs text-gray-500">Parts & Technical</p>
-						</div>
+		<!-- Back to Teams Button -->
+		<div class="p-3 border-b border-gray-200">
+			<button
+				on:click={() => (currentView = 'teams')}
+				class="w-full flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-100 text-[#6264a7] transition-colors"
+			>
+				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M15 19l-7-7 7-7"
+					/>
+				</svg>
+				<span class="text-sm font-medium">Back to Teams</span>
+			</button>
+		</div>
+
+		<!-- Team Header -->
+		<div class="p-4 border-b border-gray-200">
+			<div class="flex items-center justify-between">
+				<div class="flex items-center space-x-2">
+					<div class="w-8 h-8 bg-[#6264a7] rounded flex items-center justify-center">
+						<span class="text-white font-semibold text-sm">S</span>
 					</div>
-					<button class="text-gray-400 hover:text-gray-600">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M19 9l-7 7-7-7"
-							/>
-						</svg>
-					</button>
+					<div>
+						<h2 class="font-semibold text-sm">Sandvik Support</h2>
+						<p class="text-xs text-gray-500">Parts & Technical</p>
+					</div>
 				</div>
+				<button class="text-gray-400 hover:text-gray-600" title="Options">
+					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M19 9l-7 7-7-7"
+						/>
+					</svg>
+				</button>
 			</div>
+		</div>
 
 			<!-- Channel List -->
 			<div class="flex-1 overflow-y-auto">
@@ -776,7 +652,7 @@
 			<div class="h-14 border-b border-gray-200 flex items-center justify-between px-6">
 				<div class="flex items-center space-x-3">
 					<h1 class="text-lg font-semibold">{selectedChannel}</h1>
-					<button class="text-gray-400 hover:text-gray-600">
+					<button class="text-gray-400 hover:text-gray-600" title="Edit channel">
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
@@ -820,7 +696,7 @@
 						</svg>
 					</button>
 					<div class="w-px h-6 bg-gray-300 mx-2"></div>
-					<button class="p-2 hover:bg-gray-100 rounded transition-colors">
+					<button class="p-2 hover:bg-gray-100 rounded transition-colors" title="More options">
 						<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
@@ -919,7 +795,7 @@
 								<div
 									class="mt-1 opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-3"
 								>
-									<button class="text-gray-400 hover:text-gray-600 text-xs flex items-center space-x-1">
+									<button class="text-gray-400 hover:text-gray-600 text-xs flex items-center space-x-1" title="Edit message">
 										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path
 												stroke-linecap="round"
@@ -929,7 +805,7 @@
 											/>
 										</svg>
 									</button>
-									<button class="text-gray-400 hover:text-gray-600 text-xs flex items-center space-x-1">
+									<button class="text-gray-400 hover:text-gray-600 text-xs flex items-center space-x-1" title="Reply to message">
 										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path
 												stroke-linecap="round"
