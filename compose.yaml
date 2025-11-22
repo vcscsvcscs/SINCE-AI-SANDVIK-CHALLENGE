@@ -38,6 +38,20 @@ services:
     depends_on:
       - teams-agent
 
+  classifier-server:
+    build:
+      context: ./apps/classifier-server
+      dockerfile: Dockerfile
+    container_name: classifier-server
+    ports:
+      - "${CLASSIFIER_PORT:-8069}:8069"
+    environment:
+      - CLASSIFIER_PORT=8069
+      - FEATHERLESS_API_KEY=${FEATHERLESS_API_KEY:-}
+    networks:
+      - teams-network
+    restart: unless-stopped
+
 networks:
   teams-network:
     driver: bridge
