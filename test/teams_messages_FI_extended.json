@@ -1,0 +1,4002 @@
+[
+  {
+    "message_id": "msg_fi_0066",
+    "timestamp": "2025-11-01T08:10:00Z",
+    "message": "MOOTTORI 00046268 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00046268",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0417",
+    "timestamp": "2025-11-01T08:24:00Z",
+    "message": "mikä on JÄÄHDYTIN osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0164",
+    "timestamp": "2025-11-01T09:01:00Z",
+    "message": "Osa 00042271 KÄYNNISTIN - onko tää LH410 vai LH203?",
+    "query_type": "general",
+    "referenced_sku": "00042271",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0337",
+    "timestamp": "2025-11-01T09:19:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden PUMPPU 00029842? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00029842",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0342",
+    "timestamp": "2025-11-01T09:42:00Z",
+    "message": "mikä lead time VAIHTEISTO 00002512?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00002512",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0122",
+    "timestamp": "2025-11-01T10:02:00Z",
+    "message": "SYLINTERI 00028208 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00028208",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0231",
+    "timestamp": "2025-11-01T10:41:00Z",
+    "message": "SKU 00016101 NÄYTTÖ - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00016101",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0134",
+    "timestamp": "2025-11-01T10:47:00Z",
+    "message": "Mikä on toimitusaika TIIVISTE 00007373??",
+    "query_type": "lead_time",
+    "referenced_sku": "00007373",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0305",
+    "timestamp": "2025-11-01T10:56:00Z",
+    "message": "Voisko joku auttaa? Etsitään PEILI osaa, ehkä 00022136?",
+    "query_type": "general",
+    "referenced_sku": "00022136",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0464",
+    "timestamp": "2025-11-01T11:12:00Z",
+    "message": "Voiks joku vahvistaa sopiiko VAIHDELAATIKKO 00002025 LH514 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00002025",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0019",
+    "timestamp": "2025-11-01T11:45:00Z",
+    "message": "Vanha koodi 8X-7633, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0269",
+    "timestamp": "2025-11-01T13:03:00Z",
+    "message": "Osa 00039987 PULTTI - onko tää LH203 vai LH514?",
+    "query_type": "general",
+    "referenced_sku": "00039987",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0367",
+    "timestamp": "2025-11-01T13:03:00Z",
+    "message": "OHJAIN 00007741 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00007741",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0467",
+    "timestamp": "2025-11-01T13:51:00Z",
+    "message": "tietääkö kukaan voiko 00043319 käyttää 00025987:n sijaan? molemmat NÄYTTÖ",
+    "query_type": "general",
+    "referenced_sku": "00043319",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0154",
+    "timestamp": "2025-11-01T14:19:00Z",
+    "message": "TIIVISTE 00009120 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00009120",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0290",
+    "timestamp": "2025-11-01T14:20:00Z",
+    "message": "Tarvitaan hätätoimitus NÄYTTÖ 00047326, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00047326",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0093",
+    "timestamp": "2025-11-01T14:25:00Z",
+    "message": "OHJAIN 00019536 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00019536",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0499",
+    "timestamp": "2025-11-01T14:35:00Z",
+    "message": "Voisko joku auttaa? Etsitään LETKU osaa, ehkä BC00000424?",
+    "query_type": "general",
+    "referenced_sku": "BC00000424",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0236",
+    "timestamp": "2025-11-01T14:41:00Z",
+    "message": "Tarvitaan speksit LETKU BC00002276, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00002276",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0425",
+    "timestamp": "2025-11-01T14:50:00Z",
+    "message": "hei pika kysymys - voiks korvata BC00001755 ANTURI 00008293:llä?",
+    "query_type": "general",
+    "referenced_sku": "BC00001755",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0360",
+    "timestamp": "2025-11-01T15:22:00Z",
+    "message": "Voisko saada korvaavan VAIHDELAATIKKO BC00003406? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "BC00003406",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0457",
+    "timestamp": "2025-11-01T15:56:00Z",
+    "message": "Mikä on toimitusaika VENTTIILI 00014222??",
+    "query_type": "lead_time",
+    "referenced_sku": "00014222",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0086",
+    "timestamp": "2025-11-01T15:59:00Z",
+    "message": "Saadaanko RENGAS 00047222 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00047222",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0100",
+    "timestamp": "2025-11-01T16:06:00Z",
+    "message": "hei, onko PEILI 00009848 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00009848",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0046",
+    "timestamp": "2025-11-01T16:11:00Z",
+    "message": "hei pika kysymys - voiks korvata 00028245 VENTTIILI 00047879:llä?",
+    "query_type": "general",
+    "referenced_sku": "00028245",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0203",
+    "timestamp": "2025-11-01T16:18:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00029002:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00029002",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0491",
+    "timestamp": "2025-11-01T17:08:00Z",
+    "message": "Mikä on toimitusaika RENGAS 00044981??",
+    "query_type": "lead_time",
+    "referenced_sku": "00044981",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0330",
+    "timestamp": "2025-11-01T17:40:00Z",
+    "message": "LAAKERI 00019050 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00019050",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0299",
+    "timestamp": "2025-11-02T08:10:00Z",
+    "message": "ANTURI BC00005994 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "BC00005994",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0308",
+    "timestamp": "2025-11-02T08:23:00Z",
+    "message": "PULTTI 00044035 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00044035",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0436",
+    "timestamp": "2025-11-02T08:28:00Z",
+    "message": "Voisko joku auttaa? Etsitään O-RENGAS osaa, ehkä 00002313?",
+    "query_type": "general",
+    "referenced_sku": "00002313",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0429",
+    "timestamp": "2025-11-02T09:41:00Z",
+    "message": "Mikä on toimitusaika SUODATIN 00020963??",
+    "query_type": "lead_time",
+    "referenced_sku": "00020963",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0300",
+    "timestamp": "2025-11-02T10:06:00Z",
+    "message": "Joku tietää toimitusajan OHJAIN 00048735? Asiakas tarvii 5kpl",
+    "query_type": "general",
+    "referenced_sku": "00048735",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0198",
+    "timestamp": "2025-11-02T10:11:00Z",
+    "message": "Voiks joku vahvistaa sopiiko RENGAS 00028983 TH320 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00028983",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0189",
+    "timestamp": "2025-11-02T10:16:00Z",
+    "message": "Korvaava JÄÄHDYTIN 00007118 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00007118",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0205",
+    "timestamp": "2025-11-02T10:20:00Z",
+    "message": "VENTTIILI 00038926 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00038926",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0053",
+    "timestamp": "2025-11-02T10:21:00Z",
+    "message": "Vanha koodi 7F-2443, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0211",
+    "timestamp": "2025-11-02T10:44:00Z",
+    "message": "hei, onko OHJAIN 00031902 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00031902",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0054",
+    "timestamp": "2025-11-02T10:49:00Z",
+    "message": "Onko 00008278 yhteensopiva LHD1700 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00008278",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0318",
+    "timestamp": "2025-11-02T10:58:00Z",
+    "message": "00037469 MOOTTORI - onko tää suora korvaava vanhalle mallille?",
+    "query_type": "replacement",
+    "referenced_sku": "00037469",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0248",
+    "timestamp": "2025-11-02T11:37:00Z",
+    "message": "Lead time tälle 00028156 KÄYNNISTIN?",
+    "query_type": "lead_time",
+    "referenced_sku": "00028156",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0152",
+    "timestamp": "2025-11-02T12:01:00Z",
+    "message": "PEILI BC00006347, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "BC00006347",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0493",
+    "timestamp": "2025-11-02T12:34:00Z",
+    "message": "Mikä koodi tälle SUODATIN? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0018",
+    "timestamp": "2025-11-02T12:49:00Z",
+    "message": "Voisko joku auttaa? Etsitään PULTTI osaa, ehkä 00007568?",
+    "query_type": "general",
+    "referenced_sku": "00007568",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0244",
+    "timestamp": "2025-11-02T12:56:00Z",
+    "message": "tarvitaan LAAKERI 00049407 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00049407",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0099",
+    "timestamp": "2025-11-02T13:09:00Z",
+    "message": "LATURI 00005809 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00005809",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0069",
+    "timestamp": "2025-11-02T13:18:00Z",
+    "message": "Mikä on toimitusaika SUODATIN 00014121??",
+    "query_type": "lead_time",
+    "referenced_sku": "00014121",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0228",
+    "timestamp": "2025-11-02T14:06:00Z",
+    "message": "O-RENGAS 00027267 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00027267",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0268",
+    "timestamp": "2025-11-02T14:25:00Z",
+    "message": "Osanumero BC00002539 MOOTTORI - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "BC00002539",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0369",
+    "timestamp": "2025-11-02T15:23:00Z",
+    "message": "Osanumero 00042990 RENGAS - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00042990",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0302",
+    "timestamp": "2025-11-02T15:40:00Z",
+    "message": "Saadaanko VAIHTEISTO 00017110 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00017110",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0057",
+    "timestamp": "2025-11-02T16:02:00Z",
+    "message": "LATURI BC00008958 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "BC00008958",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0396",
+    "timestamp": "2025-11-02T16:21:00Z",
+    "message": "Osanumero 00036648 OHJAIN - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00036648",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0050",
+    "timestamp": "2025-11-02T17:14:00Z",
+    "message": "Osa BC00005228 TIIVISTE - onko tää TH663i vai LHD1700?",
+    "query_type": "general",
+    "referenced_sku": "BC00005228",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0070",
+    "timestamp": "2025-11-02T17:48:00Z",
+    "message": "Korvaava SYLINTERI 00002666 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00002666",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0304",
+    "timestamp": "2025-11-02T17:59:00Z",
+    "message": "mikä on PUMPPU osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0040",
+    "timestamp": "2025-11-03T08:05:00Z",
+    "message": "TIIVISTE 00036678 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00036678",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0182",
+    "timestamp": "2025-11-03T08:15:00Z",
+    "message": "Mikä on toimitusaika LATURI 00029861??",
+    "query_type": "lead_time",
+    "referenced_sku": "00029861",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0193",
+    "timestamp": "2025-11-03T08:23:00Z",
+    "message": "Osa 00011988 JÄÄHDYTIN - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00011988",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0319",
+    "timestamp": "2025-11-03T08:34:00Z",
+    "message": "hei, onko RENGAS 00046520 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00046520",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0158",
+    "timestamp": "2025-11-03T08:41:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00005632:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00005632",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0383",
+    "timestamp": "2025-11-03T10:09:00Z",
+    "message": "Voiks joku vahvistaa sopiiko TIIVISTE 00049320 TH320 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00049320",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0313",
+    "timestamp": "2025-11-03T10:18:00Z",
+    "message": "mikä lead time PUMPPU 00005756?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00005756",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0021",
+    "timestamp": "2025-11-03T10:21:00Z",
+    "message": "Osa 00033631 SYLINTERI - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00033631",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0212",
+    "timestamp": "2025-11-03T10:38:00Z",
+    "message": "mikä on TIIVISTE osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0111",
+    "timestamp": "2025-11-03T10:53:00Z",
+    "message": "Mikä koodi tälle VENTTIILI? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0120",
+    "timestamp": "2025-11-03T11:18:00Z",
+    "message": "Tarvitaan hätätoimitus OHJAIN 00025721, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00025721",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0221",
+    "timestamp": "2025-11-03T11:25:00Z",
+    "message": "Mikä on toimitusaika LATURI 00029720??",
+    "query_type": "lead_time",
+    "referenced_sku": "00029720",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0372",
+    "timestamp": "2025-11-03T11:27:00Z",
+    "message": "NÄYTTÖ 00002201 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00002201",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0285",
+    "timestamp": "2025-11-03T12:36:00Z",
+    "message": "TIIVISTE 00003256 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00003256",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0443",
+    "timestamp": "2025-11-03T13:32:00Z",
+    "message": "Tarvitaan hätätoimitus LETKU 00047009, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00047009",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0165",
+    "timestamp": "2025-11-03T14:14:00Z",
+    "message": "Tarvitaan speksit PUMPPU BC00009487, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00009487",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0096",
+    "timestamp": "2025-11-03T14:40:00Z",
+    "message": "Joku tietää toimitusajan OHJAIN 00004108? Asiakas tarvii 4kpl",
+    "query_type": "general",
+    "referenced_sku": "00004108",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0177",
+    "timestamp": "2025-11-03T14:47:00Z",
+    "message": "PEILI 00014735 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00014735",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0187",
+    "timestamp": "2025-11-03T14:59:00Z",
+    "message": "mikä lead time LAAKERI 00043070?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00043070",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0365",
+    "timestamp": "2025-11-03T15:12:00Z",
+    "message": "Onko korvike 00031205:lle? LAAKERI osa",
+    "query_type": "general",
+    "referenced_sku": "00031205",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0130",
+    "timestamp": "2025-11-03T15:38:00Z",
+    "message": "tarvitaan BC00000190 VAIHDELAATIKKO + 00007246 TIIVISTE. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00000190",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0020",
+    "timestamp": "2025-11-03T15:50:00Z",
+    "message": "hei, onko MOOTTORI 00034296 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00034296",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0063",
+    "timestamp": "2025-11-03T16:10:00Z",
+    "message": "Voisko saada korvaavan NÄYTTÖ 00027959? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00027959",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0215",
+    "timestamp": "2025-11-03T16:26:00Z",
+    "message": "Mikä on toimitusaika VENTTIILI 00021889??",
+    "query_type": "lead_time",
+    "referenced_sku": "00021889",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0143",
+    "timestamp": "2025-11-03T16:52:00Z",
+    "message": "Vanha koodi 8X-1313, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0403",
+    "timestamp": "2025-11-03T17:17:00Z",
+    "message": "Osanumero 00005885 LETKU - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00005885",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0418",
+    "timestamp": "2025-11-03T17:30:00Z",
+    "message": "Osanumero 00013921 PULTTI - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00013921",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0344",
+    "timestamp": "2025-11-03T17:55:00Z",
+    "message": "Osanro 00026618 - mikä korvaava? Tarvitaan LHD1700:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00026618",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0310",
+    "timestamp": "2025-11-04T08:21:00Z",
+    "message": "tarvitaan 00015713 LATURI + 00036606 VAIHDELAATIKKO. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00015713",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0121",
+    "timestamp": "2025-11-04T08:41:00Z",
+    "message": "Tarvitaan speksit NÄYTTÖ 00034089, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "00034089",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0423",
+    "timestamp": "2025-11-04T08:41:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden OHJAIN 00007011? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00007011",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0156",
+    "timestamp": "2025-11-04T09:07:00Z",
+    "message": "tarvitaan 00024965 LATURI + 00026191 OHJAIN. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00024965",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0373",
+    "timestamp": "2025-11-04T09:10:00Z",
+    "message": "Osa 00008480 LETKU - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00008480",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0444",
+    "timestamp": "2025-11-04T09:25:00Z",
+    "message": "VAIHTEISTO 00037040 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00037040",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0435",
+    "timestamp": "2025-11-04T09:36:00Z",
+    "message": "O-RENGAS 00037181 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00037181",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0354",
+    "timestamp": "2025-11-04T09:37:00Z",
+    "message": "mikä on PUMPPU osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0210",
+    "timestamp": "2025-11-04T09:44:00Z",
+    "message": "Voiks joku vahvistaa sopiiko SYLINTERI 00014583 TH663i malliin?",
+    "query_type": "general",
+    "referenced_sku": "00014583",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0233",
+    "timestamp": "2025-11-04T09:46:00Z",
+    "message": "tarvitaan PEILI 00028354 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00028354",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0486",
+    "timestamp": "2025-11-04T10:29:00Z",
+    "message": "Tarvitaan korvaava osa SKU BC00009282:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00009282",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0332",
+    "timestamp": "2025-11-04T11:10:00Z",
+    "message": "Voisko joku auttaa? Etsitään VAIHDELAATIKKO osaa, ehkä BC00003764?",
+    "query_type": "general",
+    "referenced_sku": "BC00003764",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0270",
+    "timestamp": "2025-11-04T12:04:00Z",
+    "message": "mikä on LATURI osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0234",
+    "timestamp": "2025-11-04T13:23:00Z",
+    "message": "Lead time tälle 00023572 RENGAS?",
+    "query_type": "lead_time",
+    "referenced_sku": "00023572",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0017",
+    "timestamp": "2025-11-04T13:31:00Z",
+    "message": "hei pika kysymys - voiks korvata 00037042 OHJAIN 00029619:llä?",
+    "query_type": "general",
+    "referenced_sku": "00037042",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0466",
+    "timestamp": "2025-11-04T14:50:00Z",
+    "message": "tietääkö kukaan voiko 00031061 käyttää BC00009004:n sijaan? molemmat SYLINTERI",
+    "query_type": "general",
+    "referenced_sku": "00031061",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0183",
+    "timestamp": "2025-11-04T15:20:00Z",
+    "message": "Voiks joku vahvistaa sopiiko OHJAIN 00002899 TH551 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00002899",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0405",
+    "timestamp": "2025-11-04T15:30:00Z",
+    "message": "hei pika kysymys - voiks korvata 00002297 NÄYTTÖ 00040043:llä?",
+    "query_type": "general",
+    "referenced_sku": "00002297",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0461",
+    "timestamp": "2025-11-04T15:30:00Z",
+    "message": "Vanha koodi 8X-9309, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0433",
+    "timestamp": "2025-11-04T15:43:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden RENGAS 00011394? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00011394",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0024",
+    "timestamp": "2025-11-04T16:29:00Z",
+    "message": "00047740 LETKU saatavilla? tarvitaan 2kpl",
+    "query_type": "availability",
+    "referenced_sku": "00047740",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0489",
+    "timestamp": "2025-11-04T17:17:00Z",
+    "message": "VENTTIILI 00019100 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00019100",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0441",
+    "timestamp": "2025-11-05T08:23:00Z",
+    "message": "Onko 00016798 yhteensopiva TH551 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00016798",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0370",
+    "timestamp": "2025-11-05T09:31:00Z",
+    "message": "hei, onko LAAKERI BC00005535 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "BC00005535",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0014",
+    "timestamp": "2025-11-05T10:14:00Z",
+    "message": "Voiks joku vahvistaa sopiiko SUODATIN 00017175 TH540 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00017175",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0401",
+    "timestamp": "2025-11-05T12:45:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00049915:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00049915",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0181",
+    "timestamp": "2025-11-05T13:20:00Z",
+    "message": "Vanha koodi 9A-3682, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0113",
+    "timestamp": "2025-11-05T13:29:00Z",
+    "message": "Mitkä NÄYTTÖ sopii osaan BC00003456?",
+    "query_type": "general",
+    "referenced_sku": "BC00003456",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0478",
+    "timestamp": "2025-11-05T13:48:00Z",
+    "message": "Mikä on toimitusaika RENGAS 00015721??",
+    "query_type": "lead_time",
+    "referenced_sku": "00015721",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0348",
+    "timestamp": "2025-11-05T14:13:00Z",
+    "message": "Etsitään RENGAS 00002037 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00002037",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0047",
+    "timestamp": "2025-11-05T14:38:00Z",
+    "message": "LAAKERI BC00003386 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00003386",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0404",
+    "timestamp": "2025-11-05T14:55:00Z",
+    "message": "Saadaanko JÄÄHDYTIN 00003678 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00003678",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0495",
+    "timestamp": "2025-11-05T14:55:00Z",
+    "message": "Voisko joku auttaa? Etsitään LETKU osaa, ehkä 00047325?",
+    "query_type": "general",
+    "referenced_sku": "00047325",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0237",
+    "timestamp": "2025-11-05T15:43:00Z",
+    "message": "mikä lead time JÄÄHDYTIN 00030464?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00030464",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0459",
+    "timestamp": "2025-11-05T16:37:00Z",
+    "message": "Mikä on toimitusaika OHJAIN 00021940??",
+    "query_type": "lead_time",
+    "referenced_sku": "00021940",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0454",
+    "timestamp": "2025-11-05T16:56:00Z",
+    "message": "tietääkö kukaan voiko 00047673 käyttää 00007938:n sijaan? molemmat MOOTTORI",
+    "query_type": "general",
+    "referenced_sku": "00047673",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0333",
+    "timestamp": "2025-11-05T17:49:00Z",
+    "message": "Tarvitaan hätätoimitus JÄÄHDYTIN BC00000087, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "BC00000087",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0232",
+    "timestamp": "2025-11-06T08:03:00Z",
+    "message": "00039061 LAAKERI saatavilla? tarvitaan 4kpl",
+    "query_type": "availability",
+    "referenced_sku": "00039061",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0080",
+    "timestamp": "2025-11-06T08:33:00Z",
+    "message": "Mikä koodi tälle RENGAS? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0293",
+    "timestamp": "2025-11-06T09:25:00Z",
+    "message": "Mitkä JÄÄHDYTIN sopii osaan 00011311?",
+    "query_type": "general",
+    "referenced_sku": "00011311",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0144",
+    "timestamp": "2025-11-06T09:37:00Z",
+    "message": "SKU 00032836 JÄÄHDYTIN - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00032836",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0355",
+    "timestamp": "2025-11-06T09:37:00Z",
+    "message": "Korvaava VENTTIILI 00027743 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00027743",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0191",
+    "timestamp": "2025-11-06T09:41:00Z",
+    "message": "Mitkä JÄÄHDYTIN sopii osaan 00011709?",
+    "query_type": "general",
+    "referenced_sku": "00011709",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0260",
+    "timestamp": "2025-11-06T11:27:00Z",
+    "message": "PULTTI 00013706 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00013706",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0091",
+    "timestamp": "2025-11-06T12:35:00Z",
+    "message": "SUODATIN BC00001336 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "BC00001336",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0398",
+    "timestamp": "2025-11-06T12:41:00Z",
+    "message": "Mikä koodi tälle LATURI? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0323",
+    "timestamp": "2025-11-06T12:44:00Z",
+    "message": "MOOTTORI 00007754 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00007754",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0114",
+    "timestamp": "2025-11-06T12:48:00Z",
+    "message": "Onko 00033933 yhteensopiva LH209 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00033933",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0275",
+    "timestamp": "2025-11-06T13:04:00Z",
+    "message": "Etsitään vaihtoehtoa PEILI 00020974:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00020974",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0295",
+    "timestamp": "2025-11-06T13:21:00Z",
+    "message": "SKU 00046938 LETKU - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00046938",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0103",
+    "timestamp": "2025-11-06T13:28:00Z",
+    "message": "tietääkö kukaan voiko 00048833 käyttää 00031488:n sijaan? molemmat LETKU",
+    "query_type": "general",
+    "referenced_sku": "00048833",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0364",
+    "timestamp": "2025-11-06T14:00:00Z",
+    "message": "Joku tietää toimitusajan NÄYTTÖ BC00000858? Asiakas tarvii 1kpl",
+    "query_type": "general",
+    "referenced_sku": "BC00000858",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0419",
+    "timestamp": "2025-11-06T14:02:00Z",
+    "message": "Voisko joku auttaa? Etsitään JÄÄHDYTIN osaa, ehkä 00033258?",
+    "query_type": "general",
+    "referenced_sku": "00033258",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0136",
+    "timestamp": "2025-11-06T15:41:00Z",
+    "message": "hei, onko OHJAIN 00038022 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00038022",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0206",
+    "timestamp": "2025-11-06T16:26:00Z",
+    "message": "ANTURI 00028649 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00028649",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0159",
+    "timestamp": "2025-11-06T16:48:00Z",
+    "message": "tarvitaan NÄYTTÖ 00013996 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00013996",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0358",
+    "timestamp": "2025-11-06T17:32:00Z",
+    "message": "Etsitään SUODATIN 00036440 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00036440",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0286",
+    "timestamp": "2025-11-07T08:08:00Z",
+    "message": "Etsitään vaihtoehtoa MOOTTORI 00012742:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00012742",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0031",
+    "timestamp": "2025-11-07T08:35:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden LETKU 00015363? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00015363",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0351",
+    "timestamp": "2025-11-07T09:44:00Z",
+    "message": "Mikä on toimitusaika VENTTIILI 00041240??",
+    "query_type": "lead_time",
+    "referenced_sku": "00041240",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0119",
+    "timestamp": "2025-11-07T11:24:00Z",
+    "message": "ANTURI 00037292 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00037292",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0067",
+    "timestamp": "2025-11-07T11:29:00Z",
+    "message": "MOOTTORI 00018174 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00018174",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0225",
+    "timestamp": "2025-11-07T12:45:00Z",
+    "message": "Korvaava OHJAIN 00020965 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00020965",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0148",
+    "timestamp": "2025-11-07T13:02:00Z",
+    "message": "Mikä koodi tälle VENTTIILI? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0107",
+    "timestamp": "2025-11-07T13:14:00Z",
+    "message": "Mitkä PUMPPU sopii osaan BC00000038?",
+    "query_type": "general",
+    "referenced_sku": "BC00000038",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0108",
+    "timestamp": "2025-11-07T13:19:00Z",
+    "message": "hei, onko TIIVISTE 00021516 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00021516",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0414",
+    "timestamp": "2025-11-07T13:28:00Z",
+    "message": "BC00001824 LAAKERI - onko tää suora korvaava vanhalle mallille?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00001824",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0058",
+    "timestamp": "2025-11-07T13:52:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00008410:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00008410",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0492",
+    "timestamp": "2025-11-07T14:17:00Z",
+    "message": "Mikä on toimitusaika ANTURI 00015977??",
+    "query_type": "lead_time",
+    "referenced_sku": "00015977",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0132",
+    "timestamp": "2025-11-07T14:49:00Z",
+    "message": "Mikä on toimitusaika TIIVISTE 00009473??",
+    "query_type": "lead_time",
+    "referenced_sku": "00009473",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0409",
+    "timestamp": "2025-11-07T15:18:00Z",
+    "message": "Osanro 00044316 - mikä korvaava? Tarvitaan TH545:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00044316",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0006",
+    "timestamp": "2025-11-07T16:03:00Z",
+    "message": "tarvitaan BC00001203 SYLINTERI + 00041377 VAIHDELAATIKKO. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00001203",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0062",
+    "timestamp": "2025-11-07T16:04:00Z",
+    "message": "Tarvitaan hätätoimitus VAIHTEISTO BC00009845, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "BC00009845",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0271",
+    "timestamp": "2025-11-07T16:05:00Z",
+    "message": "Lead time tälle BC00005974 VAIHTEISTO?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00005974",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0007",
+    "timestamp": "2025-11-07T16:14:00Z",
+    "message": "Lead time tälle 00027802 MOOTTORI?",
+    "query_type": "lead_time",
+    "referenced_sku": "00027802",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0168",
+    "timestamp": "2025-11-07T16:29:00Z",
+    "message": "Voisko joku auttaa? Etsitään LETKU osaa, ehkä 00003165?",
+    "query_type": "general",
+    "referenced_sku": "00003165",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0084",
+    "timestamp": "2025-11-07T16:47:00Z",
+    "message": "Korvaava PUMPPU 00037838 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00037838",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0291",
+    "timestamp": "2025-11-08T08:02:00Z",
+    "message": "Osanumero 00010013 ANTURI - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00010013",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0112",
+    "timestamp": "2025-11-08T08:25:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00034957:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00034957",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0095",
+    "timestamp": "2025-11-08T09:09:00Z",
+    "message": "Mikä on toimitusaika PUMPPU 00037272??",
+    "query_type": "lead_time",
+    "referenced_sku": "00037272",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0415",
+    "timestamp": "2025-11-08T09:17:00Z",
+    "message": "Voisko saada korvaavan SUODATIN 00029279? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00029279",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0420",
+    "timestamp": "2025-11-08T09:39:00Z",
+    "message": "Mitkä LETKU sopii osaan BC00008263?",
+    "query_type": "general",
+    "referenced_sku": "BC00008263",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0387",
+    "timestamp": "2025-11-08T09:57:00Z",
+    "message": "Onko korvike 00018246:lle? PULTTI osa",
+    "query_type": "general",
+    "referenced_sku": "00018246",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0394",
+    "timestamp": "2025-11-08T10:14:00Z",
+    "message": "Etsitään vaihtoehtoa MOOTTORI 00008991:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00008991",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0016",
+    "timestamp": "2025-11-08T10:18:00Z",
+    "message": "tarvitaan BC00007286 RENGAS + 00000497 RENGAS. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00007286",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0447",
+    "timestamp": "2025-11-08T10:33:00Z",
+    "message": "SKU 00022394 KÄYNNISTIN - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00022394",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0477",
+    "timestamp": "2025-11-08T11:03:00Z",
+    "message": "00009874 TIIVISTE saatavilla? tarvitaan 2kpl",
+    "query_type": "availability",
+    "referenced_sku": "00009874",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0388",
+    "timestamp": "2025-11-08T11:10:00Z",
+    "message": "TIIVISTE 00018138, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00018138",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0239",
+    "timestamp": "2025-11-08T11:34:00Z",
+    "message": "Tarvitaan speksit TIIVISTE 00037383, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "00037383",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0325",
+    "timestamp": "2025-11-08T11:56:00Z",
+    "message": "hei pika kysymys - voiks korvata 00009592 OHJAIN 00015354:llä?",
+    "query_type": "general",
+    "referenced_sku": "00009592",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0475",
+    "timestamp": "2025-11-08T12:00:00Z",
+    "message": "LATURI 00016926 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00016926",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0324",
+    "timestamp": "2025-11-08T12:35:00Z",
+    "message": "00035548 PULTTI saatavilla? tarvitaan 1kpl",
+    "query_type": "availability",
+    "referenced_sku": "00035548",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0186",
+    "timestamp": "2025-11-08T13:01:00Z",
+    "message": "TIIVISTE 00044874 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00044874",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0497",
+    "timestamp": "2025-11-08T13:16:00Z",
+    "message": "mikä lead time VAIHTEISTO 00019206?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00019206",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0004",
+    "timestamp": "2025-11-08T13:17:00Z",
+    "message": "MOOTTORI 00011403 yhteensopivuus LH209 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "00011403",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0042",
+    "timestamp": "2025-11-08T14:16:00Z",
+    "message": "Voiks joku vahvistaa sopiiko LATURI 00039590 LH209 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00039590",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0115",
+    "timestamp": "2025-11-08T14:16:00Z",
+    "message": "Onko BC00002551 yhteensopiva LH410 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "BC00002551",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0022",
+    "timestamp": "2025-11-08T14:26:00Z",
+    "message": "O-RENGAS 00020494, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00020494",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0287",
+    "timestamp": "2025-11-08T15:07:00Z",
+    "message": "tietääkö kukaan voiko BC00000793 käyttää 00009096:n sijaan? molemmat OHJAIN",
+    "query_type": "general",
+    "referenced_sku": "BC00000793",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0281",
+    "timestamp": "2025-11-08T15:13:00Z",
+    "message": "tarvitaan 00008301 KÄYNNISTIN + 00001604 JÄÄHDYTIN. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00008301",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0472",
+    "timestamp": "2025-11-08T15:21:00Z",
+    "message": "Mitkä MOOTTORI sopii osaan 00001077?",
+    "query_type": "general",
+    "referenced_sku": "00001077",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0145",
+    "timestamp": "2025-11-08T15:49:00Z",
+    "message": "BC00008687 SYLINTERI saatavilla? tarvitaan 2kpl",
+    "query_type": "availability",
+    "referenced_sku": "BC00008687",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0170",
+    "timestamp": "2025-11-08T15:58:00Z",
+    "message": "Korvaava ANTURI BC00006370 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00006370",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0389",
+    "timestamp": "2025-11-08T16:43:00Z",
+    "message": "00005736 VAIHTEISTO - onko tää suora korvaava vanhalle mallille?",
+    "query_type": "replacement",
+    "referenced_sku": "00005736",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0226",
+    "timestamp": "2025-11-09T08:26:00Z",
+    "message": "tarvitaan VAIHDELAATIKKO 00001311 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00001311",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0393",
+    "timestamp": "2025-11-09T08:56:00Z",
+    "message": "VENTTIILI 00039152 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00039152",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0458",
+    "timestamp": "2025-11-09T09:57:00Z",
+    "message": "Tarvitaan hätätoimitus LATURI 00038143, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00038143",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0378",
+    "timestamp": "2025-11-09T09:58:00Z",
+    "message": "Voiks joku vahvistaa sopiiko PULTTI 00013605 LH514 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00013605",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0277",
+    "timestamp": "2025-11-09T10:06:00Z",
+    "message": "hei, onko RENGAS 00022547 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00022547",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0250",
+    "timestamp": "2025-11-09T10:26:00Z",
+    "message": "Voisko joku auttaa? Etsitään TIIVISTE osaa, ehkä 00022970?",
+    "query_type": "general",
+    "referenced_sku": "00022970",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0137",
+    "timestamp": "2025-11-09T10:55:00Z",
+    "message": "Tarvitaan korvaava osa SKU BC00003717:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00003717",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0380",
+    "timestamp": "2025-11-09T11:16:00Z",
+    "message": "Voisko saada korvaavan ANTURI 00026743? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00026743",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0352",
+    "timestamp": "2025-11-09T11:19:00Z",
+    "message": "hei, onko LETKU 00009573 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00009573",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0213",
+    "timestamp": "2025-11-09T12:00:00Z",
+    "message": "tarvitaan 00030594 OHJAIN + 00024125 PUMPPU. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00030594",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0051",
+    "timestamp": "2025-11-09T12:06:00Z",
+    "message": "O-RENGAS 00006274 yhteensopivuus LH410 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "00006274",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0204",
+    "timestamp": "2025-11-09T12:20:00Z",
+    "message": "Voisko saada korvaavan LAAKERI BC00007800? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "BC00007800",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0258",
+    "timestamp": "2025-11-09T12:25:00Z",
+    "message": "Korvaava PEILI 00023497 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00023497",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0470",
+    "timestamp": "2025-11-09T12:37:00Z",
+    "message": "Osa 00046760 RENGAS - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00046760",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0356",
+    "timestamp": "2025-11-09T13:15:00Z",
+    "message": "tarvitaan 00002929 O-RENGAS + 00021531 NÄYTTÖ. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00002929",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0363",
+    "timestamp": "2025-11-09T13:16:00Z",
+    "message": "Voisko saada korvaavan TIIVISTE 00019987? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00019987",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0149",
+    "timestamp": "2025-11-09T14:44:00Z",
+    "message": "mikä on VAIHDELAATIKKO osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0201",
+    "timestamp": "2025-11-09T14:49:00Z",
+    "message": "Lead time tälle BC00009999 PEILI?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00009999",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0015",
+    "timestamp": "2025-11-09T15:05:00Z",
+    "message": "Vanha koodi 9A-1132, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0283",
+    "timestamp": "2025-11-09T15:18:00Z",
+    "message": "Voisko saada korvaavan KÄYNNISTIN 00048874? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00048874",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0468",
+    "timestamp": "2025-11-09T16:04:00Z",
+    "message": "Tarvitaan speksit PEILI 00024371, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "00024371",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0125",
+    "timestamp": "2025-11-09T16:37:00Z",
+    "message": "Tarvitaan hätätoimitus LETKU 00046863, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00046863",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0460",
+    "timestamp": "2025-11-09T17:00:00Z",
+    "message": "tietääkö kukaan voiko 00023554 käyttää 00002714:n sijaan? molemmat SYLINTERI",
+    "query_type": "general",
+    "referenced_sku": "00023554",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0307",
+    "timestamp": "2025-11-09T17:02:00Z",
+    "message": "VAIHTEISTO 00025097 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00025097",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0498",
+    "timestamp": "2025-11-09T17:11:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00011896:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00011896",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0241",
+    "timestamp": "2025-11-09T17:20:00Z",
+    "message": "Tarvitaan hätätoimitus LETKU 00046696, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00046696",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0442",
+    "timestamp": "2025-11-09T17:45:00Z",
+    "message": "VAIHTEISTO 00036299, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00036299",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0276",
+    "timestamp": "2025-11-09T17:59:00Z",
+    "message": "Voisko saada korvaavan RENGAS BC00000557? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "BC00000557",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0446",
+    "timestamp": "2025-11-10T08:38:00Z",
+    "message": "Lead time tälle 00021025 LETKU?",
+    "query_type": "lead_time",
+    "referenced_sku": "00021025",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0391",
+    "timestamp": "2025-11-10T08:58:00Z",
+    "message": "Osa 00028961 VAIHTEISTO - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00028961",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0278",
+    "timestamp": "2025-11-10T09:01:00Z",
+    "message": "Onko 00030124 yhteensopiva TH545 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00030124",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0185",
+    "timestamp": "2025-11-10T09:29:00Z",
+    "message": "hei, onko VENTTIILI 00027932 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00027932",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0350",
+    "timestamp": "2025-11-10T09:50:00Z",
+    "message": "hei pika kysymys - voiks korvata 00043161 SUODATIN 00022268:llä?",
+    "query_type": "general",
+    "referenced_sku": "00043161",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0357",
+    "timestamp": "2025-11-10T10:07:00Z",
+    "message": "Voisko joku auttaa? Etsitään PEILI osaa, ehkä 00036147?",
+    "query_type": "general",
+    "referenced_sku": "00036147",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0390",
+    "timestamp": "2025-11-10T11:16:00Z",
+    "message": "Onko 00045377 yhteensopiva TH320 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00045377",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0243",
+    "timestamp": "2025-11-10T11:31:00Z",
+    "message": "Tarvitaan hätätoimitus VENTTIILI 00032659, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00032659",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0327",
+    "timestamp": "2025-11-10T11:31:00Z",
+    "message": "tarvitaan 00032471 LATURI + 00046089 JÄÄHDYTIN. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00032471",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0056",
+    "timestamp": "2025-11-10T11:44:00Z",
+    "message": "Voiks joku vahvistaa sopiiko VENTTIILI 00039557 TH663i malliin?",
+    "query_type": "general",
+    "referenced_sku": "00039557",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0432",
+    "timestamp": "2025-11-10T11:59:00Z",
+    "message": "Osanro 00024144 - mikä korvaava? Tarvitaan LHD1700:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00024144",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0109",
+    "timestamp": "2025-11-10T12:26:00Z",
+    "message": "SKU 00035979 VAIHDELAATIKKO - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00035979",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0480",
+    "timestamp": "2025-11-10T13:20:00Z",
+    "message": "PEILI 00008972 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00008972",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0161",
+    "timestamp": "2025-11-10T13:27:00Z",
+    "message": "Voiks joku vahvistaa sopiiko ANTURI 00011660 LH410 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00011660",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0147",
+    "timestamp": "2025-11-10T13:47:00Z",
+    "message": "VENTTIILI 00022175 yhteensopivuus LH209 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "00022175",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0280",
+    "timestamp": "2025-11-10T14:15:00Z",
+    "message": "tietääkö kukaan voiko BC00004995 käyttää 00040580:n sijaan? molemmat VENTTIILI",
+    "query_type": "general",
+    "referenced_sku": "BC00004995",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0440",
+    "timestamp": "2025-11-10T14:17:00Z",
+    "message": "Lead time tälle 00003040 SYLINTERI?",
+    "query_type": "lead_time",
+    "referenced_sku": "00003040",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0061",
+    "timestamp": "2025-11-10T14:59:00Z",
+    "message": "LAAKERI BC00007787 yhteensopivuus LH209 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "BC00007787",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0340",
+    "timestamp": "2025-11-10T15:06:00Z",
+    "message": "Onko 00015540 yhteensopiva LH514 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00015540",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0174",
+    "timestamp": "2025-11-10T15:56:00Z",
+    "message": "Onko 00039668 yhteensopiva TH430 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00039668",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0428",
+    "timestamp": "2025-11-10T16:04:00Z",
+    "message": "tarvitaan NÄYTTÖ 00044776 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00044776",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0124",
+    "timestamp": "2025-11-10T16:22:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00018015:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00018015",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0102",
+    "timestamp": "2025-11-10T16:30:00Z",
+    "message": "Voisko saada korvaavan VENTTIILI 00012787? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00012787",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0395",
+    "timestamp": "2025-11-10T16:31:00Z",
+    "message": "Osa 00015567 PUMPPU - onko tää TH545 vai TH551?",
+    "query_type": "general",
+    "referenced_sku": "00015567",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0462",
+    "timestamp": "2025-11-10T16:33:00Z",
+    "message": "hei, onko LAAKERI BC00006027 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "BC00006027",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0424",
+    "timestamp": "2025-11-10T16:42:00Z",
+    "message": "Saadaanko KÄYNNISTIN 00019136 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00019136",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0224",
+    "timestamp": "2025-11-10T16:45:00Z",
+    "message": "NÄYTTÖ 00026286 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00026286",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0343",
+    "timestamp": "2025-11-10T17:45:00Z",
+    "message": "hei, onko OHJAIN 00049073 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00049073",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0008",
+    "timestamp": "2025-11-11T08:01:00Z",
+    "message": "Onko korvike 00022458:lle? TIIVISTE osa",
+    "query_type": "general",
+    "referenced_sku": "00022458",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0381",
+    "timestamp": "2025-11-11T08:29:00Z",
+    "message": "tarvitaan LETKU 00038282 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00038282",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0200",
+    "timestamp": "2025-11-11T08:33:00Z",
+    "message": "SKU 00003663 PUMPPU - toimitusaik?",
+    "query_type": "general",
+    "referenced_sku": "00003663",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0218",
+    "timestamp": "2025-11-11T09:44:00Z",
+    "message": "ANTURI 00002472, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00002472",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0407",
+    "timestamp": "2025-11-11T10:13:00Z",
+    "message": "Osanro 00045600 - mikä korvaava? Tarvitaan LHD1700:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00045600",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0166",
+    "timestamp": "2025-11-11T10:26:00Z",
+    "message": "LETKU 00006011 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00006011",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0098",
+    "timestamp": "2025-11-11T10:36:00Z",
+    "message": "SKU 00023510 VAIHDELAATIKKO - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00023510",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0003",
+    "timestamp": "2025-11-11T10:42:00Z",
+    "message": "Tarvitaan hätätoimitus PULTTI 00007507, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00007507",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0088",
+    "timestamp": "2025-11-11T11:15:00Z",
+    "message": "00010094 SUODATIN saatavilla? tarvitaan 4kpl",
+    "query_type": "availability",
+    "referenced_sku": "00010094",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0082",
+    "timestamp": "2025-11-11T11:18:00Z",
+    "message": "ANTURI BC00008464 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00008464",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0153",
+    "timestamp": "2025-11-11T12:18:00Z",
+    "message": "Mikä koodi tälle JÄÄHDYTIN? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0195",
+    "timestamp": "2025-11-11T12:18:00Z",
+    "message": "Voiks joku vahvistaa sopiiko LAAKERI 00007252 LH517 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00007252",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0273",
+    "timestamp": "2025-11-11T12:25:00Z",
+    "message": "Osa 00045695 MOOTTORI - onko tää LH410 vai LH514?",
+    "query_type": "general",
+    "referenced_sku": "00045695",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0238",
+    "timestamp": "2025-11-11T13:36:00Z",
+    "message": "tarvitaan VENTTIILI BC00009494 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "BC00009494",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0049",
+    "timestamp": "2025-11-11T13:40:00Z",
+    "message": "Etsitään KÄYNNISTIN 00029515 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00029515",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0197",
+    "timestamp": "2025-11-11T13:53:00Z",
+    "message": "Osa 00035511 PEILI - onko tää TH320 vai TH545?",
+    "query_type": "general",
+    "referenced_sku": "00035511",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0329",
+    "timestamp": "2025-11-11T13:54:00Z",
+    "message": "hei pika kysymys - voiks korvata 00010683 O-RENGAS 00039127:llä?",
+    "query_type": "general",
+    "referenced_sku": "00010683",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0410",
+    "timestamp": "2025-11-11T13:56:00Z",
+    "message": "Mitkä RENGAS sopii osaan 00014306?",
+    "query_type": "general",
+    "referenced_sku": "00014306",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0009",
+    "timestamp": "2025-11-11T14:04:00Z",
+    "message": "Mikä on toimitusaika RENGAS 00035794??",
+    "query_type": "lead_time",
+    "referenced_sku": "00035794",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0190",
+    "timestamp": "2025-11-11T14:05:00Z",
+    "message": "hei pika kysymys - voiks korvata 00044973 MOOTTORI 00006628:llä?",
+    "query_type": "general",
+    "referenced_sku": "00044973",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0163",
+    "timestamp": "2025-11-11T14:30:00Z",
+    "message": "PULTTI 00031814, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00031814",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0292",
+    "timestamp": "2025-11-11T14:53:00Z",
+    "message": "hei, onko O-RENGAS BC00006531 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "BC00006531",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0267",
+    "timestamp": "2025-11-11T15:06:00Z",
+    "message": "Lead time tälle 00017543 NÄYTTÖ?",
+    "query_type": "lead_time",
+    "referenced_sku": "00017543",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0488",
+    "timestamp": "2025-11-11T15:29:00Z",
+    "message": "Tarvitaan speksit ANTURI 00049566, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "00049566",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0473",
+    "timestamp": "2025-11-11T15:49:00Z",
+    "message": "BC00008719 PUMPPU saatavilla? tarvitaan 1kpl",
+    "query_type": "availability",
+    "referenced_sku": "BC00008719",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0184",
+    "timestamp": "2025-11-11T15:52:00Z",
+    "message": "tarvitaan 00005421 VENTTIILI + 00018874 OHJAIN. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00005421",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0326",
+    "timestamp": "2025-11-11T15:54:00Z",
+    "message": "tietääkö kukaan voiko 00024348 käyttää 00030804:n sijaan? molemmat RENGAS",
+    "query_type": "general",
+    "referenced_sku": "00024348",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0128",
+    "timestamp": "2025-11-11T16:18:00Z",
+    "message": "Osanro 00017076 - mikä korvaava? Tarvitaan TH540:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00017076",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0449",
+    "timestamp": "2025-11-11T16:21:00Z",
+    "message": "tietääkö kukaan voiko 00018532 käyttää 00027835:n sijaan? molemmat VENTTIILI",
+    "query_type": "general",
+    "referenced_sku": "00018532",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0150",
+    "timestamp": "2025-11-11T16:53:00Z",
+    "message": "00040934 RENGAS saatavilla? tarvitaan 4kpl",
+    "query_type": "availability",
+    "referenced_sku": "00040934",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0001",
+    "timestamp": "2025-11-11T17:28:00Z",
+    "message": "Mitkä RENGAS sopii osaan 00012382?",
+    "query_type": "general",
+    "referenced_sku": "00012382",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0083",
+    "timestamp": "2025-11-11T17:29:00Z",
+    "message": "SYLINTERI 00003938 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00003938",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0264",
+    "timestamp": "2025-11-11T17:34:00Z",
+    "message": "ANTURI 00036128, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00036128",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0322",
+    "timestamp": "2025-11-11T17:56:00Z",
+    "message": "tietääkö kukaan voiko 00034471 käyttää 00035612:n sijaan? molemmat PEILI",
+    "query_type": "general",
+    "referenced_sku": "00034471",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0223",
+    "timestamp": "2025-11-12T08:48:00Z",
+    "message": "Voiks joku vahvistaa sopiiko SYLINTERI 00045951 LH514 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00045951",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0265",
+    "timestamp": "2025-11-12T08:59:00Z",
+    "message": "mikä on ANTURI osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0316",
+    "timestamp": "2025-11-12T09:08:00Z",
+    "message": "PUMPPU 00012411 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00012411",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0072",
+    "timestamp": "2025-11-12T09:20:00Z",
+    "message": "tarvitaan 00001915 TIIVISTE + 00026568 OHJAIN. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00001915",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0421",
+    "timestamp": "2025-11-12T11:06:00Z",
+    "message": "Mitkä LETKU sopii osaan 00034768?",
+    "query_type": "general",
+    "referenced_sku": "00034768",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0033",
+    "timestamp": "2025-11-12T11:24:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00002103:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00002103",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0135",
+    "timestamp": "2025-11-12T11:31:00Z",
+    "message": "Tarvitaan hätätoimitus PUMPPU 00034151, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00034151",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0362",
+    "timestamp": "2025-11-12T11:39:00Z",
+    "message": "Joku tietää toimitusajan SUODATIN 00007310? Asiakas tarvii 1kpl",
+    "query_type": "general",
+    "referenced_sku": "00007310",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0142",
+    "timestamp": "2025-11-12T12:00:00Z",
+    "message": "Saadaanko SYLINTERI 00008388 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00008388",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0349",
+    "timestamp": "2025-11-12T12:01:00Z",
+    "message": "Saadaanko LATURI 00021291 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00021291",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0303",
+    "timestamp": "2025-11-12T13:21:00Z",
+    "message": "Onko korvike 00002975:lle? LAAKERI osa",
+    "query_type": "general",
+    "referenced_sku": "00002975",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0487",
+    "timestamp": "2025-11-12T13:39:00Z",
+    "message": "Voiks joku vahvistaa sopiiko OHJAIN BC00009178 LH209 malliin?",
+    "query_type": "general",
+    "referenced_sku": "BC00009178",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0097",
+    "timestamp": "2025-11-12T14:01:00Z",
+    "message": "Korvaava TIIVISTE 00040839 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00040839",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0274",
+    "timestamp": "2025-11-12T14:19:00Z",
+    "message": "OHJAIN 00011000 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00011000",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0146",
+    "timestamp": "2025-11-12T14:25:00Z",
+    "message": "Osanumero 00012075 NÄYTTÖ - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00012075",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0279",
+    "timestamp": "2025-11-12T14:27:00Z",
+    "message": "BC00001438 NÄYTTÖ saatavilla? tarvitaan 5kpl",
+    "query_type": "availability",
+    "referenced_sku": "BC00001438",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0012",
+    "timestamp": "2025-11-12T15:42:00Z",
+    "message": "Voisko saada korvaavan VAIHDELAATIKKO 00036159? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00036159",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0476",
+    "timestamp": "2025-11-12T15:45:00Z",
+    "message": "Onko korvike 00027468:lle? VENTTIILI osa",
+    "query_type": "general",
+    "referenced_sku": "00027468",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0301",
+    "timestamp": "2025-11-12T16:10:00Z",
+    "message": "Voisko saada korvaavan VAIHTEISTO BC00005132? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "BC00005132",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0064",
+    "timestamp": "2025-11-13T08:26:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden PULTTI BC00003390? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "BC00003390",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0037",
+    "timestamp": "2025-11-13T08:31:00Z",
+    "message": "Mikä on toimitusaika JÄÄHDYTIN 00002098??",
+    "query_type": "lead_time",
+    "referenced_sku": "00002098",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0038",
+    "timestamp": "2025-11-13T08:48:00Z",
+    "message": "OHJAIN 00046080 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00046080",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0202",
+    "timestamp": "2025-11-13T09:24:00Z",
+    "message": "Osanro 00001931 - mikä korvaava? Tarvitaan LH514:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00001931",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0059",
+    "timestamp": "2025-11-13T09:45:00Z",
+    "message": "Korvaava PEILI 00001807 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00001807",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0456",
+    "timestamp": "2025-11-13T10:07:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00006951:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00006951",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0138",
+    "timestamp": "2025-11-13T10:33:00Z",
+    "message": "Mikä koodi tälle JÄÄHDYTIN? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0469",
+    "timestamp": "2025-11-13T10:34:00Z",
+    "message": "NÄYTTÖ 00034840 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00034840",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0317",
+    "timestamp": "2025-11-13T10:50:00Z",
+    "message": "Osanumero 00013836 OHJAIN - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00013836",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0207",
+    "timestamp": "2025-11-13T10:51:00Z",
+    "message": "Etsitään vaihtoehtoa TIIVISTE 00023557:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00023557",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0474",
+    "timestamp": "2025-11-13T11:22:00Z",
+    "message": "mikä on PUMPPU osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0175",
+    "timestamp": "2025-11-13T11:49:00Z",
+    "message": "LETKU BC00009873 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "BC00009873",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0320",
+    "timestamp": "2025-11-13T12:33:00Z",
+    "message": "Onko korvike 00040071:lle? NÄYTTÖ osa",
+    "query_type": "general",
+    "referenced_sku": "00040071",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0092",
+    "timestamp": "2025-11-13T12:39:00Z",
+    "message": "mikä lead time NÄYTTÖ 00045971?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00045971",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0439",
+    "timestamp": "2025-11-13T12:58:00Z",
+    "message": "Mikä on toimitusaika O-RENGAS 00002688??",
+    "query_type": "lead_time",
+    "referenced_sku": "00002688",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0430",
+    "timestamp": "2025-11-13T13:04:00Z",
+    "message": "Tarvitaan speksit SYLINTERI 00042920, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "00042920",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0399",
+    "timestamp": "2025-11-13T13:29:00Z",
+    "message": "Voisko joku auttaa? Etsitään PUMPPU osaa, ehkä BC00004184?",
+    "query_type": "general",
+    "referenced_sku": "BC00004184",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0157",
+    "timestamp": "2025-11-13T13:47:00Z",
+    "message": "tarvitaan BC00000882 LETKU + BC00009740 SYLINTERI. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00000882",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0110",
+    "timestamp": "2025-11-13T14:55:00Z",
+    "message": "tietääkö kukaan voiko 00006392 käyttää 00022041:n sijaan? molemmat OHJAIN",
+    "query_type": "general",
+    "referenced_sku": "00006392",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0482",
+    "timestamp": "2025-11-13T15:36:00Z",
+    "message": "Etsitään VENTTIILI 00039579 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00039579",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0116",
+    "timestamp": "2025-11-13T16:16:00Z",
+    "message": "Voisko saada korvaavan VAIHDELAATIKKO 00000689? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00000689",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0160",
+    "timestamp": "2025-11-13T17:23:00Z",
+    "message": "hei, onko OHJAIN BC00008197 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "BC00008197",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0055",
+    "timestamp": "2025-11-14T08:08:00Z",
+    "message": "Tarvitaan hätätoimitus VAIHTEISTO 00024891, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00024891",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0481",
+    "timestamp": "2025-11-14T08:49:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00007635:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00007635",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0384",
+    "timestamp": "2025-11-14T09:13:00Z",
+    "message": "Osanro 00046449 - mikä korvaava? Tarvitaan TH430:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00046449",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0375",
+    "timestamp": "2025-11-14T09:14:00Z",
+    "message": "Mitkä PEILI sopii osaan BC00005213?",
+    "query_type": "general",
+    "referenced_sku": "BC00005213",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0227",
+    "timestamp": "2025-11-14T09:21:00Z",
+    "message": "Mikä koodi tälle LATURI? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0376",
+    "timestamp": "2025-11-14T09:51:00Z",
+    "message": "Osa 00022752 PEILI - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00022752",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0199",
+    "timestamp": "2025-11-14T11:32:00Z",
+    "message": "Tarvitaan hätätoimitus PUMPPU 00047502, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00047502",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0039",
+    "timestamp": "2025-11-14T12:04:00Z",
+    "message": "Onko 00039535 yhteensopiva LH203 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00039535",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0087",
+    "timestamp": "2025-11-14T12:22:00Z",
+    "message": "Etsitään vaihtoehtoa O-RENGAS BC00005664:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "BC00005664",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0172",
+    "timestamp": "2025-11-14T12:31:00Z",
+    "message": "Etsitään vaihtoehtoa PULTTI BC00000480:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "BC00000480",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0246",
+    "timestamp": "2025-11-14T12:52:00Z",
+    "message": "Lead time tälle 00028018 JÄÄHDYTIN?",
+    "query_type": "lead_time",
+    "referenced_sku": "00028018",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0272",
+    "timestamp": "2025-11-14T13:25:00Z",
+    "message": "tarvitaan LAAKERI 00040730 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00040730",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0027",
+    "timestamp": "2025-11-14T14:17:00Z",
+    "message": "tarvitaan 00045656 SUODATIN + 00038888 KÄYNNISTIN. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00045656",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0217",
+    "timestamp": "2025-11-14T14:31:00Z",
+    "message": "Osanumero 00035402 SUODATIN - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00035402",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0463",
+    "timestamp": "2025-11-14T14:54:00Z",
+    "message": "VAIHTEISTO 00038166 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00038166",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0140",
+    "timestamp": "2025-11-14T15:14:00Z",
+    "message": "Osanumero 00004458 PULTTI - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00004458",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0262",
+    "timestamp": "2025-11-14T15:21:00Z",
+    "message": "Mikä koodi tälle SUODATIN? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0117",
+    "timestamp": "2025-11-14T15:25:00Z",
+    "message": "Lead time tälle 00004938 VAIHTEISTO?",
+    "query_type": "lead_time",
+    "referenced_sku": "00004938",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0065",
+    "timestamp": "2025-11-14T15:47:00Z",
+    "message": "tietääkö kukaan voiko BC00003370 käyttää BC00008384:n sijaan? molemmat VAIHTEISTO",
+    "query_type": "general",
+    "referenced_sku": "BC00003370",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0090",
+    "timestamp": "2025-11-14T16:25:00Z",
+    "message": "Lead time tälle BC00002511 VENTTIILI?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00002511",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0289",
+    "timestamp": "2025-11-14T16:44:00Z",
+    "message": "Etsitään KÄYNNISTIN 00022584 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00022584",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0312",
+    "timestamp": "2025-11-14T17:14:00Z",
+    "message": "JÄÄHDYTIN 00014519 yhteensopivuus LH514 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "00014519",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0214",
+    "timestamp": "2025-11-14T17:25:00Z",
+    "message": "Tarvitaan speksit JÄÄHDYTIN 00037931, myös toimitusaika kiitos",
+    "query_type": "lead_time",
+    "referenced_sku": "00037931",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0379",
+    "timestamp": "2025-11-14T17:25:00Z",
+    "message": "Mikä koodi tälle LAAKERI? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0180",
+    "timestamp": "2025-11-14T17:44:00Z",
+    "message": "VENTTIILI 00013671 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00013671",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0450",
+    "timestamp": "2025-11-14T17:52:00Z",
+    "message": "Saadaanko RENGAS 00019362 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00019362",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0208",
+    "timestamp": "2025-11-15T09:11:00Z",
+    "message": "Mikä on toimitusaika O-RENGAS 00016914??",
+    "query_type": "lead_time",
+    "referenced_sku": "00016914",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0282",
+    "timestamp": "2025-11-15T09:13:00Z",
+    "message": "Mikä koodi tälle KÄYNNISTIN? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0284",
+    "timestamp": "2025-11-15T10:00:00Z",
+    "message": "Voiks joku vahvistaa sopiiko KÄYNNISTIN 00014361 TH320 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00014361",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0151",
+    "timestamp": "2025-11-15T10:10:00Z",
+    "message": "tarvitaan 00034997 SUODATIN + 00047116 LATURI. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00034997",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0366",
+    "timestamp": "2025-11-15T11:19:00Z",
+    "message": "ANTURI 00001887 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00001887",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0010",
+    "timestamp": "2025-11-15T12:28:00Z",
+    "message": "MOOTTORI 00042333 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00042333",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0339",
+    "timestamp": "2025-11-15T15:10:00Z",
+    "message": "KÄYNNISTIN 00024492 yhteensopivuus LH203 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "00024492",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0077",
+    "timestamp": "2025-11-15T15:19:00Z",
+    "message": "Saadaanko NÄYTTÖ 00013958 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00013958",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0434",
+    "timestamp": "2025-11-15T15:34:00Z",
+    "message": "Osa 00045378 TIIVISTE - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00045378",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0254",
+    "timestamp": "2025-11-15T15:49:00Z",
+    "message": "Korvaava TIIVISTE 00048474 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00048474",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0455",
+    "timestamp": "2025-11-15T16:00:00Z",
+    "message": "Etsitään PUMPPU 00041579 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00041579",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0222",
+    "timestamp": "2025-11-15T17:11:00Z",
+    "message": "mikä lead time O-RENGAS 00022124?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00022124",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0252",
+    "timestamp": "2025-11-15T17:38:00Z",
+    "message": "Voiks joku vahvistaa sopiiko JÄÄHDYTIN 00013551 LHD1700 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00013551",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0041",
+    "timestamp": "2025-11-16T08:35:00Z",
+    "message": "PULTTI 00011980, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00011980",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0256",
+    "timestamp": "2025-11-16T08:45:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00038897:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00038897",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0073",
+    "timestamp": "2025-11-16T09:58:00Z",
+    "message": "Voiks joku vahvistaa sopiiko RENGAS 00032147 TH540 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00032147",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0345",
+    "timestamp": "2025-11-16T10:21:00Z",
+    "message": "Osanumero 00044349 TIIVISTE - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00044349",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0192",
+    "timestamp": "2025-11-16T11:49:00Z",
+    "message": "Mikä on toimitusaika PEILI 00042770??",
+    "query_type": "lead_time",
+    "referenced_sku": "00042770",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0118",
+    "timestamp": "2025-11-16T12:51:00Z",
+    "message": "mikä lead time PUMPPU 00022244?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00022244",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0079",
+    "timestamp": "2025-11-16T13:01:00Z",
+    "message": "tietääkö kukaan voiko BC00005124 käyttää 00039715:n sijaan? molemmat RENGAS",
+    "query_type": "general",
+    "referenced_sku": "BC00005124",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0426",
+    "timestamp": "2025-11-16T13:16:00Z",
+    "message": "Voiks joku vahvistaa sopiiko PULTTI 00035672 LH514 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00035672",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0052",
+    "timestamp": "2025-11-16T13:39:00Z",
+    "message": "O-RENGAS 00001625, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00001625",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0034",
+    "timestamp": "2025-11-16T13:43:00Z",
+    "message": "tarvitaan OHJAIN 00015477 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00015477",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0341",
+    "timestamp": "2025-11-16T14:09:00Z",
+    "message": "MOOTTORI 00019230 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00019230",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0162",
+    "timestamp": "2025-11-16T14:14:00Z",
+    "message": "SYLINTERI 00022482, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00022482",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0048",
+    "timestamp": "2025-11-16T14:15:00Z",
+    "message": "LAAKERI 00008291 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "00008291",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0089",
+    "timestamp": "2025-11-16T14:40:00Z",
+    "message": "Osanumero 00039204 JÄÄHDYTIN - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00039204",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0139",
+    "timestamp": "2025-11-16T14:47:00Z",
+    "message": "Onko korvike 00036176:lle? LATURI osa",
+    "query_type": "general",
+    "referenced_sku": "00036176",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0032",
+    "timestamp": "2025-11-16T16:49:00Z",
+    "message": "Etsitään TIIVISTE 00038338 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00038338",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0104",
+    "timestamp": "2025-11-16T16:50:00Z",
+    "message": "Osa 00001089 TIIVISTE - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00001089",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0408",
+    "timestamp": "2025-11-16T17:06:00Z",
+    "message": "Onko BC00002166 yhteensopiva LHD1700 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "BC00002166",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0437",
+    "timestamp": "2025-11-16T17:09:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00023237:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00023237",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0298",
+    "timestamp": "2025-11-16T17:18:00Z",
+    "message": "mikä on MOOTTORI osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0169",
+    "timestamp": "2025-11-16T17:43:00Z",
+    "message": "LATURI 00033263, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00033263",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0374",
+    "timestamp": "2025-11-17T08:19:00Z",
+    "message": "Voiks joku vahvistaa sopiiko JÄÄHDYTIN 00044735 TH430 malliin?",
+    "query_type": "general",
+    "referenced_sku": "00044735",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0155",
+    "timestamp": "2025-11-17T08:48:00Z",
+    "message": "Joku tietää toimitusajan SUODATIN 00004486? Asiakas tarvii 10kpl",
+    "query_type": "general",
+    "referenced_sku": "00004486",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0081",
+    "timestamp": "2025-11-17T09:28:00Z",
+    "message": "00037644 KÄYNNISTIN saatavilla? tarvitaan 2kpl",
+    "query_type": "availability",
+    "referenced_sku": "00037644",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0071",
+    "timestamp": "2025-11-17T09:34:00Z",
+    "message": "Voisko saada korvaavan TIIVISTE 00036372? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00036372",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0129",
+    "timestamp": "2025-11-17T09:36:00Z",
+    "message": "SKU 00049528 VAIHDELAATIKKO - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00049528",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0105",
+    "timestamp": "2025-11-17T09:40:00Z",
+    "message": "Tarvitaan hätätoimitus PULTTI 00048552, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00048552",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0076",
+    "timestamp": "2025-11-17T10:08:00Z",
+    "message": "VENTTIILI 00006345 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00006345",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0483",
+    "timestamp": "2025-11-17T10:24:00Z",
+    "message": "Voisko saada korvaavan VENTTIILI 00046419? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00046419",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0335",
+    "timestamp": "2025-11-17T10:57:00Z",
+    "message": "NÄYTTÖ 00029933 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00029933",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0101",
+    "timestamp": "2025-11-17T11:17:00Z",
+    "message": "Osanumero BC00009214 SYLINTERI - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "BC00009214",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0445",
+    "timestamp": "2025-11-17T11:42:00Z",
+    "message": "LAAKERI 00025561, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00025561",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0023",
+    "timestamp": "2025-11-17T11:46:00Z",
+    "message": "Etsitään LETKU 00005633 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00005633",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0253",
+    "timestamp": "2025-11-17T11:49:00Z",
+    "message": "Tarvitaan hätätoimitus PULTTI 00000107, mahdollista?",
+    "query_type": "general",
+    "referenced_sku": "00000107",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0075",
+    "timestamp": "2025-11-17T11:56:00Z",
+    "message": "tarvitaan 00007897 LATURI + 00013601 ANTURI. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00007897",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0359",
+    "timestamp": "2025-11-17T12:06:00Z",
+    "message": "Osa 00042811 JÄÄHDYTIN - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00042811",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0485",
+    "timestamp": "2025-11-17T12:27:00Z",
+    "message": "Voisko saada korvaavan SYLINTERI 00035495? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00035495",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0431",
+    "timestamp": "2025-11-17T12:34:00Z",
+    "message": "hei, onko PUMPPU 00048705 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00048705",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0311",
+    "timestamp": "2025-11-17T12:47:00Z",
+    "message": "Etsitään KÄYNNISTIN BC00004380 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00004380",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0413",
+    "timestamp": "2025-11-17T13:02:00Z",
+    "message": "00013631 VENTTIILI saatavilla? tarvitaan 1kpl",
+    "query_type": "availability",
+    "referenced_sku": "00013631",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0385",
+    "timestamp": "2025-11-17T13:35:00Z",
+    "message": "Mikä on toimitusaika NÄYTTÖ 00018320??",
+    "query_type": "lead_time",
+    "referenced_sku": "00018320",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0044",
+    "timestamp": "2025-11-17T13:44:00Z",
+    "message": "hei pika kysymys - voiks korvata 00031583 MOOTTORI 00011945:llä?",
+    "query_type": "general",
+    "referenced_sku": "00031583",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0011",
+    "timestamp": "2025-11-17T14:25:00Z",
+    "message": "Mitkä KÄYNNISTIN sopii osaan BC00009890?",
+    "query_type": "general",
+    "referenced_sku": "BC00009890",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0452",
+    "timestamp": "2025-11-17T14:45:00Z",
+    "message": "Saadaanko LATURI 00045036 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00045036",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0247",
+    "timestamp": "2025-11-17T15:29:00Z",
+    "message": "Saadaanko VAIHTEISTO 00002702 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00002702",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0448",
+    "timestamp": "2025-11-17T15:32:00Z",
+    "message": "Onko 00023962 yhteensopiva TH663i mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00023962",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0173",
+    "timestamp": "2025-11-17T15:39:00Z",
+    "message": "TIIVISTE 00014819 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00014819",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0209",
+    "timestamp": "2025-11-17T15:39:00Z",
+    "message": "SUODATIN BC00008348 yhteensopivuus TH545 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "BC00008348",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0471",
+    "timestamp": "2025-11-17T16:18:00Z",
+    "message": "PUMPPU 00010598 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00010598",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0030",
+    "timestamp": "2025-11-17T16:44:00Z",
+    "message": "mikä on VAIHTEISTO osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0328",
+    "timestamp": "2025-11-17T16:55:00Z",
+    "message": "Onko korvike 00020145:lle? LATURI osa",
+    "query_type": "general",
+    "referenced_sku": "00020145",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0266",
+    "timestamp": "2025-11-17T16:58:00Z",
+    "message": "Onko korvike BC00005341:lle? LAAKERI osa",
+    "query_type": "general",
+    "referenced_sku": "BC00005341",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0494",
+    "timestamp": "2025-11-18T08:49:00Z",
+    "message": "00029705 ANTURI saatavilla? tarvitaan 5kpl",
+    "query_type": "availability",
+    "referenced_sku": "00029705",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0068",
+    "timestamp": "2025-11-18T09:03:00Z",
+    "message": "Mikä on toimitusaika TIIVISTE 00019593??",
+    "query_type": "lead_time",
+    "referenced_sku": "00019593",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0427",
+    "timestamp": "2025-11-18T09:35:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden PUMPPU 00043910? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00043910",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0315",
+    "timestamp": "2025-11-18T10:01:00Z",
+    "message": "Vanha koodi 7F-6481, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0453",
+    "timestamp": "2025-11-18T10:39:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden SYLINTERI 00002543? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00002543",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0131",
+    "timestamp": "2025-11-18T11:14:00Z",
+    "message": "tarvitaan 00039528 LAAKERI + 00013108 TIIVISTE. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00039528",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0263",
+    "timestamp": "2025-11-18T11:34:00Z",
+    "message": "00036166 PUMPPU - onko tää suora korvaava vanhalle mallille?",
+    "query_type": "replacement",
+    "referenced_sku": "00036166",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0331",
+    "timestamp": "2025-11-18T11:41:00Z",
+    "message": "Osanro 00002957 - mikä korvaava? Tarvitaan LHD1700:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00002957",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0251",
+    "timestamp": "2025-11-18T11:46:00Z",
+    "message": "00003898 LAAKERI saatavilla? tarvitaan 5kpl",
+    "query_type": "availability",
+    "referenced_sku": "00003898",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0353",
+    "timestamp": "2025-11-18T11:47:00Z",
+    "message": "Korvaava TIIVISTE 00000325 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00000325",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0306",
+    "timestamp": "2025-11-18T12:15:00Z",
+    "message": "VAIHDELAATIKKO 00031435 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00031435",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0029",
+    "timestamp": "2025-11-18T12:25:00Z",
+    "message": "Osanumero 00019968 LETKU - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00019968",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0336",
+    "timestamp": "2025-11-18T12:40:00Z",
+    "message": "Onko korvike BC00002392:lle? TIIVISTE osa",
+    "query_type": "general",
+    "referenced_sku": "BC00002392",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0377",
+    "timestamp": "2025-11-18T12:52:00Z",
+    "message": "Saadaanko VAIHDELAATIKKO 00000165 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00000165",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0257",
+    "timestamp": "2025-11-18T13:45:00Z",
+    "message": "Mitkä PUMPPU sopii osaan 00001023?",
+    "query_type": "general",
+    "referenced_sku": "00001023",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0229",
+    "timestamp": "2025-11-18T13:50:00Z",
+    "message": "Vanha koodi 8X-4347, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0314",
+    "timestamp": "2025-11-18T14:48:00Z",
+    "message": "Osanro 00036119 - mikä korvaava? Tarvitaan LH517:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00036119",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0123",
+    "timestamp": "2025-11-18T15:04:00Z",
+    "message": "hei pika kysymys - voiks korvata 00011459 ANTURI 00040111:llä?",
+    "query_type": "general",
+    "referenced_sku": "00011459",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0074",
+    "timestamp": "2025-11-18T15:10:00Z",
+    "message": "Tarvitaan korvaava osa SKU 00000653:lle, onko nopeampi saatavuus ensi viikolle?",
+    "query_type": "replacement",
+    "referenced_sku": "00000653",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0500",
+    "timestamp": "2025-11-18T15:25:00Z",
+    "message": "Osa 00016807 SYLINTERI - onko tää TH430 vai LH410?",
+    "query_type": "general",
+    "referenced_sku": "00016807",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0106",
+    "timestamp": "2025-11-18T15:49:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden PULTTI 00014079? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00014079",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0179",
+    "timestamp": "2025-11-18T15:52:00Z",
+    "message": "tarvitaan MOOTTORI BC00001754 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "BC00001754",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0338",
+    "timestamp": "2025-11-18T16:45:00Z",
+    "message": "Osa 00009660 NÄYTTÖ - onko tää TH545 vai TH430?",
+    "query_type": "general",
+    "referenced_sku": "00009660",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0321",
+    "timestamp": "2025-11-18T17:05:00Z",
+    "message": "Etsitään vaihtoehtoa SUODATIN 00032049:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00032049",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0045",
+    "timestamp": "2025-11-18T17:19:00Z",
+    "message": "Mikä koodi tälle PEILI? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0176",
+    "timestamp": "2025-11-19T08:54:00Z",
+    "message": "PULTTI 00032592 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00032592",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0490",
+    "timestamp": "2025-11-19T09:04:00Z",
+    "message": "mikä on KÄYNNISTIN osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0028",
+    "timestamp": "2025-11-19T09:39:00Z",
+    "message": "tarvitaan 00021159 TIIVISTE + 00028197 RENGAS. saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00021159",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0465",
+    "timestamp": "2025-11-19T09:42:00Z",
+    "message": "mikä on JÄÄHDYTIN osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0402",
+    "timestamp": "2025-11-19T10:39:00Z",
+    "message": "MOOTTORI 00006379 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00006379",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0127",
+    "timestamp": "2025-11-19T10:52:00Z",
+    "message": "Korvaava PEILI 00036709 - joku ristiviite?",
+    "query_type": "replacement",
+    "referenced_sku": "00036709",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0178",
+    "timestamp": "2025-11-19T11:10:00Z",
+    "message": "Onko korvike 00010485:lle? RENGAS osa",
+    "query_type": "general",
+    "referenced_sku": "00010485",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0288",
+    "timestamp": "2025-11-19T11:11:00Z",
+    "message": "Voisko joku auttaa? Etsitään VAIHTEISTO osaa, ehkä 00018424?",
+    "query_type": "general",
+    "referenced_sku": "00018424",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0416",
+    "timestamp": "2025-11-19T11:44:00Z",
+    "message": "Osanumero 00041908 KÄYNNISTIN - arvioitu toimitus?",
+    "query_type": "general",
+    "referenced_sku": "00041908",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0484",
+    "timestamp": "2025-11-19T12:01:00Z",
+    "message": "Saadaanko PULTTI 00009863 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00009863",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0133",
+    "timestamp": "2025-11-19T12:41:00Z",
+    "message": "LAAKERI BC00007480 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00007480",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0397",
+    "timestamp": "2025-11-19T12:53:00Z",
+    "message": "hei, onko OHJAIN 00028292 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00028292",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0334",
+    "timestamp": "2025-11-19T13:27:00Z",
+    "message": "Voiks joku vahvistaa sopiiko VAIHTEISTO 00036406 TH663i malliin?",
+    "query_type": "general",
+    "referenced_sku": "00036406",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0219",
+    "timestamp": "2025-11-19T13:46:00Z",
+    "message": "BC00006397 ANTURI saatavilla? tarvitaan 3kpl",
+    "query_type": "availability",
+    "referenced_sku": "BC00006397",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0005",
+    "timestamp": "2025-11-19T13:52:00Z",
+    "message": "Etsitään SUODATIN 00010064 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00010064",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0188",
+    "timestamp": "2025-11-19T14:43:00Z",
+    "message": "Osa 00033735 LATURI - onko tää LH203 vai LH209?",
+    "query_type": "general",
+    "referenced_sku": "00033735",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0496",
+    "timestamp": "2025-11-19T14:47:00Z",
+    "message": "Vanha koodi 7F-1120, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0085",
+    "timestamp": "2025-11-19T15:31:00Z",
+    "message": "Osanro 00044988 - mikä korvaava? Tarvitaan TH545:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00044988",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0230",
+    "timestamp": "2025-11-19T16:03:00Z",
+    "message": "Mitkä LETKU sopii osaan 00027644?",
+    "query_type": "general",
+    "referenced_sku": "00027644",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0438",
+    "timestamp": "2025-11-19T16:08:00Z",
+    "message": "VAIHTEISTO 00014670 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "00014670",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0141",
+    "timestamp": "2025-11-19T17:03:00Z",
+    "message": "Joku tietää toimitusajan JÄÄHDYTIN 00034673? Asiakas tarvii 2kpl",
+    "query_type": "general",
+    "referenced_sku": "00034673",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0294",
+    "timestamp": "2025-11-19T17:44:00Z",
+    "message": "tarvitaan TIIVISTE 00017004 kiireellä, millon saadaan?",
+    "query_type": "general",
+    "referenced_sku": "00017004",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0013",
+    "timestamp": "2025-11-20T08:05:00Z",
+    "message": "Vanha koodi 8X-2983, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0216",
+    "timestamp": "2025-11-20T08:35:00Z",
+    "message": "hei, onko VAIHDELAATIKKO 00018709 varastossa? tarvitaan asap",
+    "query_type": "general",
+    "referenced_sku": "00018709",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0406",
+    "timestamp": "2025-11-20T09:23:00Z",
+    "message": "Voisko saada korvaavan PULTTI 00026315? vanha on rikki",
+    "query_type": "replacement",
+    "referenced_sku": "00026315",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0043",
+    "timestamp": "2025-11-20T09:38:00Z",
+    "message": "VAIHTEISTO 00046421, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00046421",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0194",
+    "timestamp": "2025-11-20T10:15:00Z",
+    "message": "Osanro 00020297 - mikä korvaava? Tarvitaan LH514:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00020297",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0026",
+    "timestamp": "2025-11-20T11:07:00Z",
+    "message": "Etsitään vaihtoehtoa LATURI 00026736:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00026736",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0368",
+    "timestamp": "2025-11-20T12:31:00Z",
+    "message": "Onko 00014702 yhteensopiva TH430 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "00014702",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0171",
+    "timestamp": "2025-11-20T12:38:00Z",
+    "message": "mikä lead time MOOTTORI 00000060?? asiakas kysyy",
+    "query_type": "lead_time",
+    "referenced_sku": "00000060",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0400",
+    "timestamp": "2025-11-20T12:42:00Z",
+    "message": "Joku tietää toimitusajan SYLINTERI 00026739? Asiakas tarvii 3kpl",
+    "query_type": "general",
+    "referenced_sku": "00026739",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0382",
+    "timestamp": "2025-11-20T13:34:00Z",
+    "message": "00036579 O-RENGAS saatavilla? tarvitaan 5kpl",
+    "query_type": "availability",
+    "referenced_sku": "00036579",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0371",
+    "timestamp": "2025-11-20T13:37:00Z",
+    "message": "SKU 00028482 MOOTTORI - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00028482",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0261",
+    "timestamp": "2025-11-20T14:02:00Z",
+    "message": "Voisko joku auttaa? Etsitään PUMPPU osaa, ehkä BC00004409?",
+    "query_type": "general",
+    "referenced_sku": "BC00004409",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0347",
+    "timestamp": "2025-11-20T14:03:00Z",
+    "message": "Etsitään MOOTTORI BC00002967 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00002967",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0249",
+    "timestamp": "2025-11-20T14:24:00Z",
+    "message": "Osa 00020631 LATURI - onko tää LH410 vai LH517?",
+    "query_type": "general",
+    "referenced_sku": "00020631",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0296",
+    "timestamp": "2025-11-20T14:46:00Z",
+    "message": "Osanro 00001247 - mikä korvaava? Tarvitaan LH514:ään",
+    "query_type": "replacement",
+    "referenced_sku": "00001247",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0196",
+    "timestamp": "2025-11-20T14:52:00Z",
+    "message": "ANTURI BC00009722 - onko tää vielä tuotannossa vai poistunut?",
+    "query_type": "general",
+    "referenced_sku": "BC00009722",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0245",
+    "timestamp": "2025-11-20T15:22:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden RENGAS 00039800? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "00039800",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0412",
+    "timestamp": "2025-11-20T15:22:00Z",
+    "message": "Vanha koodi 7F-8247, mikä uus SKU?",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0259",
+    "timestamp": "2025-11-20T15:32:00Z",
+    "message": "BC00002858 TIIVISTE - onko tää suora korvaava vanhalle mallille?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00002858",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0361",
+    "timestamp": "2025-11-20T17:24:00Z",
+    "message": "Joku tietää toimitusajan OHJAIN 00048557? Asiakas tarvii 3kpl",
+    "query_type": "general",
+    "referenced_sku": "00048557",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0126",
+    "timestamp": "2025-11-21T08:02:00Z",
+    "message": "JÄÄHDYTIN 00026507, koska takas varastoon?",
+    "query_type": "general",
+    "referenced_sku": "00026507",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0346",
+    "timestamp": "2025-11-21T08:15:00Z",
+    "message": "SYLINTERI BC00007137 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00007137",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0060",
+    "timestamp": "2025-11-21T08:49:00Z",
+    "message": "Joku tietää toimitusajan LETKU BC00001541? Asiakas tarvii 10kpl",
+    "query_type": "general",
+    "referenced_sku": "BC00001541",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0220",
+    "timestamp": "2025-11-21T09:37:00Z",
+    "message": "SYLINTERI 00044876 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00044876",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0392",
+    "timestamp": "2025-11-21T10:32:00Z",
+    "message": "LAAKERI BC00001106 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "BC00001106",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0094",
+    "timestamp": "2025-11-21T11:26:00Z",
+    "message": "00027770 SUODATIN - onko tää suora korvaava vanhalle mallille?",
+    "query_type": "replacement",
+    "referenced_sku": "00027770",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0479",
+    "timestamp": "2025-11-21T11:34:00Z",
+    "message": "NÄYTTÖ 00044924 varastotilanne? tarvitaan korjaushommaan",
+    "query_type": "general",
+    "referenced_sku": "00044924",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0309",
+    "timestamp": "2025-11-21T12:01:00Z",
+    "message": "RENGAS BC00000536 korvaava - mistä löytyy järjestelmästä?",
+    "query_type": "replacement",
+    "referenced_sku": "BC00000536",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0451",
+    "timestamp": "2025-11-21T12:06:00Z",
+    "message": "mikä on OHJAIN osanumero? asiakas sanoo et vanha numero ei toimi",
+    "query_type": "general",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0078",
+    "timestamp": "2025-11-21T12:07:00Z",
+    "message": "SUODATIN 00041885 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00041885",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0411",
+    "timestamp": "2025-11-21T12:21:00Z",
+    "message": "Etsitään VAIHDELAATIKKO 00041248 - normaali toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "00041248",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0036",
+    "timestamp": "2025-11-21T13:14:00Z",
+    "message": "Moi porukka, voisko joku tarkastaa saatavuuden OHJAIN BC00006810? Asiakas odottaa",
+    "query_type": "general",
+    "referenced_sku": "BC00006810",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0297",
+    "timestamp": "2025-11-21T13:24:00Z",
+    "message": "LETKU 00022136 - mihin koneisiin sopii?",
+    "query_type": "general",
+    "referenced_sku": "00022136",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0035",
+    "timestamp": "2025-11-21T13:28:00Z",
+    "message": "Mikä koodi tälle KÄYNNISTIN? Vanha koodi puuttuu.",
+    "query_type": "part_identification",
+    "referenced_sku": null,
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0240",
+    "timestamp": "2025-11-21T13:28:00Z",
+    "message": "Mitkä JÄÄHDYTIN sopii osaan BC00008004?",
+    "query_type": "general",
+    "referenced_sku": "BC00008004",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0167",
+    "timestamp": "2025-11-21T14:47:00Z",
+    "message": "Onko BC00009043 yhteensopiva LH209 mallin kanssa?",
+    "query_type": "compatibility",
+    "referenced_sku": "BC00009043",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0255",
+    "timestamp": "2025-11-21T14:47:00Z",
+    "message": "Saadaanko LATURI 00017181 perjantaiksi? On kiire!!!",
+    "query_type": "general",
+    "referenced_sku": "00017181",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0002",
+    "timestamp": "2025-11-21T14:57:00Z",
+    "message": "SKU BC00004207 O-RENGAS - toimitusaika?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00004207",
+    "has_typo": true
+  },
+  {
+    "message_id": "msg_fi_0422",
+    "timestamp": "2025-11-21T15:44:00Z",
+    "message": "Lead time tälle BC00002193 LAAKERI?",
+    "query_type": "lead_time",
+    "referenced_sku": "BC00002193",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0386",
+    "timestamp": "2025-11-21T15:59:00Z",
+    "message": "Etsitään vaihtoehtoa KÄYNNISTIN 00005891:lle, ehdotuksia?",
+    "query_type": "general",
+    "referenced_sku": "00005891",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0242",
+    "timestamp": "2025-11-21T16:49:00Z",
+    "message": "PULTTI 00042120 - vaihtoehtosia jos ei saatavilla?",
+    "query_type": "availability",
+    "referenced_sku": "00042120",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0235",
+    "timestamp": "2025-11-21T17:10:00Z",
+    "message": "Osa 00041364 O-RENGAS - toimitusaika ja hinta?",
+    "query_type": "lead_time",
+    "referenced_sku": "00041364",
+    "has_typo": false
+  },
+  {
+    "message_id": "msg_fi_0025",
+    "timestamp": "2025-11-21T17:49:00Z",
+    "message": "PEILI 00013902 yhteensopivuus TH545 mallin kans?",
+    "query_type": "compatibility",
+    "referenced_sku": "00013902",
+    "has_typo": false
+  }
+]
