@@ -1,0 +1,43 @@
+services:
+  teams-agent:
+    build:
+      context: ./apps/teams-agent
+      dockerfile: DOCKERFILE
+    container_name: teams-agent
+    ports:
+      - "3978:3978"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3978
+      - CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID=${CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID:-client-id}
+      - CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTSECRET=${CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTSECRET:-client-secret}
+      - CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID=${CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID:-tenant-id}
+      - TARGET_USER_ID=${TARGET_USER_ID:-user-object-id-here}
+      - TARGET_USER_TENANT_ID=${TARGET_USER_TENANT_ID:-tenant-id}
+      - BOT_ID=${BOT_ID:-bot-id}
+      - SERVICE_URL=${SERVICE_URL:-https://smba.trafficmanager.net/}
+      - NOTIFICATION_KEYWORDS=${NOTIFICATION_KEYWORDS:-}
+      - WEBHOOK_URL=http://teams-demo:3000/api/webhook
+    networks:
+      - teams-network
+    restart: unless-stopped
+
+  teams-demo:
+    build:
+      context: ./apps/teams-demo
+      dockerfile: DOCKERFILE
+    container_name: teams-demo
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - TEAMS_AGENT_URL=http://teams-agent:3978/api/messages
+    networks:
+      - teams-network
+    restart: unless-stopped
+    depends_on:
+      - teams-agent
+
+networks:
+  teams-network:
+    driver: bridge
