@@ -59,6 +59,123 @@ This Teams bot listens for messages in channels and sends notification cards to 
    - Image: Microsoft branding image
    - **"View in Channel" button**: Deep link that opens the original message directly in Teams
 
+## Architecture & Flow Diagram
+
+The following diagram illustrates the complete flow of the agent, including all functions and their interactions:
+
+```mermaid
+flowchart TD
+    Start([Application Start]) --> AppPy[app.py]
+    AppPy --> MainPy[main.py]
+    MainPy -->|Setup Logging| Logger[Configure Microsoft Agents Logger]
+    MainPy -->|Create Auth Config| AuthConfig[AgentAuthConfiguration]
+    MainPy -->|Call start_server| StartServer[start_server.py]
+    
+    StartServer -->|Create HTTP App| HTTPApp[Create aiohttp Application]
+    HTTPApp -->|Add Middleware| JWTMiddleware[jwt_authorization_middleware]
+    HTTPApp -->|Add Routes| Routes[API Messages Route POST GET]
+    HTTPApp -->|Store References| StoreRefs[Store AGENT_APP and adapter]
+    HTTPApp -->|Start Server| RunServer[run_app on localhost port 3978]
+    
+    RunServer -->|Listen| Listen[Server Listening]
+    
+    Listen -->|HTTP Request| EntryPoint[entry_point function]
+    EntryPoint -->|Process Request| StartAgent[start_agent_process]
+    StartAgent -->|Route to Handler| AgentApp[AGENT_APP from agent.py]
+    
+    AgentApp -->|Message Activity| OnMessage[on_message handler]
+    AgentApp -->|Members Added| OnMembersAdded[on_members_added handler]
+    AgentApp -->|Error| OnError[on_error handler]
+    
+    OnMessage -->|Extract User ID| GetUserId[Extract user_id from activity]
+    GetUserId -->|Store Reference| GetConvRef[get_conversation_reference]
+    GetConvRef -->|Save| StoreConvRef[Store in conversation_references dict]
+    
+    OnMessage -->|Check Type| IsChannel{Is Channel Message?}
+    
+    IsChannel -->|Yes| ShouldNotify[should_send_notification]
+    IsChannel -->|No| DirectMessage[Direct Message Handler]
+    
+    ShouldNotify -->|Check 1| CheckEmpty{Message Empty?}
+    CheckEmpty -->|Yes| Skip[Skip - Return]
+    CheckEmpty -->|No| CheckBot{From Bot?}
+    CheckBot -->|Yes| Skip
+    CheckBot -->|No| CheckKeywords{Keywords Configured?}
+    CheckKeywords -->|Yes| MatchKeywords{Message Contains Keyword?}
+    MatchKeywords -->|No| Skip
+    MatchKeywords -->|Yes| Proceed[Proceed with Notification]
+    CheckKeywords -->|No| Proceed
+    
+    Proceed -->|Extract Info| ExtractInfo[Extract message_text & sender_name]
+    ExtractInfo -->|Create Deep Link| CreateDeepLink[CardMessages.create_teams_deep_link]
+    
+    CreateDeepLink -->|Extract Channel Data| ExtractChannel[Extract channel_id, team_id, message_id]
+    ExtractChannel -->|Build URL| BuildURL[Build Teams deep link URL]
+    BuildURL -->|Return| DeepLinkURL[Return deep_link or None]
+    
+    DeepLinkURL -->|Check Target User| CheckTarget{TARGET_USER_ID Set?}
+    CheckTarget -->|No| SendWarning[Send warning to channel]
+    CheckTarget -->|Yes| SendCard[send_card_to_user]
+    
+    SendCard -->|Get Reference| GetStoredRef[Get conversation_ref from dict]
+    GetStoredRef -->|Check Exists| RefExists{Reference Exists?}
+    RefExists -->|No| SendError[Print warning & return False]
+    RefExists -->|Yes| ContinueConv[adapter.continue_conversation]
+    
+    ContinueConv -->|Callback| SendNotificationCard[CardMessages.send_notification_card]
+    SendNotificationCard -->|Create Buttons| CreateButtons[Create CardAction buttons]
+    CreateButtons -->|Add Deep Link| AddDeepLink{Deep Link Available?}
+    AddDeepLink -->|Yes| ViewButton[Add 'View in Channel' button]
+    AddDeepLink -->|No| FallbackButton[Add 'Learn More' fallback button]
+    ViewButton -->|Build Card| BuildCard[CardFactory.hero_card]
+    FallbackButton -->|Build Card| BuildCard
+    
+    BuildCard -->|Create HeroCard| HeroCard[HeroCard with title, text, image, buttons]
+    HeroCard -->|Send| SendActivity[CardMessages.send_activity]
+    SendActivity -->|Create Activity| CreateActivity[Activity with Attachment]
+    CreateActivity -->|Send| ContextSend[context.send_activity]
+    
+    ContextSend -->|Return Success| Success[Return True]
+    Success -->|Acknowledge| AckChannel[Send acknowledgment to channel]
+    
+    DirectMessage -->|Check User| IsTarget{Is Target User?}
+    IsTarget -->|Yes| WelcomeTarget[Send welcome message to target user]
+    IsTarget -->|No| InfoMessage[Send info message to other user]
+    
+    OnMembersAdded -->|Welcome| WelcomeMsg[Send welcome message]
+    
+    OnError -->|Log Error| LogError[Print error to stderr]
+    LogError -->|Send Error| SendErrorMsg[Send error message to user]
+    
+    style Start fill:#e1f5ff
+    style OnMessage fill:#fff4e1
+    style SendCard fill:#e8f5e9
+    style SendNotificationCard fill:#e8f5e9
+    style Skip fill:#ffebee
+    style Error fill:#ffebee
+```
+
+### Function Reference
+
+#### `agent.py`
+- **`get_conversation_reference(activity)`** - Extracts conversation reference from activity for proactive messaging
+- **`should_send_notification(activity)`** - Checks if notification should be sent based on conditions (empty check, bot check, keyword filtering)
+- **`send_card_to_user(adapter, user_id, message_text, channel_deep_link, sender_name)`** - Sends a notification card to a specific user using stored conversation reference
+- **`on_message(context, state)`** - Main message handler that processes incoming messages, detects channel messages, and triggers notifications
+- **`on_members_added(context, state)`** - Handler for when bot is added to a conversation (sends welcome message)
+- **`on_error(context, error)`** - Error handler that logs errors and sends error messages
+
+#### `card_messages.py`
+- **`create_teams_deep_link(activity)`** - Creates a Teams deep link URL to the channel message using channel/team/message IDs
+- **`send_notification_card(context, message_text, channel_deep_link, sender_name)`** - Creates and sends a notification card with hero card format
+- **`send_activity(context, card)`** - Helper function to send an activity with card attachment
+
+#### `main.py`
+- **`main()`** - Application entry point that sets up logging, creates auth configuration, and starts the server
+
+#### `start_server.py`
+- **`start_server(agent_application, auth_configuration)`** - Sets up HTTP server with aiohttp, adds routes and middleware, and starts listening
+
 ## Project Structure
 
 ```
