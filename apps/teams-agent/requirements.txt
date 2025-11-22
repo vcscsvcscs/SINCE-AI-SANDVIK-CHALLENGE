@@ -1,1 +1,9 @@
-microsoft-agents-hosting-aiohttp
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+testcontainers>=4.0.0
+docker>=6.0.0
+requests>=2.28.0

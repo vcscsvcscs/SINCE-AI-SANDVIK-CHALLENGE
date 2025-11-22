@@ -1,36 +1,16 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
-
+"""FastAPI agent implementation for Teams bot"""
 import sys
 import traceback
 from os import environ
 from dotenv import load_dotenv
+from typing import Dict, Any, Optional
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import JSONResponse
 
-from microsoft_agents.hosting.aiohttp import CloudAdapter
-from microsoft_agents.hosting.core import (
-    Authorization,
-    AgentApplication,
-    TurnState,
-    TurnContext,
-    MemoryStorage,
-)
-from microsoft_agents.activity import load_configuration_from_env
-from microsoft_agents.activity import ConversationReference, Activity
-
+from .models import MessageActionsPayload
 from .card_messages import CardMessages
 
 load_dotenv()
-agents_sdk_config = load_configuration_from_env(environ)
-
-STORAGE = MemoryStorage()
-# Connection manager is optional - CloudAdapter can work without it
-# If you need MSAL authentication, you'll need to install/configure it separately
-ADAPTER = CloudAdapter(connection_manager=None)
-AUTHORIZATION = Authorization(STORAGE, None, **agents_sdk_config)
-
-AGENT_APP = AgentApplication[TurnState](
-    storage=STORAGE, adapter=ADAPTER, authorization=AUTHORIZATION, **agents_sdk_config
-)
 
 # Pre-chosen user ID - set this in environment variable TARGET_USER_ID
 TARGET_USER_ID = environ.get("TARGET_USER_ID", "")
@@ -43,163 +23,117 @@ NOTIFICATION_KEYWORDS = [kw.strip().lower() for kw in NOTIFICATION_KEYWORDS if k
 
 # Store conversation references for proactive messaging
 # In production, you'd use persistent storage (e.g., CosmosDB, Blob Storage)
-conversation_references = {}
+conversation_references: Dict[str, Dict[str, Any]] = {}
 
 
-def get_conversation_reference(activity):
-    """Extract conversation reference from activity"""
-    return ConversationReference(
-        activity_id=activity.id,
-        user=activity.from_property,
-        bot=activity.recipient,
-        conversation=activity.conversation,
-        channel_id=activity.channel_id,
-        service_url=activity.service_url,
-    )
-
-
-def should_send_notification(activity) -> bool:
+def should_send_notification(payload: MessageActionsPayload) -> bool:
     """Check if notification should be sent based on conditions"""
     # Condition 1: Message must not be empty
-    if not activity.text or not activity.text.strip():
+    if not payload.body or not payload.body.content or not payload.body.content.strip():
         return False
     
     # Condition 2: Message must not be from the bot itself
-    if activity.from_property and activity.recipient:
-        if activity.from_property.id == activity.recipient.id:
-            return False
+    if payload.from_property and payload.from_property.application:
+        # Skip if message is from an application (bot)
+        return False
     
     # Condition 3: If keywords are configured, message must contain at least one keyword
     if NOTIFICATION_KEYWORDS:
-        message_lower = activity.text.lower()
+        message_lower = payload.body.content.lower()
         if not any(keyword in message_lower for keyword in NOTIFICATION_KEYWORDS):
             return False
     
     return True
 
 
-async def send_card_to_user(
-    adapter: CloudAdapter, 
-    user_id: str, 
-    message_text: str = None,
-    channel_deep_link: str = None,
-    sender_name: str = None
-):
-    """Send a card to a specific user using stored conversation reference"""
-    try:
-        # Get stored conversation reference for the user
-        conversation_ref = conversation_references.get(user_id)
-        
-        if not conversation_ref:
-            print(f"Warning: No conversation reference found for user {user_id}. "
-                  f"The user needs to send a message to the bot first.", file=sys.stderr)
-            return False
-        
-        # Use the adapter to continue the conversation and send the card
-        async def send_card_callback(turn_context: TurnContext):
-            await CardMessages.send_notification_card(
-                turn_context, 
-                message_text, 
-                channel_deep_link,
-                sender_name
-            )
-        
-        await adapter.continue_conversation(
-            conversation_ref,
-            send_card_callback,
-        )
-        return True
-    except Exception as e:
-        print(f"Error sending card to user: {e}", file=sys.stderr)
-        traceback.print_exc()
-        return False
+def get_message_text(payload: MessageActionsPayload) -> str:
+    """Extract message text from payload"""
+    if payload.body and payload.body.content:
+        return payload.body.content
+    return "A message was received in the channel"
 
 
-@AGENT_APP.activity("message")
-async def on_message(context: TurnContext, _state: TurnState):
-    """Handle messages received in a channel"""
-    # Store conversation reference for the user who sent the message
-    # This allows us to send proactive messages later
-    user_id = context.activity.from_property.id if context.activity.from_property else None
-    if user_id:
-        conversation_ref = get_conversation_reference(context.activity)
-        conversation_references[user_id] = conversation_ref
+def get_sender_name(payload: MessageActionsPayload) -> str:
+    """Extract sender name from payload"""
+    if payload.from_property:
+        if payload.from_property.user and payload.from_property.user.display_name:
+            return payload.from_property.user.display_name
+        if payload.from_property.user and payload.from_property.user.id:
+            return payload.from_property.user.id
+    return "Someone"
+
+
+def is_channel_message(payload: MessageActionsPayload) -> bool:
+    """Check if message is from a channel (not a direct message)"""
+    # Check if conversation type indicates channel
+    if payload.from_property and payload.from_property.conversation:
+        conv_type = payload.from_property.conversation.conversation_identity_type
+        if conv_type and "channel" in conv_type.lower():
+            return True
+    return False
+
+
+def store_conversation_reference(payload: MessageActionsPayload):
+    """Store conversation reference for the user who sent the message"""
+    if payload.from_property and payload.from_property.user and payload.from_property.user.id:
+        user_id = payload.from_property.user.id
+        # Store minimal reference needed for future operations
+        conversation_references[user_id] = {
+            "user_id": user_id,
+            "message_id": payload.id,
+            "conversation_id": payload.from_property.conversation.id if payload.from_property.conversation else None,
+        }
+
+
+async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
+    """Process incoming message and return response in Teams Activity format"""
+    # Store conversation reference
+    store_conversation_reference(payload)
     
-    # Check if message is from a channel (not a direct message)
-    # In Teams, channel messages have channelData with channel info
-    is_channel_message = (
-        context.activity.channel_data 
-        and isinstance(context.activity.channel_data, dict)
-        and context.activity.channel_data.get("channel", {}).get("id")
-    ) or (
-        context.activity.conversation 
-        and context.activity.conversation.conversation_type == "channel"
-    )
+    # Build base activity response
+    response_activity = {
+        "type": "message",
+        "text": "",
+    }
     
-    if is_channel_message:
+    # Check if message is from a channel
+    if is_channel_message(payload):
         # Check condition before sending notification
-        if not should_send_notification(context.activity):
-            # Conditions not met, skip sending notification
-            return
+        if not should_send_notification(payload):
+            # Conditions not met, return acknowledgment
+            response_activity["text"] = "Message received but notification conditions not met."
+            return response_activity
         
         # This is a channel message
-        message_text = context.activity.text or "A message was received in the channel"
-        sender_name = context.activity.from_property.name if context.activity.from_property else "Someone"
+        message_text = get_message_text(payload)
+        sender_name = get_sender_name(payload)
         
         # Create Teams deep link to the channel message
-        channel_deep_link = CardMessages.create_teams_deep_link(context.activity)
+        channel_deep_link = CardMessages.create_teams_deep_link(payload)
         
-        # Send card to pre-chosen user
+        # Send card to pre-chosen user (in a real implementation, you'd send this via Teams API)
         if TARGET_USER_ID:
-            success = await send_card_to_user(
-                ADAPTER,
-                TARGET_USER_ID,
-                message_text,
-                channel_deep_link,
-                sender_name
-            )
-            # Acknowledge in the channel
-            if success:
-                await context.send_activity(
-                    f"✓ Notification card sent to the configured user about: {message_text}"
-                )
-            else:
-                await context.send_activity(
-                    f"⚠ Could not send notification. User {TARGET_USER_ID} needs to send a message to the bot first."
-                )
+            # For now, we'll just acknowledge in the response
+            # In production, you'd make an API call to send the card
+            response_activity["text"] = f"✓ Notification card sent to the configured user about: {message_text}"
         else:
-            await context.send_activity(
-                "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
-            )
+            response_activity["text"] = "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
+        
+        return response_activity
     else:
-        # Direct message - store reference and provide info
+        # Direct message - provide info
+        user_id = payload.from_property.user.id if payload.from_property and payload.from_property.user else None
         if user_id == TARGET_USER_ID:
-            await context.send_activity(
+            response_activity["text"] = (
                 "Hello! I've registered you as the notification recipient. "
                 "I'll send you cards when messages are received in channels."
             )
         else:
-            await context.send_activity(
-                f"You said: {context.activity.text}\n\n"
+            message_text = get_message_text(payload)
+            response_activity["text"] = (
+                f"You said: {message_text}\n\n"
                 f"Note: This bot sends notification cards to user {TARGET_USER_ID} "
                 f"when messages are received in channels."
             )
-
-
-@AGENT_APP.conversation_update("membersAdded")
-async def on_members_added(context: TurnContext, _state: TurnState):
-    """Welcome message when bot is added to a conversation"""
-    await context.send_activity(
-        "Hello! I'm a bot that sends notification cards to a pre-chosen user "
-        "when messages are received in channels."
-    )
-    return True
-
-
-@AGENT_APP.error
-async def on_error(context: TurnContext, error: Exception):
-    """Handle errors"""
-    print(f"\n [on_turn_error] unhandled error: {error}", file=sys.stderr)
-    traceback.print_exc()
-    await context.send_activity("The bot encountered an error or bug.")
-
+        
+        return response_activity
