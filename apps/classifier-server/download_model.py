@@ -2,7 +2,7 @@
 Download the spare parts model from Hugging Face Hub
 """
 import os
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from huggingface_hub import snapshot_download
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -16,33 +16,15 @@ HF_TOKEN = os.getenv("HF_TOKEN")  # Optional: only needed for private repos
 def download_model():
     """Download model from Hugging Face Hub"""
 
-    # Create directory if it doesn't exist
-    if not os.path.exists(LOCAL_MODEL_PATH):
-        print(f"Creating directory: {LOCAL_MODEL_PATH}")
-        os.makedirs(LOCAL_MODEL_PATH)
-    else:
-        print(f"✓ Directory already exists: {LOCAL_MODEL_PATH}")
-
     print(f"\nDownloading model from {HF_REPO_ID}...")
 
     try:
-        # Download model and tokenizer
-        print("  - Downloading model...")
-        model = AutoModelForSequenceClassification.from_pretrained(
-            HF_REPO_ID,
+        # Download all model files directly without loading into memory
+        snapshot_download(
+            repo_id=HF_REPO_ID,
+            local_dir=LOCAL_MODEL_PATH,
             token=HF_TOKEN  # Uses token if provided, otherwise public access
         )
-
-        print("  - Downloading tokenizer...")
-        tokenizer = AutoTokenizer.from_pretrained(
-            HF_REPO_ID,
-            token=HF_TOKEN
-        )
-
-        # Save locally
-        print(f"  - Saving to {LOCAL_MODEL_PATH}...")
-        model.save_pretrained(LOCAL_MODEL_PATH)
-        tokenizer.save_pretrained(LOCAL_MODEL_PATH)
 
         print(f"\n✓ Model downloaded successfully to {LOCAL_MODEL_PATH}")
         print(f"\nYou can now use it with:")
