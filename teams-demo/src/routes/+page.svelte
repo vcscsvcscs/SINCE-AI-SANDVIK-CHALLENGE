@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import UserSelection from '$lib/components/UserSelection.svelte';
 	import ChatView from '$lib/components/ChatView.svelte';
 	import CallsView from '$lib/components/CallsView.svelte';
 	import FilesView from '$lib/components/FilesView.svelte';
@@ -13,85 +14,66 @@
 		isSimplifiedMessage
 	} from '$lib/types';
 
-	// Load synthetic data - supports both simplified and Teams message formats
-	let messages: any[] = [];
+	// User management
+	let currentUser: any = null;
+	let showUserSelection = true;
+
+	// Store messages per channel
+	let channelMessages: Record<string, any[]> = {
+		'General': [],
+		'Parts Support': [],
+		'Technical Help': [],
+		'Warehouse': []
+	};
+
+	// Current messages for the selected channel
+	$: messages = channelMessages[selectedChannel] || [];
+
 	let currentView = 'chat';
 	let selectedChannel = 'Parts Support';
 	let selectedChat = 'TestBot';
 	let messageInput = '';
 
-	// Chat conversations list
-	const conversations = [
-		{
-			id: 1,
-			name: 'TestBot',
-			initials: 'TB',
-			color: 'bg-purple-600',
-			lastMessage: 'Here is an adaptive card with some options...',
-			timestamp: '11:44 AM',
-			online: true,
-			unread: 0,
-			isBot: true
-		},
-		{
-			id: 2,
-			name: 'Ray Tanaka',
-			initials: 'RT',
-			color: 'bg-blue-600',
-			lastMessage: 'Louisa will send the initial list of...',
-			timestamp: '1:47 PM',
-			online: true,
-			unread: 0
-		},
-	];
+	// Chat conversations list - dynamic based on user
+	$: conversations = currentUser?.role === 'Administrator' 
+		? [
+				{
+					id: 1,
+					name: 'TestBot',
+					initials: 'TB',
+					color: 'bg-purple-600',
+					lastMessage: 'Here is an adaptive card with some options...',
+					timestamp: '11:44 AM',
+					online: true,
+					unread: 0,
+					isBot: true
+				},
+				{
+					id: 2,
+					name: 'Ray Tanaka',
+					initials: 'RT',
+					color: 'bg-blue-600',
+					lastMessage: 'Louisa will send the initial list of...',
+					timestamp: '1:47 PM',
+					online: true,
+					unread: 0
+				},
+		  ]
+		: [
+				{
+					id: 2,
+					name: 'Ray Tanaka',
+					initials: 'RT',
+					color: 'bg-blue-600',
+					lastMessage: 'Louisa will send the initial list of...',
+					timestamp: '1:47 PM',
+					online: true,
+					unread: 0
+				},
+		  ];
 
 	// Store messages per conversation
 	let conversationMessages: Record<string, any[]> = {
-		'TestBot': [
-			{
-				id: 2,
-				sender: 'bot',
-				name: 'TestBot',
-				initials: 'TB',
-				color: 'bg-purple-600',
-				timestamp: '5/12, 9:15 AM',
-				reactions: [
-					{ emoji: '👍', count: 2 },
-					{ emoji: '❤️', count: 1 }
-				],
-				card: {
-					title: 'Parts Information Available',
-					description:
-						'Hello! I can help you find parts information, check availability, and provide lead times. What would you like to know?',
-					chatLink: '#parts-support-channel'
-				}
-			},
-			{
-				id: 3,
-				sender: 'user',
-				name: 'You',
-				initials: 'ME',
-				color: 'bg-blue-600',
-				text: 'I need information about part 00002771',
-				timestamp: '5/12, 9:16 AM',
-				reactions: []
-			},
-			{
-				id: 4,
-				sender: 'bot',
-				name: 'TestBot',
-				initials: 'TB',
-				color: 'bg-purple-600',
-				timestamp: '11:44 AM',
-				reactions: [],
-				card: {
-					title: 'Part Found: SKU 00002771 - PUMP',
-					description:
-						'This part is currently in stock and available for immediate shipment. Lead time is 2-3 business days for standard delivery. The part is compatible with multiple machine models. Click below to view the full conversation in the Parts Support channel.',
-					chatLink: '#parts-support-channel'
-				}
-			}
-		],
 		'Ray Tanaka': [
 			{
 				id: 1,
@@ -134,26 +116,147 @@
 		{ name: 'Sandvik Support', initials: 'SS', color: 'bg-blue-600' },
 	];
 
+	function handleUserSelected(event: CustomEvent) {
+		currentUser = event.detail.user;
+		showUserSelection = false;
+		// Load messages from localStorage when user logs in
+		loadMessagesFromStorage();
+	}
+
+	function loadMessagesFromStorage() {
+		const stored = localStorage.getItem('teamChannelMessages');
+		if (stored) {
+			try {
+				channelMessages = JSON.parse(stored);
+			} catch (e) {
+				channelMessages = {
+					'General': [],
+					'Parts Support': [],
+					'Technical Help': [],
+					'Warehouse': []
+				};
+			}
+		}
+	}
+
+	function saveMessagesToStorage() {
+		localStorage.setItem('teamChannelMessages', JSON.stringify(channelMessages));
+		// Dispatch storage event for other windows
+		window.dispatchEvent(new StorageEvent('storage', {
+			key: 'teamChannelMessages',
+			newValue: JSON.stringify(channelMessages)
+		}));
+	}
+
 	onMount(async () => {
-		// Load English messages
-		const response = await fetch('/synthetic-data_EN.json');
-		const data = await response.json();
-		messages = data.slice(0, 15); // Show first 15 messages
+		// Listen for storage changes from other windows
+		window.addEventListener('storage', (e) => {
+			if (e.key === 'teamChannelMessages' && e.newValue) {
+				try {
+					channelMessages = JSON.parse(e.newValue);
+				} catch (err) {
+					console.error('Error parsing messages:', err);
+				}
+			}
+		});
 	});
 
+	// Bot endpoint configuration - defaults to local API endpoint
+	const BOT_ENDPOINT = '/api/bot';
+
+	async function notifyBot(message: any, channel: string) {
+		try {
+			const response = await fetch(BOT_ENDPOINT, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					message: message.message,
+					message_id: message.message_id,
+					timestamp: message.timestamp,
+					channel: channel,
+					user: {
+						name: message.from.displayName,
+						initials: message.from.initials,
+						role: currentUser.role
+					}
+				})
+			});
+
+			if (response.ok) {
+				const botResponse = await response.json();
+				console.log('Bot response:', botResponse);
+				
+				// If bot sends an adaptive card, add it to the specified conversation
+				if (botResponse.adaptiveCard && botResponse.sendToConversation) {
+					const conversationName = botResponse.sendToConversation;
+					const currentMessages = conversationMessages[conversationName] || [];
+					
+					const botMessage = {
+						id: currentMessages.length + 1,
+						sender: 'bot',
+						name: 'TestBot',
+						initials: 'TB',
+						color: 'bg-purple-600',
+						timestamp: new Date().toLocaleTimeString('en-US', {
+							hour: '2-digit',
+							minute: '2-digit'
+						}),
+						reactions: [],
+						card: {
+							title: botResponse.adaptiveCard.title,
+							description: botResponse.adaptiveCard.description,
+							chatLink: botResponse.adaptiveCard.chatLink
+						}
+					};
+
+					console.log('Adding bot message to conversation:', conversationName, botMessage);
+
+					// Add to the conversation (e.g., TestBot conversation with admin)
+					conversationMessages = {
+						...conversationMessages,
+						[conversationName]: [...currentMessages, botMessage]
+					};
+					
+					console.log('Updated conversationMessages:', conversationMessages);
+				}
+			}
+		} catch (error) {
+			console.error('Error notifying bot:', error);
+			// Bot is not available, continue without it
+		}
+	}
+
 	function sendMessage() {
-		if (messageInput.trim()) {
-			// For channel view (not chat-view) - create simplified message
+		if (messageInput.trim() && currentUser) {
+			// Create message with current user info
 			const newMessage: any = {
 				message_id: `msg_${Date.now()}`,
 				timestamp: new Date().toISOString(),
 				message: messageInput,
-				query_type: 'user_query',
+				query_type: 'user_message',
 				referenced_sku: null,
-				has_typo: false
+				has_typo: false,
+				from: {
+					displayName: currentUser.name,
+					initials: currentUser.initials,
+					color: currentUser.color
+				}
 			};
-			messages = [...messages, newMessage];
+			
+			// Add message to the current channel
+			const currentMessages = channelMessages[selectedChannel] || [];
+			channelMessages = {
+				...channelMessages,
+				[selectedChannel]: [...currentMessages, newMessage]
+			};
+			
+			saveMessagesToStorage();
 			messageInput = '';
+
+			// Notify the bot about the new message
+			notifyBot(newMessage, selectedChannel);
 		}
 	}
 
@@ -286,6 +389,9 @@
 	}
 </script>
 
+{#if showUserSelection}
+	<UserSelection on:userSelected={handleUserSelected} />
+{:else}
 <div class="flex h-screen bg-gray-100 overflow-hidden">
 	<!-- Left Sidebar - App Navigation -->
 	<div class="w-16 bg-[#464775] flex flex-col items-center py-2 space-y-4">
@@ -407,27 +513,30 @@
 
 		<div class="flex-1"></div>
 
-		<button
-			class="w-12 h-12 flex flex-col items-center justify-center hover:bg-[#5b5d8a] rounded transition-colors" title="Add channel"
+		<!-- User profile button at bottom -->
+		<button 
+			on:click={() => { showUserSelection = true; currentUser = null; }}
+			class="w-12 h-12 {currentUser?.color} rounded-full flex items-center justify-center hover:ring-2 hover:ring-white transition-all mb-2"
+			title="Switch User - {currentUser?.name}"
 		>
-			<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-			</svg>
+			<span class="text-white text-sm font-bold">{currentUser?.initials}</span>
 		</button>
 	</div>
 
 	{#if currentView === 'activity'}
 		<ActivityView />
 	{:else if currentView === 'chat-view'}
-		<ChatView
-			{conversations}
-			{selectedChat}
-			{chatMessages}
-			on:sendMessage={handleChatMessage}
-			on:closeCard={handleCloseCard}
-			on:goToChat={handleGoToChat}
-			on:selectChat={handleSelectChat}
-		/>
+		{#key JSON.stringify(conversationMessages[selectedChat])}
+			<ChatView
+				{conversations}
+				{selectedChat}
+				{chatMessages}
+				on:sendMessage={handleChatMessage}
+				on:closeCard={handleCloseCard}
+				on:goToChat={handleGoToChat}
+				on:selectChat={handleSelectChat}
+			/>
+		{/key}
 	{:else if currentView === 'calls'}
 		<CallsView />
 	{:else if currentView === 'files'}
@@ -714,6 +823,8 @@
 						{@const msgId = getMessageId(message)}
 						{@const msgTimestamp = getMessageTimestamp(message)}
 						{@const msgText = getMessageText(message)}
+						{@const msgFrom = message.from || { displayName: 'Unknown', initials: 'UN', color: 'bg-gray-600' }}
+						{@const isMe = message.from && message.from.displayName === currentUser?.name}
 						{@const showDate =
 							i === 0 ||
 							formatDate(msgTimestamp) !== formatDate(getMessageTimestamp(messages[i - 1]))}
@@ -727,16 +838,16 @@
 
 						<div class="flex space-x-3 group hover:bg-gray-50 -mx-6 px-6 py-2 rounded">
 							<div
-								class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0"
+								class="w-8 h-8 rounded-full {msgFrom.color} flex items-center justify-center flex-shrink-0"
 							>
 								<span class="text-white text-sm font-medium">
-									{msgId.includes('user') ? 'ME' : msgId.slice(-2).toUpperCase()}
+									{msgFrom.initials}
 								</span>
 							</div>
 							<div class="flex-1 min-w-0">
 								<div class="flex items-baseline space-x-2">
 									<span class="font-semibold text-sm">
-										{msgId.includes('user') ? 'You' : `User ${msgId.slice(-3)}`}
+										{isMe ? 'You' : msgFrom.displayName}
 									</span>
 									<span class="text-xs text-gray-500">{formatTime(msgTimestamp)}</span>
 									{#if isSimplifiedMessage(message) && message.has_typo}
@@ -878,6 +989,7 @@
 		</div>
 	{/if}
 </div>
+{/if}
 
 <style>
 	:global(body) {
