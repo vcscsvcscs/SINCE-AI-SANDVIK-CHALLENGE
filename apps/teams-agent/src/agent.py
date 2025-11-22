@@ -105,8 +105,8 @@ def _string_similarity(a: str, b: str) -> float:
 
 def find_best_part_by_term(term: str) -> Optional[Dict[str, object]]:
     """
-    Ищет в CATALOG_DF строку, чьё название ('name') максимально похоже на term.
-    Возвращает dict с sku, name, score или None, если ничего толкового не нашли.
+    Looking in CATALOG_DF for a row whose 'name' is most similar to the term.
+    Returns a dict with sku, name, score or None if nothing suitable is found.
     """
     logger.debug("find_best_part_by_term: term=%r", term)
 
@@ -169,7 +169,7 @@ def call_featherless_llm(system_prompt: str, user_prompt: str) -> str:
     return raw assistant message content as string.
     """
     if not FEATHERLESS_API_KEY:
-        # Без ключа нет смысла пытаться
+        # Without the key, there's no point in trying
         raise RuntimeError("FEATHERLESS_API_KEY is not set")
 
     headers = {
@@ -194,7 +194,7 @@ def call_featherless_llm(system_prompt: str, user_prompt: str) -> str:
     response.raise_for_status()
     data = response.json()
 
-    # Берём текст первого ответа
+    # Take the text of the first response
     return data["choices"][0]["message"]["content"]
 
 
@@ -275,12 +275,11 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         response_activity["text"] = "Message received but notification conditions not met."
         return response_activity
     
-    # Это канал
     message_text = get_message_text(payload)
     sender_name = get_sender_name(payload)
     logger.debug("process_message: sender_name=%r, message_text=%r", sender_name, message_text)
 
-    # === НОВОЕ: используем term + matched_part ===
+    # === NEW: use term + matched_part ===
     spare_part_match = await analyze_spare_parts(message_text)
     logger.debug("process_message: spare_part_match=%s", spare_part_match)
 
@@ -303,10 +302,10 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     else:
         spare_part_info = "LLM: message does NOT look spare-part-related."
 
-    # Create Teams deep link to the channel message (как у тебя было)
+    # Create Teams deep link to the channel message
     channel_deep_link = CardMessages.create_teams_deep_link(payload)
 
-    # Статус отправки карточки
+    # Notification card sending status
     if TARGET_USER_ID:
         status_text = (
             f"✓ Notification card sent to the configured user about: {message_text}\n"
@@ -315,7 +314,6 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     else:
         status_text = "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
     
-    # ВАЖНО: НИЧЕГО БОЛЬШЕ НЕ ПЕРЕЗАТИРАЕМ
     response_activity["text"] = status_text + "\n\n" + spare_part_info
     
     return response_activity
