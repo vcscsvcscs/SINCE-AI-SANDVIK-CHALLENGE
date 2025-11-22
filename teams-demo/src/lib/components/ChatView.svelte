@@ -8,6 +8,12 @@
 	export let selectedChat: string;
 	export let chatMessages: any[];
 
+	// Get current conversation details
+	$: currentConversation = conversations.find(c => c.name === selectedChat) || {
+		initials: selectedChat.slice(0, 2).toUpperCase(),
+		color: 'bg-purple-600'
+	};
+
 	let messageInput = '';
 
 	function sendMessage() {
@@ -191,8 +197,8 @@
 		<!-- Chat Header -->
 		<div class="h-14 border-b border-gray-200 flex items-center justify-between px-6 bg-white">
 			<div class="flex items-center space-x-3">
-				<div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center">
-					<span class="text-white text-sm font-semibold">TB</span>
+				<div class="w-8 h-8 {currentConversation.color} rounded-full flex items-center justify-center">
+					<span class="text-white text-sm font-semibold">{currentConversation.initials}</span>
 				</div>
 				<div>
 					<h1 class="text-base font-semibold">{selectedChat}</h1>

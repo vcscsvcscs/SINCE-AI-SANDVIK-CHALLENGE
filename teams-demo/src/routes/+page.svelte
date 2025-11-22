@@ -45,57 +45,93 @@
 		},
 	];
 
-	// Chat messages for TestBot
-	let chatMessages = [
-		{
-			id: 2,
-			sender: 'bot',
-			name: 'TestBot',
-			initials: 'TB',
-			color: 'bg-purple-600',
-			timestamp: '5/12, 9:15 AM',
-			reactions: [
-				{ emoji: '👍', count: 2 },
-				{ emoji: '❤️', count: 1 }
-			],
-			card: {
-				title: 'Parts Information Available',
-				description:
-					'Hello! I can help you find parts information, check availability, and provide lead times. What would you like to know?',
-				chatLink: '#parts-support-channel'
+	// Store messages per conversation
+	let conversationMessages: Record<string, any[]> = {
+		'TestBot': [
+			{
+				id: 2,
+				sender: 'bot',
+				name: 'TestBot',
+				initials: 'TB',
+				color: 'bg-purple-600',
+				timestamp: '5/12, 9:15 AM',
+				reactions: [
+					{ emoji: '👍', count: 2 },
+					{ emoji: '❤️', count: 1 }
+				],
+				card: {
+					title: 'Parts Information Available',
+					description:
+						'Hello! I can help you find parts information, check availability, and provide lead times. What would you like to know?',
+					chatLink: '#parts-support-channel'
+				}
+			},
+			{
+				id: 3,
+				sender: 'user',
+				name: 'You',
+				initials: 'ME',
+				color: 'bg-blue-600',
+				text: 'I need information about part 00002771',
+				timestamp: '5/12, 9:16 AM',
+				reactions: []
+			},
+			{
+				id: 4,
+				sender: 'bot',
+				name: 'TestBot',
+				initials: 'TB',
+				color: 'bg-purple-600',
+				timestamp: '11:44 AM',
+				reactions: [],
+				card: {
+					title: 'Part Found: SKU 00002771 - PUMP',
+					description:
+						'This part is currently in stock and available for immediate shipment. Lead time is 2-3 business days for standard delivery. The part is compatible with multiple machine models. Click below to view the full conversation in the Parts Support channel.',
+					chatLink: '#parts-support-channel'
+				}
 			}
-		},
-		{
-			id: 3,
-			sender: 'user',
-			name: 'You',
-			initials: 'ME',
-			color: 'bg-blue-600',
-			text: 'I need information about part 00002771',
-			timestamp: '5/12, 9:16 AM',
-			reactions: []
-		},
-		{
-			id: 4,
-			sender: 'bot',
-			name: 'TestBot',
-			initials: 'TB',
-			color: 'bg-purple-600',
-			timestamp: '11:44 AM',
-			reactions: [],
-			card: {
-				title: 'Part Found: SKU 00002771 - PUMP',
-				description:
-					'This part is currently in stock and available for immediate shipment. Lead time is 2-3 business days for standard delivery. The part is compatible with multiple machine models. Click below to view the full conversation in the Parts Support channel.',
-				chatLink: '#parts-support-channel'
+		],
+		'Ray Tanaka': [
+			{
+				id: 1,
+				sender: 'user',
+				name: 'Ray Tanaka',
+				initials: 'RT',
+				color: 'bg-blue-600',
+				text: 'Hi, can you help me with the project timeline?',
+				timestamp: '1:30 PM',
+				reactions: []
+			},
+			{
+				id: 2,
+				sender: 'user',
+				name: 'You',
+				initials: 'ME',
+				color: 'bg-blue-600',
+				text: 'Sure! What do you need?',
+				timestamp: '1:32 PM',
+				reactions: []
+			},
+			{
+				id: 3,
+				sender: 'user',
+				name: 'Ray Tanaka',
+				initials: 'RT',
+				color: 'bg-blue-600',
+				text: 'Louisa will send the initial list of requirements tomorrow.',
+				timestamp: '1:47 PM',
+				reactions: []
 			}
-		}
-	];
+		]
+	};
+
+	// Current chat messages - updates when selectedChat changes
+	$: chatMessages = conversationMessages[selectedChat] || [];
 
 	// Teams data
 	const teams = [
 		{ name: 'Sandvik Support', initials: 'SS', color: 'bg-blue-600' },
-		{ name: 'Parts Warehouse', initials: 'PW', color: 'bg-green-600' },
 	];
 
 	onMount(async () => {
@@ -123,76 +159,89 @@
 
 	function handleChatMessage(event: CustomEvent) {
 		const messageInput = event.detail.message;
-		// Add user message to chat
-		chatMessages = [
-			...chatMessages,
-			{
-				id: chatMessages.length + 1,
-				sender: 'user',
-				name: 'You',
-				initials: 'ME',
-				color: 'bg-blue-600',
-				text: messageInput,
-				timestamp: new Date().toLocaleTimeString('en-US', {
-					hour: '2-digit',
-					minute: '2-digit'
-				}),
-				reactions: []
-			}
-		];
+		const currentMessages = conversationMessages[selectedChat] || [];
+		
+		// Add user message to the current conversation
+		const userMessage = {
+			id: currentMessages.length + 1,
+			sender: 'user',
+			name: 'You',
+			initials: 'ME',
+			color: 'bg-blue-600',
+			text: messageInput,
+			timestamp: new Date().toLocaleTimeString('en-US', {
+				hour: '2-digit',
+				minute: '2-digit'
+			}),
+			reactions: []
+		};
+		
+		conversationMessages = {
+			...conversationMessages,
+			[selectedChat]: [...currentMessages, userMessage]
+		};
 
-		// Simulate bot response with ONLY adaptive card
-		setTimeout(() => {
-			const responses = [
-				{
-					title: 'Information Found',
-					description:
-						'I found that information for you! Here are the details. This information is current as of today and includes availability, pricing, and compatibility information.',
-					chatLink: '#parts-support-channel'
-				},
-				{
-					title: 'Processing Your Request',
-					description:
-						'Let me check that for you... I am searching through our database for the most relevant information. This may take a moment.',
-					chatLink: '#technical-help-channel'
-				},
-				{
-					title: 'Parts Available',
-					description:
-						'Great news! The parts you requested are available in stock. Lead time is 2-3 business days. Click to view more details in the channel.',
-					chatLink: '#parts-warehouse-channel'
-				}
-			];
-
-			const response = responses[Math.floor(Math.random() * responses.length)];
-
-			chatMessages = [
-				...chatMessages,
-				{
-					id: chatMessages.length + 1,
-					sender: 'bot',
-					name: 'TestBot',
-					initials: 'TB',
-					color: 'bg-purple-600',
-					timestamp: new Date().toLocaleTimeString('en-US', {
-						hour: '2-digit',
-						minute: '2-digit'
-					}),
-					reactions: [],
-					card: {
-						title: response.title,
-						description: response.description,
-						chatLink: response.chatLink
+		// Only simulate bot response if chatting with a bot
+		const currentConversation = conversations.find(c => c.name === selectedChat);
+		if (currentConversation?.isBot) {
+			setTimeout(() => {
+				const responses = [
+					{
+						title: 'Information Found',
+						description:
+							'I found that information for you! Here are the details. This information is current as of today and includes availability, pricing, and compatibility information.',
+						chatLink: '#parts-support-channel'
+					},
+					{
+						title: 'Processing Your Request',
+						description:
+							'Let me check that for you... I am searching through our database for the most relevant information. This may take a moment.',
+						chatLink: '#technical-help-channel'
+					},
+					{
+						title: 'Parts Available',
+						description:
+							'Great news! The parts you requested are available in stock. Lead time is 2-3 business days. Click to view more details in the channel.',
+						chatLink: '#parts-warehouse-channel'
 					}
-				}
-			];
-		}, 1000);
+				];
+
+				const response = responses[Math.floor(Math.random() * responses.length)];
+				const updatedMessages = conversationMessages[selectedChat] || [];
+
+				conversationMessages = {
+					...conversationMessages,
+					[selectedChat]: [...updatedMessages, {
+						id: updatedMessages.length + 1,
+						sender: 'bot',
+						name: 'TestBot',
+						initials: 'TB',
+						color: 'bg-purple-600',
+						timestamp: new Date().toLocaleTimeString('en-US', {
+							hour: '2-digit',
+							minute: '2-digit'
+						}),
+						reactions: [],
+						card: {
+							title: response.title,
+							description: response.description,
+							chatLink: response.chatLink
+						}
+					}]
+				};
+			}, 1000);
+		}
 	}
 
 	function handleCloseCard(event: CustomEvent) {
 		const messageId = event.detail.messageId;
-		// Remove the message with the specified ID
-		chatMessages = chatMessages.filter((msg) => msg.id !== messageId);
+		// Remove the message with the specified ID from the current conversation
+		if (conversationMessages[selectedChat]) {
+			conversationMessages = {
+				...conversationMessages,
+				[selectedChat]: conversationMessages[selectedChat].filter((msg) => msg.id !== messageId)
+			};
+		}
 	}
 
 	function handleGoToChat(event: CustomEvent) {
@@ -212,6 +261,13 @@
 
 	function handleSelectChat(event: CustomEvent) {
 		selectedChat = event.detail.name;
+		// Initialize empty messages array if conversation doesn't exist
+		if (!conversationMessages[selectedChat]) {
+			conversationMessages = {
+				...conversationMessages,
+				[selectedChat]: []
+			};
+		}
 	}
 
 	function handleSelectTeam(event: CustomEvent) {
@@ -502,7 +558,6 @@
 						<div class="flex-1 text-left">
 							<div class="flex items-center justify-between">
 								<span class="text-sm font-medium">Parts Support</span>
-								<span class="bg-[#6264a7] text-white text-xs rounded-full px-2 py-0.5">12</span>
 							</div>
 						</div>
 					</button>
