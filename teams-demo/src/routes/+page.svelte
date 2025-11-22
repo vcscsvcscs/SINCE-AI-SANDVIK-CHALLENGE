@@ -438,16 +438,40 @@
 
 	function handleGoToChat(event: CustomEvent) {
 		const chatLink = event.detail.chatLink;
-		// Navigate to the channel based on the chatLink
-		if (chatLink.includes('parts-support')) {
+		console.log('🔗 Navigating to chatLink:', chatLink);
+		
+		// Map chatLink format (#channel-name) to actual channel names
+		const channelMap: Record<string, string> = {
+			'#general': 'General',
+			'general': 'General',
+			'#parts-support': 'Parts Support',
+			'parts-support': 'Parts Support',
+			'#technical-help': 'Technical Help',
+			'technical-help': 'Technical Help',
+			'#warehouse': 'Warehouse',
+			'warehouse': 'Warehouse',
+			'#parts-warehouse': 'Warehouse',
+			'parts-warehouse': 'Warehouse'
+		};
+		
+		// Extract channel name from chatLink (remove # if present)
+		const linkKey = chatLink.startsWith('#') ? chatLink : `#${chatLink}`;
+		const channelName = channelMap[linkKey] || channelMap[chatLink];
+		
+		if (channelName) {
+			console.log('✅ Navigating to channel:', channelName);
 			currentView = 'chat';
-			selectedChannel = 'Parts Support';
-		} else if (chatLink.includes('technical-help')) {
-			currentView = 'chat';
-			selectedChannel = 'Technical Help';
-		} else if (chatLink.includes('parts-warehouse')) {
-			currentView = 'chat';
-			selectedChannel = 'Warehouse';
+			selectedChannel = channelName;
+		} else {
+			console.warn('⚠️ Unknown chatLink:', chatLink);
+			// Fallback: try to extract channel name from link
+			const extracted = chatLink.replace('#', '').split('-').map((word: string) => 
+				word.charAt(0).toUpperCase() + word.slice(1)
+			).join(' ');
+			if (extracted && channelMessages[extracted]) {
+				currentView = 'chat';
+				selectedChannel = extracted;
+			}
 		}
 	}
 
