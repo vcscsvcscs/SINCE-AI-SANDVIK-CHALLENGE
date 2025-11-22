@@ -1,4 +1,0 @@
-[submodule "apps/teams-agent/Agents"]
-	path = apps/teams-agent/Agents
-	url = https://github.com/microsoft/Agents.git
-

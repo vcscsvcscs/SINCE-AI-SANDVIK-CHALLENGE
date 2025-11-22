@@ -1,0 +1,13 @@
+Example messages:
+“Tarvitaan korvaava osa SKU 7F-1123:lle, onko nopeampi saatavuus ensi viikolle?”
+ (“We need a replacement part for SKU 7F-1123, is there faster availability for next week?”)
+“Mikä koodi tälle kauhalle? Vanha koodi puuttuu.”
+ (“What is the code for this bucket? The old code is missing.”)
+“Lead time tälle 5 mm bolt -osalle?”
+ (“Lead time for this 5 mm bolt part?”)
+Note: In the hackathon, synthetic Teams data will be used (no personal data) and fake SKU data that has the same format as the real one (drop-in replacement possible afterwards). The purpose is to verify functionality with fake data and then easily move the model into Sandvik’s environment with IT permissions.
+
+Real format (for production, not in the hackathon): 
+Excel/CSV ~140,000 SKUs (code, name, description, alias/old codes, replacements, compatibility, possible lead time).
+Synthetic: Teams inquiry messages from templates (e.g. “What is the replacement part for [component X] for model [Y]?”, “Is [SKU123] available next week? Lead time?”), including typos/colloquial language/alias names; no personal data.
+Assumed format: CSV/XLSX; UTF-8; columns: sku, name, desc, aliases[], replacements[], compat[], lead_time_days.
