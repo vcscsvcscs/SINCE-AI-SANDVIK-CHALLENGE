@@ -1,0 +1,8 @@
+# Server dependencies for FastAPI spare parts classifier (CPU inference)
+fastapi
+uvicorn
+pydantic
+transformers
+huggingface-hub
+openai
+python-dotenv
