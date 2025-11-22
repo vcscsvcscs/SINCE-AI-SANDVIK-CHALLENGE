@@ -1,5 +1,9 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { env } from '$env/dynamic/private';
+
+// Teams agent Python service URL - defaults to localhost:3978
+const TEAMS_AGENT_URL = (env?.TEAMS_AGENT_URL as string) || 'http://localhost:3978/api/messages';
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
@@ -14,26 +18,59 @@ export const POST: RequestHandler = async ({ request }) => {
 			timestamp: data.timestamp
 		});
 
-		// Here you can process the message and generate a bot response
-		// For now, we'll send a simple acknowledgment with an adaptive card
-		
-		// Example: You can add logic here to:
-		// - Analyze the message content
-		// - Query a database
-		// - Call an AI service
-		// - Return a response based on the message
+		// Transform the data to MessageActionsPayload format expected by teams-agent
+		const messageActionsPayload = {
+			id: data.message_id || `msg_${Date.now()}`,
+			message_type: 'message',
+			created_date_time: data.timestamp || new Date().toISOString(),
+			from: {
+				user: {
+					id: data.user?.id || `user_${data.user?.name || 'unknown'}`,
+					display_name: data.user?.name || 'Unknown User',
+					user_identity_type: 'aadUser'
+				},
+				conversation: {
+					id: `channel_${data.channel?.toLowerCase().replace(/\s+/g, '-') || 'unknown'}`,
+					display_name: data.channel || 'Unknown Channel',
+					conversation_identity_type: 'channel'
+				}
+			},
+			body: {
+				content_type: 'text',
+				content: data.message || ''
+			},
+			subject: `Message from ${data.channel}`,
+			locale: 'en-US'
+		};
 
-		// Return a response with an adaptive card for the bot conversation
+		// Forward the message to the teams-agent Python service
+		let teamsAgentResponse = null;
+		try {
+			const response = await fetch(TEAMS_AGENT_URL, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(messageActionsPayload)
+			});
+
+			if (response.ok) {
+				teamsAgentResponse = await response.json();
+				console.log('✅ Teams agent response:', teamsAgentResponse);
+			} else {
+				const errorText = await response.text();
+				console.error('❌ Teams agent error:', response.status, errorText);
+			}
+		} catch (error) {
+			console.error('❌ Error forwarding to teams-agent:', error);
+			// Continue even if teams-agent is not available
+		}
+
+		// Return simple acknowledgment
 		return json({
 			success: true,
-			message: 'Message received',
-			// Send adaptive card to bot conversation with the administrator
-			sendToConversation: 'TestBot', // Name of the bot conversation
-			adaptiveCard: {
-				title: `Message Received from ${data.channel}`,
-				description: `${data.user.name} said: "${data.message}"\n\nChannel: ${data.channel}\nTime: ${new Date(data.timestamp).toLocaleString()}`,
-				chatLink: `#${data.channel.toLowerCase().replace(/\s+/g, '-')}`
-			}
+			message: 'Message received and forwarded to teams-agent',
+			forwardedToAgent: teamsAgentResponse !== null
 		});
 	} catch (error) {
 		console.error('Error processing bot message:', error);

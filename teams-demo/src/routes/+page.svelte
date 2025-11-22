@@ -208,7 +208,7 @@
 		console.log('💾 Saved conversation messages to storage:', conversationMessages);
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		// Listen for storage changes from other windows
 		window.addEventListener('storage', (e) => {
 			if (e.key === 'teamChannelMessages' && e.newValue) {
@@ -231,79 +231,143 @@
 				}
 			}
 		});
+
+		// Start polling for adaptive cards
+		// Poll every 2 seconds for new adaptive cards
+		pollingInterval = setInterval(pollForAdaptiveCards, 2000);
+		
+		// Also poll immediately
+		pollForAdaptiveCards();
+
+		// Cleanup on unmount
+		return () => {
+			if (pollingInterval) {
+				clearInterval(pollingInterval);
+			}
+		};
 	});
 
 	// Bot endpoint configuration - defaults to local API endpoint
 	const BOT_ENDPOINT = '/api/bot';
+	const WEBHOOK_ENDPOINT = '/api/webhook';
+
+	// Track the last timestamp we've seen adaptive cards from
+	let lastAdaptiveCardTimestamp = Date.now();
+	let pollingInterval: ReturnType<typeof setInterval> | null = null;
+
+	// Function to process adaptive cards and add them to conversations
+	function processAdaptiveCard(card: any) {
+		if (card.adaptiveCard && card.sendToConversation) {
+			const conversationName = card.sendToConversation;
+			console.log('📝 Processing adaptive card for conversation:', conversationName);
+			
+			const currentMessages = conversationMessages[conversationName] || [];
+			console.log('📨 Current messages in', conversationName, ':', currentMessages.length);
+			
+			// Check if we've already added this card (by message_id)
+			const existingCard = currentMessages.find(
+				(msg: any) => msg.sender === 'bot' && msg.card && msg.messageId === card.message_id
+			);
+			
+			if (existingCard) {
+				console.log('⚠️ Adaptive card already exists, skipping:', card.message_id);
+				return;
+			}
+			
+			const botMessage = {
+				id: currentMessages.length + 1,
+				messageId: card.message_id,
+				sender: 'bot',
+				name: 'TestBot',
+				initials: 'TB',
+				color: 'bg-purple-600',
+				timestamp: new Date(card.timestamp).toLocaleTimeString('en-US', {
+					hour: '2-digit',
+					minute: '2-digit'
+				}),
+				reactions: [],
+				card: {
+					title: card.adaptiveCard.title,
+					description: card.adaptiveCard.description,
+					chatLink: card.adaptiveCard.chatLink
+				}
+			};
+
+			console.log('🤖 Bot message created:', botMessage);
+
+			// Add to the conversation (e.g., TestBot conversation with admin)
+			conversationMessages = {
+				...conversationMessages,
+				[conversationName]: [...currentMessages, botMessage]
+			};
+			
+			// Save to localStorage for persistence across windows
+			saveConversationMessages();
+			
+			console.log('✅ Updated conversationMessages:', conversationMessages);
+			console.log('✅ TestBot messages now:', conversationMessages['TestBot'].length);
+		}
+	}
+
+	// Function to poll for new adaptive cards
+	async function pollForAdaptiveCards() {
+		try {
+			const response = await fetch(`${WEBHOOK_ENDPOINT}?since=${lastAdaptiveCardTimestamp}`);
+			
+			if (response.ok) {
+				const result = await response.json();
+				
+				if (result.success && result.cards && result.cards.length > 0) {
+					console.log(`✅ Found ${result.cards.length} new adaptive card(s)`);
+					
+					// Process each new card
+					result.cards.forEach((card: any) => {
+						processAdaptiveCard(card);
+					});
+					
+					// Update the last timestamp
+					if (result.latestTimestamp) {
+						lastAdaptiveCardTimestamp = result.latestTimestamp;
+					}
+				}
+			} else {
+				console.error('❌ Error polling for adaptive cards:', response.status);
+			}
+		} catch (error) {
+			console.error('Error polling for adaptive cards:', error);
+		}
+	}
 
 	async function notifyBot(message: any, channel: string) {
+		const messageData = {
+			message: message.message,
+			message_id: message.message_id,
+			timestamp: message.timestamp,
+			channel: channel,
+			user: {
+				name: message.from.displayName,
+				initials: message.from.initials,
+				role: currentUser.role
+			}
+		};
+
 		try {
-			const response = await fetch(BOT_ENDPOINT, {
+			// Forward message to bot endpoint (which forwards to teams-agent)
+			// The Python service will then call the webhook endpoint
+			const botResponse = await fetch(BOT_ENDPOINT, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({
-					message: message.message,
-					message_id: message.message_id,
-					timestamp: message.timestamp,
-					channel: channel,
-					user: {
-						name: message.from.displayName,
-						initials: message.from.initials,
-						role: currentUser.role
-					}
-				})
+				body: JSON.stringify(messageData)
 			});
 
-			if (response.ok) {
-				const botResponse = await response.json();
-				console.log('✅ Bot response received:', botResponse);
-				
-				// If bot sends an adaptive card, add it to the specified conversation
-				if (botResponse.adaptiveCard && botResponse.sendToConversation) {
-					const conversationName = botResponse.sendToConversation;
-					console.log('📝 Target conversation:', conversationName);
-					
-					const currentMessages = conversationMessages[conversationName] || [];
-					console.log('📨 Current messages in', conversationName, ':', currentMessages.length);
-					
-					const botMessage = {
-						id: currentMessages.length + 1,
-						sender: 'bot',
-						name: 'TestBot',
-						initials: 'TB',
-						color: 'bg-purple-600',
-						timestamp: new Date().toLocaleTimeString('en-US', {
-							hour: '2-digit',
-							minute: '2-digit'
-						}),
-						reactions: [],
-						card: {
-							title: botResponse.adaptiveCard.title,
-							description: botResponse.adaptiveCard.description,
-							chatLink: botResponse.adaptiveCard.chatLink
-						}
-					};
-
-					console.log('🤖 Bot message created:', botMessage);
-
-					// Add to the conversation (e.g., TestBot conversation with admin)
-					conversationMessages = {
-						...conversationMessages,
-						[conversationName]: [...currentMessages, botMessage]
-					};
-					
-					// Save to localStorage for persistence across windows
-					saveConversationMessages();
-					
-					console.log('✅ Updated conversationMessages:', conversationMessages);
-					console.log('✅ TestBot messages now:', conversationMessages['TestBot'].length);
-				} else {
-					console.log('⚠️ No adaptive card in bot response or missing sendToConversation');
-				}
+			if (botResponse.ok) {
+				const botResult = await botResponse.json();
+				console.log('✅ Bot response received:', botResult);
+				console.log('⏳ Waiting for adaptive card from Python service...');
 			} else {
-				console.error('❌ Bot API returned error:', response.status, await response.text());
+				console.error('❌ Bot API returned error:', botResponse.status, await botResponse.text());
 			}
 		} catch (error) {
 			console.error('Error notifying bot:', error);
