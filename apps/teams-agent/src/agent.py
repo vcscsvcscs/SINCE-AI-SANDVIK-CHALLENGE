@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from typing import Dict, Any, Optional
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
+import json
+import requests
 
 from .models import MessageActionsPayload
 from .card_messages import CardMessages
@@ -21,6 +23,14 @@ SPARE_PARTS = [
     {"id": "P-003", "name": "bearing"},
 ]
 
+# Featherless LLM config
+FEATHERLESS_API_KEY = environ.get("FEATHERLESS_API_KEY")
+FEATHERLESS_MODEL = environ.get(
+    "FEATHERLESS_MODEL",
+    "meta-llama/Meta-Llama-3.1-8B-Instruct",  # разумный дефолт
+)
+FEATHERLESS_API_URL = "https://api.featherless.ai/v1/chat/completions"
+
 # Condition settings - customize these as needed
 # Only send notifications if message contains these keywords (empty list = send all messages)
 NOTIFICATION_KEYWORDS = environ.get("NOTIFICATION_KEYWORDS", "").split(",") if environ.get("NOTIFICATION_KEYWORDS") else []
@@ -30,6 +40,40 @@ NOTIFICATION_KEYWORDS = [kw.strip().lower() for kw in NOTIFICATION_KEYWORDS if k
 # Store conversation references for proactive messaging
 # In production, you'd use persistent storage (e.g., CosmosDB, Blob Storage)
 conversation_references: Dict[str, Dict[str, Any]] = {}
+
+def call_featherless_llm(system_prompt: str, user_prompt: str) -> str:
+    """
+    Low-level helper: call Featherless chat completions API and
+    return raw assistant message content as string.
+    """
+    if not FEATHERLESS_API_KEY:
+        # Без ключа нет смысла пытаться
+        raise RuntimeError("FEATHERLESS_API_KEY is not set")
+
+    headers = {
+        "Authorization": f"Bearer {FEATHERLESS_API_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    payload = {
+        "model": FEATHERLESS_MODEL,
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+    }
+
+    response = requests.post(
+        FEATHERLESS_API_URL,
+        headers=headers,
+        json=payload,
+        timeout=15,
+    )
+    response.raise_for_status()
+    data = response.json()
+
+    # Берём текст первого ответа
+    return data["choices"][0]["message"]["content"]
 
 
 def should_send_notification(payload: MessageActionsPayload) -> bool:
@@ -114,15 +158,14 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
 
     spare_part_match = await analyze_spare_parts(message_text)
 
-
-
     if spare_part_match:
-        spare_part_info = (
-            f"Detected spare part: {spare_part_match['name']} "
-            f"(catalog id: {spare_part_match['id']}, score: {spare_part_match['score']:.2f})"
-        )
+        term = spare_part_match.get("term") or "<no term>"
+        reason = spare_part_match.get("reason") or ""
+        spare_part_info = f"LLM: message looks spare-part-related. Term: {term}."
+        if reason:
+            spare_part_info += f" Reason: {reason}"
     else:
-        spare_part_info = "No spare parts detected in the message."
+        spare_part_info = "LLM: message does NOT look spare-part-related."
 
     # 2) create deep link (not used yet, but let's keep it for future)
     channel_deep_link = CardMessages.create_teams_deep_link(payload)
@@ -132,31 +175,67 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         status_text = f"✓ Notification card sent to the configured user about: {message_text}"
     else:
         status_text = "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
-    
-    # 4) form the response activity
+
     response_activity["text"] = status_text + "\n\n" + spare_part_info
-    
+        
     return response_activity
     
 async def analyze_spare_parts(message_text: str) -> Optional[Dict[str, object]]:
     """
-    Very simple spare-part detector WITHOUT LLM.
-    Checks if any spare part name from SPARE_PARTS is mentioned in the message.
-    Returns dict with id, name and a dummy score, or None if nothing found.
+    Step 1: use LLM (Featherless) to decide whether the message
+    is related to spare parts, and if so, extract the key term/phrase.
+
+    Returns:
+        None, if the query is not about spare parts
+        dict with fields:
+            - is_spare_related: bool (always True here)
+            - term: str | None (extracted word/phrase)
+            - reason: str | None (model explanation)
+            - raw_model_output: str (just in case, for debugging)
     """
+
     if not message_text:
         return None
 
-    text = message_text.lower()
+    system_prompt = (
+        "You are a classifier for a mining equipment spare parts support chat.\n"
+        "Your job:\n"
+        "1) Decide if the customer message is about a SPARE PART (part, tire, hose, mirror, transmission, etc.).\n"
+        "2) If yes, extract the ONE most important term or phrase that names the part.\n\n"
+        "Respond ONLY in JSON with the following keys:\n"
+        "{\n"
+        '  \"is_spare_part_related\": true/false,\n'
+        '  \"spare_part_term\": string or null,\n'
+        '  \"reason\": string (very short explanation)\n'
+        "}\n"
+        "Do not add any extra text, only JSON."
+    )
 
-    for part in SPARE_PARTS:
-        part_name = part["name"].lower()
-        if part_name in text:
-            # found a match; for now score is always 1.0
-            return {
-                "id": part["id"],
-                "name": part["name"],
-                "score": 1.0,
-            }
+    user_prompt = f"Customer message:\n{message_text}"
 
-    return None
+    try:
+        raw = call_featherless_llm(system_prompt, user_prompt)
+    except Exception as e:
+        # At this step, it's better not to fail, but simply say "nothing found"
+        # + you can log e if you already have logging
+        return None
+
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        # model responded with invalid JSON
+        return None
+
+    is_related = data.get("is_spare_part_related")
+    if not is_related:
+        return None
+
+    term = data.get("spare_part_term") or None
+    reason = data.get("reason") or None
+
+    return {
+        "is_spare_related": True,
+        "term": term,
+        "reason": reason,
+        "raw_model_output": raw,
+    }
