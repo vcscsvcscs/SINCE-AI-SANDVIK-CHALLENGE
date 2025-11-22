@@ -54,15 +54,12 @@ FEATHERLESS_API_URL = "https://api.featherless.ai/v1/chat/completions"
 
 # === Load spare parts catalog from CSV (pandas) ===
 
-# Базовая директория проекта: поднимаемся от src/agent.py на два уровня:
-# src -> teams-agent -> apps -> SINCE-AI-SANDVIK-CHALLENGE
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
-# В .env можно задать путь относительно корня проекта, например:
+PROJECT_ROOT = Path(__file__).parent
+
 # SPARE_PARTS_CSV_PATH=test/sku_register_full.csv
-CSV_ENV = environ.get("SPARE_PARTS_CSV_PATH", "test/sku_register_full.csv")
+CSV_ENV = environ.get("SPARE_PARTS_CSV_PATH", "tests/data/sku_register_full.csv")
 
-# Если путь не абсолютный — считаем его относительно PROJECT_ROOT
 csv_path = Path(CSV_ENV)
 if not csv_path.is_absolute():
     csv_path = PROJECT_ROOT / csv_path
