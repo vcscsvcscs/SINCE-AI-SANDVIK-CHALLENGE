@@ -6,8 +6,14 @@
 	import TeamsView from '$lib/components/TeamsView.svelte';
 	import CalendarView from '$lib/components/CalendarView.svelte';
 	import ActivityView from '$lib/components/ActivityView.svelte';
+	import {
+		getMessageText,
+		getMessageId,
+		getMessageTimestamp,
+		isSimplifiedMessage
+	} from '$lib/types';
 
-	// Load synthetic data
+	// Load synthetic data - supports both simplified and Teams message formats
 	let messages: any[] = [];
 	let currentView = 'chat';
 	let selectedChannel = 'Parts Support';
@@ -181,18 +187,16 @@
 
 	function sendMessage() {
 		if (messageInput.trim()) {
-			// For channel view (not chat-view)
-			messages = [
-				...messages,
-				{
-					message_id: `msg_${Date.now()}`,
-					timestamp: new Date().toISOString(),
-					message: messageInput,
-					query_type: 'user_query',
-					referenced_sku: null,
-					has_typo: false
-				}
-			];
+			// For channel view (not chat-view) - create simplified message
+			const newMessage: any = {
+				message_id: `msg_${Date.now()}`,
+				timestamp: new Date().toISOString(),
+				message: messageInput,
+				query_type: 'user_query',
+				referenced_sku: null,
+				has_typo: false
+			};
+			messages = [...messages, newMessage];
 			messageInput = '';
 		}
 	}
@@ -732,13 +736,16 @@
 					</div>
 				{:else}
 					{#each messages as message, i}
+						{@const msgId = getMessageId(message)}
+						{@const msgTimestamp = getMessageTimestamp(message)}
+						{@const msgText = getMessageText(message)}
 						{@const showDate =
 							i === 0 ||
-							formatDate(message.timestamp) !== formatDate(messages[i - 1].timestamp)}
+							formatDate(msgTimestamp) !== formatDate(getMessageTimestamp(messages[i - 1]))}
 						{#if showDate}
 							<div class="flex items-center justify-center my-4">
 								<div class="bg-gray-200 text-gray-600 text-xs px-3 py-1 rounded-full">
-									{formatDate(message.timestamp)}
+									{formatDate(msgTimestamp)}
 								</div>
 							</div>
 						{/if}
@@ -748,20 +755,16 @@
 								class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0"
 							>
 								<span class="text-white text-sm font-medium">
-									{message.message_id.includes('user')
-										? 'ME'
-										: message.message_id.slice(-2).toUpperCase()}
+									{msgId.includes('user') ? 'ME' : msgId.slice(-2).toUpperCase()}
 								</span>
 							</div>
 							<div class="flex-1 min-w-0">
 								<div class="flex items-baseline space-x-2">
 									<span class="font-semibold text-sm">
-										{message.message_id.includes('user')
-											? 'You'
-											: `User ${message.message_id.slice(-3)}`}
+										{msgId.includes('user') ? 'You' : `User ${msgId.slice(-3)}`}
 									</span>
-									<span class="text-xs text-gray-500">{formatTime(message.timestamp)}</span>
-									{#if message.has_typo}
+									<span class="text-xs text-gray-500">{formatTime(msgTimestamp)}</span>
+									{#if isSimplifiedMessage(message) && message.has_typo}
 										<span
 											class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded"
 											title="Contains typo">✏️</span
@@ -769,9 +772,9 @@
 									{/if}
 								</div>
 								<div class="text-sm text-gray-800 mt-1 break-words">
-									{message.message}
+									{msgText}
 								</div>
-								{#if message.referenced_sku}
+								{#if isSimplifiedMessage(message) && message.referenced_sku}
 									<div
 										class="mt-2 inline-flex items-center space-x-2 bg-blue-50 border border-blue-200 rounded px-3 py-2"
 									>
