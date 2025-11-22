@@ -15,6 +15,12 @@ load_dotenv()
 # Pre-chosen user ID - set this in environment variable TARGET_USER_ID
 TARGET_USER_ID = environ.get("TARGET_USER_ID", "")
 
+SPARE_PARTS = [
+    {"id": "P-001", "name": "filter"},
+    {"id": "P-002", "name": "belt"},
+    {"id": "P-003", "name": "bearing"},
+]
+
 # Condition settings - customize these as needed
 # Only send notifications if message contains these keywords (empty list = send all messages)
 NOTIFICATION_KEYWORDS = environ.get("NOTIFICATION_KEYWORDS", "").split(",") if environ.get("NOTIFICATION_KEYWORDS") else []
@@ -134,8 +140,23 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     
 async def analyze_spare_parts(message_text: str) -> Optional[Dict[str, object]]:
     """
-    Temporary stub that pretends to analyze spare parts.
-    For now it always returns None.
-    Later we will move it to a separate module and add LLM + catalog logic.
+    Very simple spare-part detector WITHOUT LLM.
+    Checks if any spare part name from SPARE_PARTS is mentioned in the message.
+    Returns dict with id, name and a dummy score, or None if nothing found.
     """
+    if not message_text:
+        return None
+
+    text = message_text.lower()
+
+    for part in SPARE_PARTS:
+        part_name = part["name"].lower()
+        if part_name in text:
+            # found a match; for now score is always 1.0
+            return {
+                "id": part["id"],
+                "name": part["name"],
+                "score": 1.0,
+            }
+
     return None
