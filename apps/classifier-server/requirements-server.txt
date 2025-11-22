@@ -2,6 +2,7 @@
 fastapi
 uvicorn
 pydantic
+torch
 transformers
 huggingface-hub
 openai
