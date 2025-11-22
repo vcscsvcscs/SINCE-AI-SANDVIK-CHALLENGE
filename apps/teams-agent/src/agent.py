@@ -43,7 +43,7 @@ SPARE_PARTS = [
 FEATHERLESS_API_KEY = environ.get("FEATHERLESS_API_KEY")
 FEATHERLESS_MODEL = environ.get(
     "FEATHERLESS_MODEL",
-    "meta-llama/Meta-Llama-3.1-8B-Instruct",  # разумный дефолт
+    "Qwen/Qwen2.5-7B-Instruct",  # разумный дефолт
 )
 FEATHERLESS_API_URL = "https://api.featherless.ai/v1/chat/completions"
 
