@@ -341,9 +341,7 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         )
         response_activity["text"] = status_text + "\n\n" + spare_part_info
     else:
-        spare_part_info = "LLM: message does NOT look spare-part-related."
-        status_text = "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
-        response_activity["text"] = status_text + "\n\n" + spare_part_info
+        response_activity["text"] = "LLM: message does NOT look spare-part-related."
     
     return response_activity
 
