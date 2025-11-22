@@ -171,6 +171,22 @@
 				};
 			}
 		}
+		
+		// Load conversation messages (chat conversations)
+		const storedConversations = localStorage.getItem('conversationMessages');
+		if (storedConversations) {
+			try {
+				const loaded = JSON.parse(storedConversations);
+				// Merge with existing, preserving any initialized messages
+				conversationMessages = {
+					...conversationMessages,
+					...loaded
+				};
+				console.log('📥 Loaded conversation messages from storage:', conversationMessages);
+			} catch (e) {
+				console.error('Error loading conversation messages:', e);
+			}
+		}
 	}
 
 	function saveMessagesToStorage() {
@@ -181,6 +197,16 @@
 			newValue: JSON.stringify(channelMessages)
 		}));
 	}
+	
+	function saveConversationMessages() {
+		localStorage.setItem('conversationMessages', JSON.stringify(conversationMessages));
+		// Dispatch storage event for other windows
+		window.dispatchEvent(new StorageEvent('storage', {
+			key: 'conversationMessages',
+			newValue: JSON.stringify(conversationMessages)
+		}));
+		console.log('💾 Saved conversation messages to storage:', conversationMessages);
+	}
 
 	onMount(async () => {
 		// Listen for storage changes from other windows
@@ -189,7 +215,19 @@
 				try {
 					channelMessages = JSON.parse(e.newValue);
 				} catch (err) {
-					console.error('Error parsing messages:', err);
+					console.error('Error parsing channel messages:', err);
+				}
+			}
+			if (e.key === 'conversationMessages' && e.newValue) {
+				try {
+					const loaded = JSON.parse(e.newValue);
+					conversationMessages = {
+						...conversationMessages,
+						...loaded
+					};
+					console.log('🔄 Synced conversation messages from other window:', conversationMessages);
+				} catch (err) {
+					console.error('Error parsing conversation messages:', err);
 				}
 			}
 		});
@@ -255,6 +293,9 @@
 						...conversationMessages,
 						[conversationName]: [...currentMessages, botMessage]
 					};
+					
+					// Save to localStorage for persistence across windows
+					saveConversationMessages();
 					
 					console.log('✅ Updated conversationMessages:', conversationMessages);
 					console.log('✅ TestBot messages now:', conversationMessages['TestBot'].length);
@@ -325,6 +366,9 @@
 			...conversationMessages,
 			[selectedChat]: [...currentMessages, userMessage]
 		};
+		
+		// Save to localStorage
+		saveConversationMessages();
 
 		// Only simulate bot response if chatting with a bot
 		const currentConversation = conversations.find(c => c.name === selectedChat);
@@ -374,6 +418,9 @@
 						}
 					}]
 				};
+				
+				// Save to localStorage
+				saveConversationMessages();
 			}, 1000);
 		}
 	}
