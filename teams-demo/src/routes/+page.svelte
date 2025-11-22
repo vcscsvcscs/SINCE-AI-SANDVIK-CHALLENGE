@@ -31,8 +31,9 @@
 
 	let currentView = 'chat';
 	let selectedChannel = 'Parts Support';
-	let selectedChat = 'TestBot';
+	let selectedChat = 'Ray Tanaka'; // Default - will be set based on user role
 	let messageInput = '';
+	let chatMessages: any[] = [];
 
 	// Chat conversations list - dynamic based on user
 	$: conversations = currentUser?.role === 'Administrator' 
@@ -42,8 +43,12 @@
 					name: 'TestBot',
 					initials: 'TB',
 					color: 'bg-purple-600',
-					lastMessage: 'Here is an adaptive card with some options...',
-					timestamp: '11:44 AM',
+					lastMessage: conversationMessages['TestBot']?.length > 0 
+						? conversationMessages['TestBot'][conversationMessages['TestBot'].length - 1]?.card?.title || 'Bot notifications here'
+						: 'Bot notifications here',
+					timestamp: conversationMessages['TestBot']?.length > 0
+						? conversationMessages['TestBot'][conversationMessages['TestBot'].length - 1]?.timestamp || '11:44 AM'
+						: '11:44 AM',
 					online: true,
 					unread: 0,
 					isBot: true
@@ -71,9 +76,20 @@
 					unread: 0
 				},
 		  ];
+	
+	// Auto-switch to valid conversation if current selection is not available for this user
+	$: if (currentUser && conversations.length > 0) {
+		const isCurrentChatAvailable = conversations.some(conv => conv.name === selectedChat);
+		if (!isCurrentChatAvailable) {
+			// Selected chat not available for this user, switch to first available
+			console.log('⚠️ Selected chat', selectedChat, 'not available for', currentUser.role, '- switching to', conversations[0].name);
+			selectedChat = conversations[0].name;
+		}
+	}
 
 	// Store messages per conversation
 	let conversationMessages: Record<string, any[]> = {
+		'TestBot': [], // Empty - will be populated with bot notifications
 		'Ray Tanaka': [
 			{
 				id: 1,
@@ -108,8 +124,18 @@
 		]
 	};
 
-	// Current chat messages - updates when selectedChat changes
-	$: chatMessages = conversationMessages[selectedChat] || [];
+	// Debug: Log when conversationMessages changes
+	$: console.log('🔄 conversationMessages updated. TestBot has:', (conversationMessages['TestBot'] || []).length, 'messages');
+	
+	// Current chat messages - updates when selectedChat or conversationMessages changes
+	$: {
+		const messages = conversationMessages[selectedChat] || [];
+		chatMessages = messages;
+		console.log('📋 Selected chat:', selectedChat, '| Messages:', messages.length);
+		if (selectedChat === 'TestBot' && messages.length > 0) {
+			console.log('✅ TestBot messages:', messages);
+		}
+	}
 
 	// Teams data
 	const teams = [
@@ -119,6 +145,14 @@
 	function handleUserSelected(event: CustomEvent) {
 		currentUser = event.detail.user;
 		showUserSelection = false;
+		
+		// Set default chat based on user role
+		if (currentUser.role === 'Administrator') {
+			selectedChat = 'TestBot'; // Admin can see TestBot
+		} else {
+			selectedChat = 'Ray Tanaka'; // Regular users default to Ray Tanaka
+		}
+		
 		// Load messages from localStorage when user logs in
 		loadMessagesFromStorage();
 	}
@@ -186,12 +220,15 @@
 
 			if (response.ok) {
 				const botResponse = await response.json();
-				console.log('Bot response:', botResponse);
+				console.log('✅ Bot response received:', botResponse);
 				
 				// If bot sends an adaptive card, add it to the specified conversation
 				if (botResponse.adaptiveCard && botResponse.sendToConversation) {
 					const conversationName = botResponse.sendToConversation;
+					console.log('📝 Target conversation:', conversationName);
+					
 					const currentMessages = conversationMessages[conversationName] || [];
+					console.log('📨 Current messages in', conversationName, ':', currentMessages.length);
 					
 					const botMessage = {
 						id: currentMessages.length + 1,
@@ -211,7 +248,7 @@
 						}
 					};
 
-					console.log('Adding bot message to conversation:', conversationName, botMessage);
+					console.log('🤖 Bot message created:', botMessage);
 
 					// Add to the conversation (e.g., TestBot conversation with admin)
 					conversationMessages = {
@@ -219,8 +256,13 @@
 						[conversationName]: [...currentMessages, botMessage]
 					};
 					
-					console.log('Updated conversationMessages:', conversationMessages);
+					console.log('✅ Updated conversationMessages:', conversationMessages);
+					console.log('✅ TestBot messages now:', conversationMessages['TestBot'].length);
+				} else {
+					console.log('⚠️ No adaptive card in bot response or missing sendToConversation');
 				}
+			} else {
+				console.error('❌ Bot API returned error:', response.status, await response.text());
 			}
 		} catch (error) {
 			console.error('Error notifying bot:', error);
@@ -526,7 +568,7 @@
 	{#if currentView === 'activity'}
 		<ActivityView />
 	{:else if currentView === 'chat-view'}
-		{#key JSON.stringify(conversationMessages[selectedChat])}
+		{#key `${selectedChat}-${(conversationMessages[selectedChat] || []).length}`}
 			<ChatView
 				{conversations}
 				{selectedChat}
