@@ -1,6 +1,8 @@
 """FastAPI agent implementation for Teams bot"""
 import sys
 import traceback
+import asyncio
+import httpx
 from os import environ
 from dotenv import load_dotenv
 from typing import Dict, Any, Optional
@@ -21,6 +23,9 @@ load_dotenv()
 
 # Pre-chosen user ID - set this in environment variable TARGET_USER_ID
 TARGET_USER_ID = environ.get("TARGET_USER_ID", "")
+
+# Webhook URL for sending adaptive cards to the frontend
+WEBHOOK_URL = environ.get("WEBHOOK_URL", "http://localhost:5175/api/webhook")
 
 LOG_FILE = environ.get("LOG_FILE", "agent.log")
 LOG_LEVEL = environ.get("LOG_LEVEL", "DEBUG").upper()
@@ -80,8 +85,6 @@ except Exception as e:
         e,
     )
     CATALOG_DF = pd.DataFrame()
-
-
 
 # Condition settings - customize these as needed
 # Only send notifications if message contains these keywords (empty list = send all messages)
@@ -269,7 +272,6 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         "type": "message",
         "text": "",
     }
-
     # Check condition before sending notification (твоя логика фильтра)
     if not should_send_notification(payload):
         response_activity["text"] = "Message received but notification conditions not met."
@@ -301,9 +303,44 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
             spare_part_info += f" Reason: {reason}"
     else:
         spare_part_info = "LLM: message does NOT look spare-part-related."
-
+        
     # Create Teams deep link to the channel message
     channel_deep_link = CardMessages.create_teams_deep_link(payload)
+    # Extract channel name from payload
+    channel_name = "Unknown Channel"
+    if payload.from_property and payload.from_property.conversation:
+        channel_name = payload.from_property.conversation.display_name or channel_name
+    
+    # Send adaptive card to webhook endpoint (which will be picked up by frontend)
+    webhook_payload = {
+        "message": message_text,
+        "message_id": payload.id or f"msg_{payload.created_date_time}",
+        "timestamp": payload.created_date_time or "",
+        "channel": channel_name,
+        "user": {
+            "name": sender_name,
+            "id": payload.from_property.user.id if payload.from_property and payload.from_property.user else None
+        }
+    }
+    
+    # Call webhook endpoint asynchronously in background (don't wait for response)
+    async def send_to_webhook():
+        try:
+            async with httpx.AsyncClient() as client:
+                webhook_response = await client.post(
+                    WEBHOOK_URL,
+                    json=webhook_payload,
+                    timeout=5.0
+                )
+                if webhook_response.status_code == 200:
+                    print(f"[TEAMS-AGENT] ✅ Successfully sent adaptive card to webhook")
+                else:
+                    print(f"[TEAMS-AGENT] ⚠️ Webhook returned status {webhook_response.status_code}")
+        except Exception as e:
+            print(f"[TEAMS-AGENT] ❌ Error calling webhook: {e}")
+        
+    # Run webhook call in background
+    asyncio.create_task(send_to_webhook())
 
     # Notification card sending status
     if TARGET_USER_ID:

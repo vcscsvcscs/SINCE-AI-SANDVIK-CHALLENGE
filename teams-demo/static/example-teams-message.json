@@ -1,0 +1,165 @@
+[
+  {
+    "id": "1734948123456",
+    "reply_to_id": null,
+    "message_type": "message",
+    "created_date_time": "2025-11-22T09:15:23Z",
+    "last_modified_date_time": "2025-11-22T09:15:23Z",
+    "deleted": false,
+    "subject": null,
+    "summary": null,
+    "importance": "normal",
+    "locale": "en-US",
+    "link_to_message": "https://teams.microsoft.com/l/message/...",
+    "from_property": {
+      "user": {
+        "id": "29:1a2b3c4d5e6f",
+        "displayName": "John Smith",
+        "userPrincipalName": "john.smith@sandvik.com"
+      }
+    },
+    "body": {
+      "contentType": "text",
+      "content": "Need replacement part for SKU 00002771, is there faster availability for next week?"
+    },
+    "attachment_layout": null,
+    "attachments": [],
+    "mentions": [],
+    "reactions": [
+      {
+        "reactionType": "like",
+        "createdDateTime": "2025-11-22T09:16:00Z",
+        "user": {
+          "id": "29:9z8y7x6w5v4u",
+          "displayName": "Anna Johnson",
+          "userPrincipalName": "anna.johnson@sandvik.com"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1734948234567",
+    "reply_to_id": "1734948123456",
+    "message_type": "message",
+    "created_date_time": "2025-11-22T09:20:15Z",
+    "last_modified_date_time": "2025-11-22T09:20:15Z",
+    "deleted": false,
+    "subject": null,
+    "summary": null,
+    "importance": "high",
+    "locale": "en-US",
+    "link_to_message": "https://teams.microsoft.com/l/message/...",
+    "from_property": {
+      "application": {
+        "id": "bot_sandvik_parts",
+        "displayName": "Sandvik Parts Bot"
+      }
+    },
+    "body": {
+      "contentType": "html",
+      "content": "<div><strong>Part Found: SKU 00002771 - PUMP</strong><br/>Status: In Stock<br/>Lead Time: 2-3 business days<br/>Price: Contact sales for pricing</div>"
+    },
+    "attachment_layout": "list",
+    "attachments": [
+      {
+        "id": "attachment_001",
+        "contentType": "application/vnd.microsoft.card.adaptive",
+        "content": {
+          "type": "AdaptiveCard",
+          "version": "1.4",
+          "body": [
+            {
+              "type": "TextBlock",
+              "text": "Part Information",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "SKU:",
+                  "value": "00002771"
+                },
+                {
+                  "title": "Description:",
+                  "value": "PUMP"
+                },
+                {
+                  "title": "Availability:",
+                  "value": "In Stock"
+                },
+                {
+                  "title": "Lead Time:",
+                  "value": "2-3 business days"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "mentions": [
+      {
+        "id": 0,
+        "mentionText": "John Smith",
+        "mentioned": {
+          "user": {
+            "id": "29:1a2b3c4d5e6f",
+            "displayName": "John Smith",
+            "userPrincipalName": "john.smith@sandvik.com"
+          }
+        }
+      }
+    ],
+    "reactions": []
+  },
+  {
+    "id": "1734948345678",
+    "reply_to_id": null,
+    "message_type": "message",
+    "created_date_time": "2025-11-22T10:05:30Z",
+    "last_modified_date_time": "2025-11-22T10:05:30Z",
+    "deleted": false,
+    "subject": "Urgent: Part Request",
+    "summary": null,
+    "importance": "urgent",
+    "locale": "en-US",
+    "link_to_message": "https://teams.microsoft.com/l/message/...",
+    "from_property": {
+      "user": {
+        "id": "29:3c4d5e6f7g8h",
+        "displayName": "Maria Garcia",
+        "userPrincipalName": "maria.garcia@sandvik.com"
+      }
+    },
+    "body": {
+      "contentType": "text",
+      "content": "URGENT: Need TIRE BC00004214 urgently, when can we get it? Customer is waiting on site."
+    },
+    "attachment_layout": null,
+    "attachments": [],
+    "mentions": [],
+    "reactions": [
+      {
+        "reactionType": "heart",
+        "createdDateTime": "2025-11-22T10:06:00Z",
+        "user": {
+          "id": "29:1a2b3c4d5e6f",
+          "displayName": "John Smith",
+          "userPrincipalName": "john.smith@sandvik.com"
+        }
+      },
+      {
+        "reactionType": "like",
+        "createdDateTime": "2025-11-22T10:07:00Z",
+        "user": {
+          "id": "29:9z8y7x6w5v4u",
+          "displayName": "Anna Johnson",
+          "userPrincipalName": "anna.johnson@sandvik.com"
+        }
+      }
+    ]
+  }
+]
+
