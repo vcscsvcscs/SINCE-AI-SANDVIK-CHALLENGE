@@ -52,14 +52,22 @@ async def messages_endpoint(request: Request):
         # Parse the request body
         body = await request.json()
         
+        # Log the raw incoming request
+        print("\n" + "="*80)
+        print("[TEAMS-AGENT] Received message request")
+        print("="*80)
+        print(f"[TEAMS-AGENT] Raw body: {body}")
+        
         # Handle different payload formats
         # Teams might send the payload directly or wrapped
         if "value" in body:
             # Payload might be wrapped in a "value" field (common in webhooks)
             payload_data = body["value"]
+            print("[TEAMS-AGENT] Extracted payload from 'value' field")
         elif "message" in body:
             # Payload might be in a "message" field
             payload_data = body["message"]
+            print("[TEAMS-AGENT] Extracted payload from 'message' field")
         elif "type" in body and body.get("type") == "message":
             # Full Activity object - extract message data
             payload_data = {
@@ -84,15 +92,35 @@ async def messages_endpoint(request: Request):
                 "mentions": body.get("mentions"),
                 "reactions": body.get("reactions"),
             }
+            print("[TEAMS-AGENT] Extracted payload from Activity object")
         else:
             # Payload is at root level (MessageActionsPayload format)
             payload_data = body
+            print("[TEAMS-AGENT] Using payload at root level")
         
         # Parse as MessageActionsPayload (with extra fields allowed)
         payload = MessageActionsPayload(**payload_data)
         
+        # Log the parsed payload details
+        print(f"[TEAMS-AGENT] Parsed MessageActionsPayload:")
+        print(f"  - ID: {payload.id}")
+        print(f"  - Message Type: {payload.message_type}")
+        print(f"  - Created: {payload.created_date_time}")
+        if payload.from_property:
+            if payload.from_property.user:
+                print(f"  - From User: {payload.from_property.user.display_name} (ID: {payload.from_property.user.id})")
+            if payload.from_property.conversation:
+                print(f"  - Conversation: {payload.from_property.conversation.display_name} (Type: {payload.from_property.conversation.conversation_identity_type})")
+        if payload.body:
+            print(f"  - Message Content: {payload.body.content}")
+        print("="*80)
+        
         # Process the message
         response = await process_message(payload)
+        
+        # Log the response
+        print(f"[TEAMS-AGENT] Response: {response}")
+        print("="*80 + "\n")
         
         # Return response in Teams-compatible format (Activity object)
         return JSONResponse(content=response)
