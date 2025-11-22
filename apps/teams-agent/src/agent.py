@@ -94,46 +94,48 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     response_activity = {
         "type": "message",
         "text": "",
-    }
+    }    
+
+    # Check condition before sending notification
+    if not should_send_notification(payload):
+        # Conditions not met, return acknowledgment
+        response_activity["text"] = "Message received but notification conditions not met."
+        return response_activity
     
-    # Check if message is from a channel
-    if is_channel_message(payload):
-        # Check condition before sending notification
-        if not should_send_notification(payload):
-            # Conditions not met, return acknowledgment
-            response_activity["text"] = "Message received but notification conditions not met."
-            return response_activity
-        
-        # This is a channel message
-        message_text = get_message_text(payload)
-        sender_name = get_sender_name(payload)
-        
-        # Create Teams deep link to the channel message
-        channel_deep_link = CardMessages.create_teams_deep_link(payload)
-        
-        # Send card to pre-chosen user (in a real implementation, you'd send this via Teams API)
-        if TARGET_USER_ID:
-            # For now, we'll just acknowledge in the response
-            # In production, you'd make an API call to send the card
-            response_activity["text"] = f"✓ Notification card sent to the configured user about: {message_text}"
-        else:
-            response_activity["text"] = "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
-        
-        return response_activity
+    # This is a channel message
+    message_text = get_message_text(payload)
+    sender_name = get_sender_name(payload)
+
+    spare_part_match = await analyze_spare_parts(message_text)
+
+
+
+    if spare_part_match:
+        spare_part_info = (
+            f"Detected spare part: {spare_part_match['name']} "
+            f"(catalog id: {spare_part_match['id']}, score: {spare_part_match['score']:.2f})"
+        )
     else:
-        # Direct message - provide info
-        user_id = payload.from_property.user.id if payload.from_property and payload.from_property.user else None
-        if user_id == TARGET_USER_ID:
-            response_activity["text"] = (
-                "Hello! I've registered you as the notification recipient. "
-                "I'll send you cards when messages are received in channels."
-            )
-        else:
-            message_text = get_message_text(payload)
-            response_activity["text"] = (
-                f"You said: {message_text}\n\n"
-                f"Note: This bot sends notification cards to user {TARGET_USER_ID} "
-                f"when messages are received in channels."
-            )
-        
-        return response_activity
+        spare_part_info = "No spare parts detected in the message."
+
+    # 2) create deep link (not used yet, but let's keep it for future)
+    channel_deep_link = CardMessages.create_teams_deep_link(payload)
+    
+    # Send card to pre-chosen user (in a real implementation, you'd send this via Teams API)
+    if TARGET_USER_ID:
+        status_text = f"✓ Notification card sent to the configured user about: {message_text}"
+    else:
+        status_text = "⚠ TARGET_USER_ID not configured. Please set it in environment variables."
+    
+    # 4) form the response activity
+    response_activity["text"] = status_text + "\n\n" + spare_part_info
+    
+    return response_activity
+    
+async def analyze_spare_parts(message_text: str) -> Optional[Dict[str, object]]:
+    """
+    Temporary stub that pretends to analyze spare parts.
+    For now it always returns None.
+    Later we will move it to a separate module and add LLM + catalog logic.
+    """
+    return None
