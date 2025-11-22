@@ -1,22 +1,11 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
+"""Main entry point for the application"""
+import uvicorn
+from os import environ
+from .start_server import app
 
-# enable logging for Microsoft Agents library
-import logging
-ms_agents_logger = logging.getLogger("microsoft_agents")
-ms_agents_logger.addHandler(logging.StreamHandler())
-ms_agents_logger.setLevel(logging.INFO)
-
-from microsoft_agents.hosting.core import AgentAuthConfiguration
-from .agent import AGENT_APP
-from .start_server import start_server
-
-# Create a default auth configuration since we're not using MsalConnectionManager
-# This allows the server to start without authentication
-auth_configuration = AgentAuthConfiguration()
-
-start_server(
-    agent_application=AGENT_APP,
-    auth_configuration=auth_configuration,
-)
-
+# Use "0.0.0.0" to bind to all interfaces (required for Docker containers)
+# Use "localhost" only if explicitly set via HOST environment variable
+host = environ.get("HOST", "0.0.0.0")
+port = int(environ.get("PORT", 3978))
+    
+uvicorn.run(app, host=host, port=port)
