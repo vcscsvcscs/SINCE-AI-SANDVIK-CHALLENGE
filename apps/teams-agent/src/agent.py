@@ -134,9 +134,10 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     
     # === call custom classifier server ===
     classifier_response = call_custom_classifier(message_text)
+    logger.info(f"[TEAMS-AGENT] ✅ Custom classifier response: {classifier_response}")
     logger.debug("process_message: classifier_response=%s", classifier_response)
 
-    if classifier_response.confidence > 0.5 and not classifier_response.is_parts_inquiry:
+    if classifier_response.get("confidence",0.0) > 0.5 and not classifier_response.get("is_parts_inquiry"):
         response_activity["text"] = "Custom classifier: message is not a spare parts inquiry."
         return response_activity
         
@@ -169,7 +170,7 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         
         # Send adaptive card to webhook endpoint (which will be picked up by frontend)
         webhook_payload = {
-            "message": message_text,
+            "message": message_text + " " + (match_text if matched else ""),
             "message_id": payload.id or f"msg_{payload.created_date_time}",
             "timestamp": payload.created_date_time or "",
             "channel": channel_name,
