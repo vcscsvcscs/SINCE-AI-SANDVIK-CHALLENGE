@@ -327,7 +327,7 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         
         # Send adaptive card to webhook endpoint (which will be picked up by frontend)
         webhook_payload = {
-            "message": message_text,
+            "message": message_text + " " + (match_text if matched else ""),
             "message_id": payload.id or f"msg_{payload.created_date_time}",
             "timestamp": payload.created_date_time or "",
             "channel": channel_name,
