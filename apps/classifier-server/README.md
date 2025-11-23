@@ -33,7 +33,7 @@ Through rigorous optimization on a balanced dataset (n=500), we identified the o
 
 The following visualizations demonstrate the effectiveness of our architecture.
 
-#### 1. Performance vs. Cost
+#### Performance vs. Cost
 This chart illustrates the trade-off. As we increase the threshold, we send more traffic to the LLM (orange line), which increases the overall F1 score (blue line).
 At our chosen threshold of **0.625**, we achieve a "sweet spot":
 -   **High F1 Score**: Maximizing accuracy.
@@ -41,22 +41,10 @@ At our chosen threshold of **0.625**, we achieve a "sweet spot":
 
 ![Performance vs Cost](performance_vs_cost.png)
 
-#### 2. Traffic Distribution
-This stacked area chart shows exactly how traffic is handled across different thresholds.
--   **Green Area**: Correctly classified by the local model (Free & Fast).
--   **Red Area**: Incorrectly classified by the local model.
--   **Blue Area**: Routed to the LLM (Corrected).
-
-Notice how the **0.625 threshold** (dashed line) cuts off a significant portion of the "Red" (error) area, converting it to "Blue" (LLM corrected), without consuming the entire "Green" area.
-
-![Traffic Distribution](traffic_distribution.png)
-
-### Final Results (Threshold 0.625)
-
 #### Confusion Matrix
 The pipeline achieves exceptional performance, minimizing False Negatives (critical for business) and False Positives.
 
-![Confusion Matrix](tradeoff_results/pipeline_confusion_matrix_0625.png)
+![Confusion Matrix](pipeline_confusion_matrix_0625.png)
 
 #### Method Distribution
 -   **Model**: Handles ~75-80% of requests.
