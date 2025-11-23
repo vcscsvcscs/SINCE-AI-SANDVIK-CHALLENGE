@@ -41,13 +41,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
-SPARE_PARTS = [
-    {"id": "P-001", "name": "filter"},
-    {"id": "P-002", "name": "belt"},
-    {"id": "P-003", "name": "bearing"},
-]
-
 # Featherless LLM config
 FEATHERLESS_API_KEY = environ.get("FEATHERLESS_API_KEY")
 FEATHERLESS_MODEL = environ.get(
@@ -59,7 +52,7 @@ FEATHERLESS_API_URL = "https://api.featherless.ai/v1/chat/completions"
 # === Load spare parts catalog from CSV (pandas) ===
 
 
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(__file__).parent.parent
 
 # SPARE_PARTS_CSV_PATH=test/sku_register_full.csv
 CSV_ENV = environ.get("SPARE_PARTS_CSV_PATH", "tests/data/sku_register_full.csv")

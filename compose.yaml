@@ -16,7 +16,6 @@ services:
       - TARGET_USER_ID=${TARGET_USER_ID:-user-object-id-here}
       - TARGET_USER_TENANT_ID=${TARGET_USER_TENANT_ID:-tenant-id}
       - BOT_ID=${BOT_ID:-bot-id}
-      - SERVICE_URL=${SERVICE_URL:-https://smba.trafficmanager.net/}
       - NOTIFICATION_KEYWORDS=${NOTIFICATION_KEYWORDS:-}
       - WEBHOOK_URL=http://teams-demo:3000/api/webhook
       - CLASSIFIER_ENDPOINT=${CLASSIFIER_ENDPOINT:-http://classifier-server:8069/classify}
