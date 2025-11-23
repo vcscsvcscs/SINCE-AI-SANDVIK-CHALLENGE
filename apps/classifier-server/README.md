@@ -39,7 +39,7 @@ At our chosen threshold of **0.625**, we achieve a "sweet spot":
 -   **High F1 Score**: Maximizing accuracy.
 -   **Low LLM Cost**: Only ~20-25% of traffic is routed to the LLM.
 
-![Performance vs Cost](tradeoff_results/performance_vs_cost.png)
+![Performance vs Cost](performance_vs_cost.png)
 
 #### 2. Traffic Distribution
 This stacked area chart shows exactly how traffic is handled across different thresholds.
@@ -49,7 +49,7 @@ This stacked area chart shows exactly how traffic is handled across different th
 
 Notice how the **0.625 threshold** (dashed line) cuts off a significant portion of the "Red" (error) area, converting it to "Blue" (LLM corrected), without consuming the entire "Green" area.
 
-![Traffic Distribution](tradeoff_results/traffic_distribution.png)
+![Traffic Distribution](traffic_distribution.png)
 
 ### Final Results (Threshold 0.625)
 
@@ -62,7 +62,7 @@ The pipeline achieves exceptional performance, minimizing False Negatives (criti
 -   **Model**: Handles ~75-80% of requests.
 -   **LLM**: Handles ~20-25% of requests (the "hard" ones).
 
-![Method Distribution](tradeoff_results/method_distribution_0625.png)
+![Method Distribution](method_distribution_0625.png)
 
 ### Key Benefits
 
