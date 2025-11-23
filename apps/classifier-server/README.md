@@ -20,6 +20,7 @@ Our pipeline utilizes a two-stage approach to balance speed/cost with accuracy:
     -   **Pros**: High reasoning capability, handles ambiguity and context well .
     -   **Cons**: Higher latency and cost per token.
 
+> RAG search is done by the agent module on positive classifications
 ### Intelligent Routing Strategy
 
 The core innovation is the **Confidence-Based Routing**. We do not send every request to the LLM. Instead, we analyze the confidence score of the local model:
