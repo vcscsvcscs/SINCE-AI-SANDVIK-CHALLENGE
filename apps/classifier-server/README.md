@@ -50,8 +50,6 @@ The pipeline achieves exceptional performance, minimizing False Negatives (criti
 -   **Model**: Handles ~75-80% of requests.
 -   **LLM**: Handles ~20-25% of requests (the "hard" ones).
 
-![Method Distribution](method_distribution_0625.png)
-
 ### Key Benefits
 
 1.  **Cost Efficiency**: We reduce LLM API costs by ~75% compared to a pure LLM solution.
