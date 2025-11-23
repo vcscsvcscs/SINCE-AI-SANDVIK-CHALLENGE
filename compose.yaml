@@ -9,6 +9,7 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=3978
+      - FEATHERLESS_API_KEY=${FEATHERLESS_API_KEY:-}
       - CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID=${CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTID:-client-id}
       - CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTSECRET=${CONNECTIONS__SERVICE_CONNECTION__SETTINGS__CLIENTSECRET:-client-secret}
       - CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID=${CONNECTIONS__SERVICE_CONNECTION__SETTINGS__TENANTID:-tenant-id}
@@ -18,6 +19,7 @@ services:
       - SERVICE_URL=${SERVICE_URL:-https://smba.trafficmanager.net/}
       - NOTIFICATION_KEYWORDS=${NOTIFICATION_KEYWORDS:-}
       - WEBHOOK_URL=http://teams-demo:3000/api/webhook
+      - CLASSIFIER_ENDPOINT=${CLASSIFIER_ENDPOINT:-http://classifier-server:8069/classify}
     networks:
       - teams-network
     restart: unless-stopped

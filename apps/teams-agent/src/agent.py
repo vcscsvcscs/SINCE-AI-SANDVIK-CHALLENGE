@@ -5,7 +5,8 @@ import asyncio
 import httpx
 from os import environ
 from dotenv import load_dotenv
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Literal
+from pydantic import BaseModel, Field
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
 import json
@@ -26,6 +27,9 @@ TARGET_USER_ID = environ.get("TARGET_USER_ID", "")
 
 # Webhook URL for sending adaptive cards to the frontend
 WEBHOOK_URL = environ.get("WEBHOOK_URL", "http://localhost:5175/api/webhook")
+
+# Classifier server endpoint URL
+CLASSIFIER_ENDPOINT = environ.get("CLASSIFIER_ENDPOINT", "http://classifier-server:8069/classify")
 
 LOG_FILE = environ.get("LOG_FILE", "agent.log")
 LOG_LEVEL = environ.get("LOG_LEVEL", "DEBUG").upper()
@@ -196,7 +200,21 @@ def call_featherless_llm(system_prompt: str, user_prompt: str) -> str:
 
     # Take the text of the first response
     return data["choices"][0]["message"]["content"]
+    
+class InquiryResponse(BaseModel):
+    is_parts_inquiry: bool = Field(..., description="Whether the message is a spare parts inquiry")
+    confidence: float = Field(..., description="Confidence score of the prediction")
+    method: Literal["model", "llm"] = Field(..., description="Which method was used for classification")
 
+def call_custom_classifier(message: str) -> InquiryResponse:
+    """
+    Call the custom classifier server to determine if the message is a spare part inquiry.
+    """
+    response = requests.post(
+        CLASSIFIER_ENDPOINT,
+        json={"message": message}
+    )
+    return response.json()
 
 def should_send_notification(payload: MessageActionsPayload) -> bool:
     """Check if notification should be sent based on conditions"""
@@ -278,6 +296,13 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     sender_name = get_sender_name(payload)
     logger.debug("process_message: sender_name=%r, message_text=%r", sender_name, message_text)
 
+    classifier_response = call_custom_classifier(message_text)
+    logger.debug("process_message: classifier_response=%s", classifier_response)
+
+    if classifier_response.confidence > 0.5 and not classifier_response.is_parts_inquiry:
+        response_activity["text"] = "Custom classifier: message is not a spare parts inquiry."
+        return response_activity
+        
     # === NEW: use term + matched_part ===
     spare_part_match = await analyze_spare_parts(message_text)
     logger.debug("process_message: spare_part_match=%s", spare_part_match)
