@@ -3,13 +3,12 @@ import asyncio
 import httpx
 from os import environ
 from dotenv import load_dotenv
-from typing import Dict, Any, Optional, Literal
-from pydantic import BaseModel, Field
+from typing import Dict, Any, Optional
 import json
-import requests
 
 import logging
-from pathlib import Path
+
+from .utils.first_llm_check import call_custom_classifier
 from .utils.similarity_check import find_best_part_by_term
 from .utils.second_llm_check import call_featherless_llm
 
@@ -51,20 +50,6 @@ NOTIFICATION_KEYWORDS = [kw.strip().lower() for kw in NOTIFICATION_KEYWORDS if k
 conversation_references: Dict[str, Dict[str, Any]] = {}
 
     
-class InquiryResponse(BaseModel):
-    is_parts_inquiry: bool = Field(..., description="Whether the message is a spare parts inquiry")
-    confidence: float = Field(..., description="Confidence score of the prediction")
-    method: Literal["model", "llm"] = Field(..., description="Which method was used for classification")
-
-def call_custom_classifier(message: str) -> InquiryResponse:
-    """
-    Call the custom classifier server to determine if the message is a spare part inquiry.
-    """
-    response = requests.post(
-        CLASSIFIER_ENDPOINT,
-        json={"message": message}
-    )
-    return response.json()
 
 def should_send_notification(payload: MessageActionsPayload) -> bool:
     """Check if notification should be sent based on conditions"""
@@ -145,7 +130,9 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     message_text = get_message_text(payload)
     sender_name = get_sender_name(payload)
     logger.debug("process_message: sender_name=%r, message_text=%r", sender_name, message_text)
-
+    
+    
+    # === call custom classifier server ===
     classifier_response = call_custom_classifier(message_text)
     logger.debug("process_message: classifier_response=%s", classifier_response)
 
@@ -153,7 +140,7 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
         response_activity["text"] = "Custom classifier: message is not a spare parts inquiry."
         return response_activity
         
-    # === NEW: use term + matched_part ===
+    # === use term + matched_part ===
     spare_part_match = await analyze_spare_parts(message_text)
     logger.debug("process_message: spare_part_match=%s", spare_part_match)
 
@@ -234,6 +221,7 @@ async def analyze_spare_parts(message_text: str) -> Optional[Dict[str, object]]:
 
     user_prompt = f"Customer message:\n{message_text}"
 
+    # Step 1: Call Featherless LLM to analyze spare parts
     try:
         raw = call_featherless_llm(user_prompt)
         logger.debug("analyze_spare_parts: raw LLM output=%s", raw)
@@ -263,6 +251,7 @@ async def analyze_spare_parts(message_text: str) -> Optional[Dict[str, object]]:
         logger.info("analyze_spare_parts: LLM says not spare-part-related")
         return None
 
+    # Step 2: Find best matching spare part by term
     matched_part = None
     if term:
         matched_part = find_best_part_by_term(term)
