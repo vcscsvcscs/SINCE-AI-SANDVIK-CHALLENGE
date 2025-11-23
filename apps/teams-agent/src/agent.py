@@ -214,6 +214,7 @@ def call_custom_classifier(message: str) -> InquiryResponse:
         CLASSIFIER_ENDPOINT,
         json={"message": message}
     )
+
     return response.json()
 
 def should_send_notification(payload: MessageActionsPayload) -> bool:
@@ -297,9 +298,10 @@ async def process_message(payload: MessageActionsPayload) -> Dict[str, Any]:
     logger.debug("process_message: sender_name=%r, message_text=%r", sender_name, message_text)
 
     classifier_response = call_custom_classifier(message_text)
+    logger.info(f"[TEAMS-AGENT] ✅ Custom classifier response: {classifier_response}")
     logger.debug("process_message: classifier_response=%s", classifier_response)
 
-    if classifier_response.confidence > 0.5 and not classifier_response.is_parts_inquiry:
+    if classifier_response.get("confidence",0.0) > 0.5 and not classifier_response.get("is_parts_inquiry"):
         response_activity["text"] = "Custom classifier: message is not a spare parts inquiry."
         return response_activity
         
