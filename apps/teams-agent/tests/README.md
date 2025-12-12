@@ -89,3 +89,4 @@ The tests automatically set the following environment variables in the container
 - Tests are module-scoped, meaning the container is started once for all tests in the module
 - The Docker image is built fresh for each test run
 - The container is automatically cleaned up after tests complete
+
